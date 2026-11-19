@@ -1,17 +1,18 @@
-<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nano Synergy Horn</title>
-<style>:root{--bg:#fff;--fg:#1a1a1a;--mute:#666;--line:#ddd;--tag:#f0f0f0}@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mute:#999;--line:#333;--tag:#262626}}body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit}.meta,p.mute{color:var(--mute)}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}th{width:32%}.tag{background:var(--tag);border-radius:4px;padding:1px 6px;font-size:13px;white-space:nowrap}h2{margin-top:2em}</style></head>
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nano Synergy Horn</title><style>:root{--bg:#fff;--fg:#1a1a1a;--mute:#666;--line:#ddd;--tag:#f0f0f0}@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mute:#999;--line:#333;--tag:#262626}}body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit}.meta,p.mute{color:var(--mute)}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}th{width:32%}.tag{background:var(--tag);border-radius:4px;padding:1px 6px;font-size:13px;white-space:nowrap}h2{margin-top:2em}td{overflow-wrap:anywhere}ol li,ul li{margin:4px 0}</style></head>
 <body><p><a href="../">← Speaker Lab</a></p>
 <h1>Nano Synergy horn</h1>
 <p>A compact 3D-printed Synergy horn: one compression driver and two 6" mid cones sharing a nearly square 90° × 90° horn.</p>
-<p class="meta">Stage: <b>specification</b> · Last updated 19 November 2026</p>
+<p class="meta">Stage: <b>design (baseline)</b> · Last updated 19 November 2026</p>
 
 <h2>Summary</h2>
-<p>This is a multiple-entry (Synergy) horn: the compression driver fires into the throat and two mid cones feed in through ports in the horn walls, so all three act as one source with even, wide coverage. The horn is printed and sits in a simple plywood box. The requirements were agreed on 19 November 2026. A first model from the collaborator exists and will be analysed and simulated as the baseline; new versions then have to beat it. Nothing has been simulated acoustically, printed or measured yet.</p>
+<p>This is a multiple-entry (Synergy) horn: the compression driver fires into the throat and two mid cones feed in through ports in the horn walls, so all three act as one source with even, wide coverage. The horn is printed and drops into a simple plywood box.</p>
+<p>The specification is complete. The co-designer's first model has been analysed from its file: it is a well-made, printable-in-principle part, but its walls flare wider than the 90° target and it has no rear chambers for the mids. It is now being rebuilt as a parametric model so it can be simulated as the baseline. Improved versions follow.</p>
 
 <h2>Requirements</h2>
 <table>
 <tr><th>Type</th><td>Synergy / multiple-entry horn: 1 compression driver at the throat, 2 mid cones tapped into the walls</td></tr>
-<tr><th>Drivers</th><td>2 × Faital PRO 6RS140 8 Ω; 1 × B&amp;C DH350 (variant to confirm)</td></tr>
+<tr><th>Drivers</th><td>2 × Faital PRO 6RS140 8 Ω; 1 × B&amp;C DH350 or DH350H (variant and impedance to confirm from the label)</td></tr>
 <tr><th>Bandwidth</th><td>100–120 Hz to 20 kHz, with a subwoofer below; full level only above about 200 Hz</td></tr>
 <tr><th>Coverage (H × V)</th><td>90° × 90°, even</td></tr>
 <tr><th>Maximum level</th><td>115 dB peak at the listener at 3–6 m (club use) above about 200 Hz; lower level at 100–200 Hz for fill, monitor and speech. Equivalent to 124.5–130.6 dB at 1 m, free field <span class="tag">derived</span></td></tr>
@@ -29,24 +30,58 @@
 <tr><th>19 Nov 2026</th><td>Full club level needed only above about 200 Hz; the horn must still reach 100–120 Hz at lower level. This relieves the main headroom risk, which an earlier study with the same mid cones found at 150 Hz.</td></tr>
 <tr><th>19 Nov 2026</th><td>Size limited only by the printers; one-piece and split horns to be compared in simulation.</td></tr>
 <tr><th>19 Nov 2026</th><td>Approach: analyse and simulate the first model as a baseline, then design versions that beat it.</td></tr>
+<tr><th>19 Nov 2026</th><td>Baseline to be simulated from a parametric rebuild, not from the supplied mesh: remeshing supplied meshes gave large solver errors in an earlier project.</td></tr>
 </table>
 
 <h2>Results</h2>
-<p>Level target conversion only (115 dB at 3–6 m → 124.5–130.6 dB at 1 m) <span class="tag">estimate (unmeasured)</span>. No acoustic simulation, print or measurement yet.</p>
+<p><b>First model, geometry</b> <span class="tag">measured from the CAD file</span>. No acoustic simulation, print or measurement yet.</p>
+<table>
+<tr><th>Mouth</th><td>Square, 240 × 240 mm inside; horn depth 113 mm (146 mm overall); flange 260 × 296 mm</td></tr>
+<tr><th>Throat</th><td>Ø25 mm round, 37° included cone for about 32 mm, then a step into the main flare; DH350 bolt pattern (2 holes on 53 mm)</td></tr>
+<tr><th>Flare</th><td>Oblate-spheroid-like, tending to 106° included; wider than 90° from about 47 mm from the throat</td></tr>
+<tr><th>Mid entry</th><td>Two 6RS140 on baffles at 53° to the axis; four teardrop ports (about 9.5 to 15.5 cm² each) opening 24–52 mm from the driver face; no rear chambers</td></tr>
+<tr><th>Printability</th><td>Fits the 300 mm bed with only 4 mm to spare; does not fit the 256 mm bed; heavy supports in every orientation</td></tr>
+<tr><th>Mid crossover limit</th><td>About 1.65–3.6 kHz from the port spacing alone, lower once the compression driver's internal path is added <span class="tag">derived</span></td></tr>
+<tr><th>Mouth size</th><td>One wavelength round at about 357 Hz: little horn loading for the mids at 100–200 Hz <span class="tag">derived</span></td></tr>
+</table>
+<p class="mute">Design rules used: Danley, Synergy and Unity horn patents (weight 4); Waslo, Synergy Calc v5 manual (weight 3); Danley Sound Labs white paper (weight 3).</p>
+
+<h2>Print settings</h2>
+<p>Planned part: the horn (PLA prototype). All settings not set.</p>
+<table>
+<tr><th>Printer</th><td>not set</td></tr><tr><th>Material and brand</th><td>PLA, brand not set</td></tr><tr><th>Nozzle</th><td>not set</td></tr><tr><th>Layer height</th><td>not set</td></tr><tr><th>Walls</th><td>not set</td></tr><tr><th>Top / bottom layers</th><td>not set</td></tr><tr><th>Infill % and pattern</th><td>not set</td></tr><tr><th>Supports</th><td>not set</td></tr><tr><th>Orientation</th><td>not set</td></tr><tr><th>Splits and joints</th><td>not set (split allowed)</td></tr><tr><th>Nozzle / bed temperature</th><td>not set</td></tr><tr><th>Speed / profile</th><td>not set</td></tr><tr><th>Brim</th><td>not set</td></tr><tr><th>Slicer and profile version</th><td>not set</td></tr><tr><th>Estimated time and mass</th><td>not set</td></tr>
+</table>
+
+<h2>Open questions for the co-designer</h2>
+<ol>
+<li>Can you send the native CAD (STEP or source file) and the flare parameters?</li>
+<li>Which way up: mids top and bottom, or at the sides? The horn is square but the flange is 260 × 296 mm.</li>
+<li>What coverage did you intend? The walls flare towards 106° and about 111° at the mouth: was 90° expected from the 240 mm mouth, or something else?</li>
+<li>Is the step from the 37° throat cone into the main flare (about 32 mm from the driver face) intended, or a lofting artefact?</li>
+<li>Compression driver fixing: which variant (DH350 or DH350H), what screw thread and length, and were the Ø6 holes meant for M5 with nuts? Should a second (57 mm) bolt pattern be added for a DH450?</li>
+<li>Mid fixing: M5 through-bolts with nuts? Only the mouth-end holes have a Ø10 counterbore: what goes at the throat-end holes?</li>
+<li>The 13 mm plug inside each cone: what cone profile was it shaped to (measured or assumed)? What clearance did you allow at maximum excursion?</li>
+<li>What was the port design based on: area, teardrop shape, 16° tilt, 7:1 compression ratio, and the corner exits?</li>
+<li>Rear chambers for the mids: what volume, sealed or vented, and where do they go?</li>
+<li>Target crossover points, and any simulation or measurement behind "best so far"?</li>
+<li>What are the 20 × 5 mm slots at the mouth edge of the mid baffles for, and the 6 flange holes (what does the flange bolt to)?</li>
+<li>Which printer, orientation and split lines did you have in mind?</li>
+</ol>
 
 <h2>Open issues</h2>
 <ul>
-<li>Compression driver data (exact variant, impedance) not yet in hand.</li>
-<li>Mid-cone profile, amplifier power per channel, and subwoofer model and crossover still unknown; all needed before the first geometry pass.</li>
+<li>Compression driver variant and impedance not yet confirmed (label reading pending).</li>
+<li>Mid-cone profile, amplifier power per channel, and subwoofer model and crossover still unknown.</li>
 <li>Headroom above 200 Hz with two 6" mids per box is unproven; may need several boxes per side.</li>
 <li>Tools from an earlier multiple-entry horn study (solver and release checks) to be independently reviewed before reuse.</li>
 </ul>
 
 <h2>Next steps</h2>
 <ol>
-<li>Analyse the first model's geometry and simulate it as the baseline.</li>
-<li>Write exact-solution tests and the release checks before any design sweep.</li>
-<li>Design and simulate improved versions; compare one-piece and split.</li>
+<li>Parametric rebuild of the first model, checked against its file (running).</li>
+<li>Exact-solution tests and mesh-convergence checks before any simulation (running).</li>
+<li>Baseline simulation: directivity, beamwidth, mid and HF paths, with a second solver.</li>
+<li>Design and simulate improved versions aimed at an even 90° × 90°; compare one-piece and split.</li>
 <li>Print an interface coupon, then a PLA prototype; plan a short measurement session.</li>
 </ol>
 </body></html>
