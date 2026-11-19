@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Speaker Lab Handbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: lab manual. Sticky contents rail on the left (desktop), single reading column, tables set like driver datasheets. */
+:root {
+  --paper: #f4f6f3;
+  --panel: #e9ede8;
+  --ink: #17201e;
+  --muted: #5a6662;
+  --rule: #cfd6d1;
+  --accent: #b8430f;
+  --accent-soft: #f3dccd;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111614; --panel: #1a211f; --ink: #e3e8e5; --muted: #96a29d;
+    --rule: #2b3431; --accent: #f08a4f; --accent-soft: #3a2519; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111614; --panel: #1a211f; --ink: #e3e8e5; --muted: #96a29d;
+  --rule: #2b3431; --accent: #f08a4f; --accent-soft: #3a2519; color-scheme: dark;
+}
+
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.shell {
+  max-width: 1120px; margin: 0 auto; padding-block: 40px 80px;
+  display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 56px;
+}
+@media (max-width: 860px) { .shell { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 24px 56px; } }
+
+/* contents rail */
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; font-size: 13.5px; }
+nav.toc .label { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; border-left: 1px solid var(--rule); }
+nav.toc a { display: block; padding: 3px 0 3px 14px; margin-left: -1px; border-left: 2px solid transparent; color: var(--muted); text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--ink); border-left-color: var(--accent); outline: none; }
+@media (max-width: 860px) {
+  nav.toc { position: static; }
+  nav.toc ol { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); border-left: 0; gap: 0 12px; }
+  nav.toc a { padding-left: 0; border-left: 0; }
+}
+
+main { min-width: 0; max-width: 760px; }
+
+/* masthead */
+header.mast { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; padding-bottom: 28px; border-bottom: 2px solid var(--ink); }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--display); font-stretch: 118%; font-weight: 800; font-size: clamp(34px, 6vw, 56px); line-height: 1; letter-spacing: -.01em; margin: 10px 0 14px; text-wrap: balance; }
+.lede { color: var(--muted); max-width: 58ch; margin: 0; }
+.fig { width: 170px; }
+.fig svg { display: block; width: 100%; height: auto; }
+.fig figcaption { font-family: var(--mono); font-size: 10.5px; color: var(--muted); margin-top: 4px; }
+@media (max-width: 560px) { header.mast { grid-template-columns: 1fr; } .fig { width: 140px; } }
+
+section { padding-top: 44px; scroll-margin-top: 16px; }
+h2 { font-family: var(--display); font-stretch: 112%; font-weight: 700; font-size: 26px; line-height: 1.15; margin: 0 0 14px; text-wrap: balance; display: flex; align-items: baseline; gap: 12px; }
+h2 .sec { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--accent); }
+h3 { font-family: var(--display); font-stretch: 105%; font-weight: 700; font-size: 17px; margin: 26px 0 8px; }
+p { margin: 0 0 12px; max-width: 66ch; }
+a { color: var(--accent); }
+code { font-family: var(--mono); font-size: .86em; background: var(--panel); padding: 1px 5px; border-radius: 3px; white-space: nowrap; }
+td code { white-space: normal; }
+ul.plain { margin: 0 0 12px; padding-left: 20px; max-width: 66ch; }
+ul.plain li { margin-bottom: 6px; }
+
+/* start panel */
+.start { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 22px 22px 18px; display: grid; gap: 18px; }
+.start .big { font-size: 18px; margin: 0; }
+.start .big code { font-size: 16px; background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+.keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.key { border: 1px solid var(--rule); background: var(--paper); border-radius: 4px; padding: 10px 12px; }
+.key code { background: none; padding: 0; font-size: 15px; font-weight: 500; color: var(--ink); }
+.key span { display: block; font-size: 13px; color: var(--muted); }
+
+.codeblock { position: relative; }
+pre { margin: 0; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px; overflow-x: auto; font-family: var(--mono); font-size: 13px; line-height: 1.55; }
+.copy { position: absolute; top: 8px; right: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; background: var(--panel); color: var(--ink); border: 1px solid var(--rule); border-radius: 3px; padding: 4px 8px; cursor: pointer; }
+.copy:hover, .copy:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+
+/* datasheet tables */
+.table-wrap { overflow-x: auto; margin: 4px 0 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+th { text-align: left; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 8px 12px 8px 0; border-bottom: 1.5px solid var(--ink); }
+td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td:first-child { white-space: nowrap; }
+td.date { font-family: var(--mono); font-size: 12.5px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.model { font-family: var(--mono); font-size: 12px; padding: 2px 7px; border-radius: 3px; border: 1px solid var(--rule); white-space: nowrap; }
+.model.fable { border-color: var(--accent); color: var(--accent); }
+
+/* build sequence */
+ol.steps { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 0; }
+ol.steps li { counter-increment: step; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+ol.steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--mono); font-size: 13px; color: var(--accent); padding-top: 2px; }
+ol.steps b { font-family: var(--display); font-stretch: 105%; }
+
+.rules { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.rules li { padding: 10px 0; border-bottom: 1px solid var(--rule); max-width: 66ch; }
+.rules b { font-family: var(--display); font-stretch: 105%; }
+
+.note { font-size: 14px; color: var(--muted); }
+footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="shell">
+  <nav class="toc" aria-label="Contents">
+    <div class="label">Contents</div>
+    <ol>
+      <li><a href="#start">Quick start</a></li>
+      <li><a href="#what">What it is</a></li>
+      <li><a href="#use">How you use it</a></li>
+      <li><a href="#keeps">What it keeps</a></li>
+      <li><a href="#team">The team</a></li>
+      <li><a href="#shortcuts">Shortcuts</a></li>
+      <li><a href="#build">How a build runs</a></li>
+      <li><a href="#check">Automatic check</a></li>
+      <li><a href="#sim">Simulation tools</a></li>
+      <li><a href="#sessions">Several sessions</a></li>
+      <li><a href="#rules">Rules</a></li>
+      <li><a href="#prefs">Working preferences</a></li>
+      <li><a href="#where">Where to look</a></li>
+      <li><a href="#change">Changing the setup</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="mast">
+      <div>
+        <div class="eyebrow">Psion Systems · Loudspeaker R&amp;D</div>
+        <h1>Speaker Lab Handbook</h1>
+        <p class="lede">A plain-language guide for anyone joining the work: what the lab is, who does what, and how a job runs. Claude keeps it up to date; the history of changes is in <code>CHANGELOG.md</code>.</p>
+      </div>
+      <figure class="fig" aria-hidden="true">
+        <svg viewBox="0 0 200 160" fill="none">
+          <line x1="0" y1="80" x2="196" y2="80" stroke="var(--rule)" stroke-width="1" stroke-dasharray="3 3"/>
+          <polyline points="0,70 20,67.5 40,64.4 60,60.5 80,55.7 100,49.6 120,42.1 140,32.6 160,20.9 180,6.1" stroke="var(--accent)" stroke-width="2.2" fill="none"/>
+          <polyline points="0,90 20,92.5 40,95.6 60,99.5 80,104.3 100,110.4 120,117.9 140,127.4 160,139.1 180,153.9" stroke="var(--accent)" stroke-width="2.2" fill="none"/>
+          <line x1="0" y1="70" x2="0" y2="90" stroke="var(--ink)" stroke-width="3"/>
+          <line x1="180" y1="6" x2="180" y2="154" stroke="var(--muted)" stroke-width="1"/>
+        </svg>
+        <figcaption>exponential flare, r = r₀·e<sup>x/90 mm</sup></figcaption>
+      </figure>
+    </header>
+
+    <section id="start">
+      <h2><span class="sec">00</span>Quick start</h2>
+      <div class="start">
+        <p class="big">Type <code>labs</code> in a terminal. The startup routine runs by itself: it tidies up, flags anything critical, lists projects by date, offers one random idea, and asks what to work on.</p>
+        <div class="keys">
+          <div class="key"><code>labs</code><span>Start and catch up</span></div>
+          <div class="key"><code>lab</code><span>Start</span></div>
+          <div class="key"><code>labc</code><span>Continue the last session</span></div>
+        </div>
+        <div>
+          <p class="note">The shortcuts need these three lines in <code>~/.zshrc</code> (once per computer). Without them: <code>cd ~/speaker-lab</code> then <code>claude</code>.</p>
+          <div class="codeblock">
+            <pre id="zshrc">lab()  { cd ~/speaker-lab &amp;&amp; claude "$@"; }
+labs() { cd ~/speaker-lab &amp;&amp; claude "/startup"; }
+labc() { cd ~/speaker-lab &amp;&amp; claude -c; }</pre>
+            <button class="copy" id="copy-zshrc" type="button">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <h3>Several sessions at once (macOS)</h3>
+      <p><code>Cmd</code> + <code>`</code> cycles between terminal windows, <code>Cmd</code> + <code>Shift</code> + <code>]</code> or <code>[</code> between tabs, <code>Cmd</code> + <code>N</code> opens a new window, <code>Cmd</code> + <code>T</code> a new tab. For a second session, open another terminal and type <code>lab</code>.</p>
+
+      <h3>What to type</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Type</th><th>To</th></tr></thead>
+        <tbody>
+          <tr><td><code>/startup</code></td><td>Catch up: ingest new papers, import the inbox, tidy misplaced files, then a brief and "what next?"</td></tr>
+          <tr><td>plain language</td><td>Anything. Claude asks questions and runs the commands for you</td></tr>
+          <tr><td><code>/idea ...</code></td><td>Add to a project idea or log a new one</td></tr>
+          <tr><td><code>/corpus ...</code></td><td>Note something to add to the library</td></tr>
+          <tr><td><code>/note ...</code></td><td>Reminder for you or Claude, or anything else</td></tr>
+          <tr><td><code>/requests</code></td><td>What you need to fetch or supply</td></tr>
+          <tr><td><code>/build &lt;project&gt; &lt;goal&gt;</code></td><td>Run a design pass</td></tr>
+          <tr><td><code>/measure &lt;project&gt; plan</code></td><td>Plan a measurement session</td></tr>
+          <tr><td><code>/summary [project]</code></td><td>Publish a public web summary of a project</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Where to put files</h3>
+      <p>Papers and scans in <code>corpus/raw/</code>, other source files in <code>corpus/data/</code>, exports from old chats in <code>inbox/</code>. Or email them to Claude's inbox: <code>/startup</code> downloads attachments into <code>inbox/email/</code> and asks where they go. Processed exports move to <code>inbox/done/</code>, which is kept out of git.</p>
+      <p><b>You can't forget a step:</b> a check runs at the start of every session and Claude acts on it.</p>
+    </section>
+
+    <section id="what">
+      <h2><span class="sec">01</span>What it is</h2>
+      <p>A folder you open in Claude Code. Claude acts as chief engineer and hands specialist work to a team of AI "subagents", each with one job. Everything learned is written to files, so research is done once and every new build starts from what earlier builds found out.</p>
+    </section>
+
+    <section id="use">
+      <h2><span class="sec">02</span>How you use it</h2>
+      <p>Talk to it in plain language. You don't need to know any commands: Claude runs them and the subagents for you. Say what you're thinking about, even if it's vague, and it will:</p>
+      <ol class="steps">
+        <li><span>Ask questions, mostly multiple choice, each with its own recommendation and a "you decide" option.</span></li>
+        <li><span>Explain the trade-offs where a choice needs background.</span></li>
+        <li><span>Pick the next step, say what it's running, and run it.</span></li>
+        <li><span>End every reply with the next question or the next action.</span></li>
+      </ol>
+      <p style="margin-top:14px">Say "you decide" to skip a question, or "fewer questions" to turn the questioning down. The commands further down are shortcuts for when you know what you want.</p>
+    </section>
+
+    <section id="keeps">
+      <h2><span class="sec">03</span>What it keeps</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Area</th><th>What's in it</th></tr></thead>
+        <tbody>
+          <tr><td><code>corpus/</code></td><td>The library: papers and book scans, made searchable, each with a reliability weight</td></tr>
+          <tr><td><code>knowledge/</code></td><td>What we've learned across builds: lessons, the checking standard, reusable code, inventory, suppliers, glossary, open questions</td></tr>
+          <tr><td><code>projects/</code></td><td>One folder per build, plus <code>IDEAS.md</code> for the backlog</td></tr>
+          <tr><td><code>software/</code></td><td>Lab software that isn't a build (delay tool, grille designer); same records, listed in <code>IDEAS.md</code></td></tr>
+          <tr><td><code>.claude/</code></td><td>The team (agents), the shortcuts (commands) and the permissions</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="team">
+      <h2><span class="sec">04</span>The team</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Agent</th><th>Job</th><th>Model</th></tr></thead>
+        <tbody>
+          <tr><td>Main session</td><td>Chief engineer: plans, briefs the others, checks their work, owns decisions</td><td><span class="model">Opus</span></td></tr>
+          <tr><td><code>librarian</code></td><td>Adds papers to the library, weights them, finds passages</td><td><span class="model">Haiku</span></td></tr>
+          <tr><td><code>researcher</code></td><td>Answers technical questions from the library first, with citations</td><td><span class="model">Sonnet</span></td></tr>
+          <tr><td><code>source-scout</code></td><td>Spots well-regarded authors and sources unprompted, follows their references, and lists what Tek needs to supply</td><td><span class="model">Sonnet</span></td></tr>
+          <tr><td><code>acoustics-math</code></td><td>Design maths and derivations, done in code</td><td><span class="model fable">Fable</span></td></tr>
+          <tr><td><code>sim-engineer</code></td><td>Acoustic and structural simulation</td><td><span class="model">Opus</span></td></tr>
+          <tr><td><code>cad-modeller</code></td><td>3D models and print files</td><td><span class="model">Opus</span></td></tr>
+          <tr><td><code>print-engineer</code></td><td>Slicing, test prints, print log</td><td><span class="model">Sonnet</span></td></tr>
+          <tr><td><code>verification-engineer</code></td><td>Writes and runs all the checks, separately from the designers</td><td><span class="model fable">Fable</span></td></tr>
+          <tr><td><code>measurement-analyst</code></td><td>Plans measurement sessions, compares results with predictions</td><td><span class="model">Opus</span></td></tr>
+          <tr><td><code>design-reviewer</code></td><td>Fresh, sceptical review; four run in parallel with different focuses</td><td><span class="model fable">Fable</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Model choice <span class="note">(since 14 Nov 2026)</span></h3>
+      <p>Each agent runs on the cheapest model that does its job reliably. Fable is kept for checking and for the maths a print or purchase rests on. Claude moves a single job up a tier when it is unusually hard (a research question that is mostly derivation, a new sim method, a tricky CAD split) and down a tier when it is routine, and says so in the one-line plan.</p>
+      <p>The main session cannot change its own model. Switch it yourself with <code>/model</code>:</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Command</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td><code>/model opus</code></td><td>Everyday work, ideas, research, planning (the default)</td></tr>
+          <tr><td><code>/model fable</code></td><td>A <code>/build</code> or design review session, or when a result looks wrong and needs the strongest reasoning</td></tr>
+          <tr><td><code>/model sonnet</code></td><td>Quick record-keeping (ideas, notes, inventory)</td></tr>
+          <tr><td><code>/model opusplan</code></td><td>The only automatic switch: Opus in plan mode, Sonnet once it starts doing the work. Not advised for <code>/build</code> or reviews, where the orchestrating needs Opus or Fable</td></tr>
+        </tbody>
+      </table></div>
+      <p>Claude will suggest a switch in one line when the work calls for it, in both directions: up when the job needs it, down when a strong model is being spent on something trivial (an email, simple sums, notes). Haiku suits one-line lookups and trivial edits. The project default is set in <code>.claude/settings.json</code> (<code>"model": "opus"</code>).</p>
+    </section>
+
+    <section id="shortcuts">
+      <h2><span class="sec">05</span>The shortcuts</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Command</th><th>Use it to</th></tr></thead>
+        <tbody>
+          <tr><td><code>/idea</code></td><td>Add to an existing project idea or log a new one; it asks if unsure which</td></tr>
+          <tr><td><code>/corpus</code></td><td>Note something to add to the library</td></tr>
+          <tr><td><code>/note</code></td><td>A reminder for Tek or Claude, or anything else worth keeping (<code>NOTES.md</code>)</td></tr>
+          <tr><td><code>/inventory</code></td><td>Show or update the kit you own. Not needed for adding: mention that you own or have something and Claude adds it</td></tr>
+          <tr><td><code>/import</code></td><td>Bring in work from other Claude chats (drop exports in <code>inbox/</code>; the export prompt is in <code>inbox/README.md</code>)</td></tr>
+          <tr><td><code>/startup</code></td><td>Catch up at the start of a session: checks the lab email, and lists what <code>source-scout</code> wants you to download</td></tr>
+          <tr><td><code>/ingest</code></td><td>Add new papers to the library</td></tr>
+          <tr><td><code>/ask &lt;question&gt;</code></td><td>Get a cited answer, library first</td></tr>
+          <tr><td><code>/scout [topic]</code></td><td>Look for well-regarded sources and authors we're missing</td></tr>
+          <tr><td><code>/requests</code>, <code>/supplied</code></td><td>See what Tek needs to provide; mark it provided</td></tr>
+          <tr><td><code>/new-project &lt;name&gt; &lt;brief&gt;</code></td><td>Start a build</td></tr>
+          <tr><td><code>/build &lt;project&gt; &lt;goal&gt;</code></td><td>Run a full design pass</td></tr>
+          <tr><td><code>/measure &lt;project&gt; plan</code> or <code>analyse</code></td><td>Plan a measurement session or analyse results</td></tr>
+          <tr><td><code>/design-review &lt;project&gt;</code></td><td>Independent review</td></tr>
+          <tr><td><code>/log &lt;project&gt; &lt;decision&gt;</code></td><td>Record a decision</td></tr>
+          <tr><td><code>/summary [project]</code></td><td>Publish a public summary page of a project (no costs, suppliers or private names)</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="build">
+      <h2><span class="sec">06</span>How a build runs</h2>
+      <ol class="steps">
+        <li><span><b>Idea.</b> Logged in <code>projects/IDEAS.md</code>; notes added as they come.</span></li>
+        <li><span><b>Start.</b> <code>/new-project</code> writes the spec, pulls in lessons from earlier builds and lists owned kit that could be used.</span></li>
+        <li><span><b>Research.</b> Library first, then the web. Anything out of reach goes on the request list for Tek.</span></li>
+        <li><span><b>Checks first.</b> The verification engineer writes the tests before any simulation or print file exists.</span></li>
+        <li><span><b>Design.</b> Maths, then simulation, then the 3D model. Each hands over to the next through files.</span></li>
+        <li><span><b>Release.</b> The print file must pass every automated check and an independent slicer, and gets a version number.</span></li>
+        <li><span><b>Review.</b> Four fresh reviewers look at the numbers, the file, the data and the report.</span></li>
+        <li><span><b>Build and measure.</b> A small test print first, then the part, then measurements against stated pass criteria.</span></li>
+        <li><span><b>Learn.</b> Results, decisions and lessons are written back so the next build benefits.</span></li>
+      </ol>
+    </section>
+
+    <section id="check">
+      <h2><span class="sec">07</span>The automatic check</h2>
+      <p><code>tools/check.py</code> runs at the start of every session. It reports papers not yet ingested, exports not imported, files in the wrong folder, missing setup files, verification that's out of date, and open requests and to-dos. Claude fixes what it can and tells you what only you can do. Run it by hand with <code>python3 tools/check.py</code>.</p>
+    </section>
+
+    <section id="sim">
+      <h2><span class="sec">08</span>Simulation tools</h2>
+      <p>Installed in the lab's own Python environment (<code>.venv</code>, listed in <code>requirements.txt</code>); Claude runs all of them unattended.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Job</th><th>Tool</th></tr></thead>
+        <tbody>
+          <tr><td>BEM</td><td>Our own solver (a copy per project, <code>projects/Our own solver (<code>hornlab/bem.py</code>) and bempp-cllt;nameOur own solver (<code>hornlab/bem.py</code>) and bempp-clgt;/hornlab/bem.py</code>) and bempp-cl</td></tr>
+          <tr><td>FEM</td><td>scikit-fem</td></tr>
+          <tr><td>Meshing</td><td>Gmsh</td></tr>
+          <tr><td>CAD</td><td>CadQuery</td></tr>
+          <tr><td>Slicing check</td><td>PrusaSlicer 2.9.7 (command line, linked as <code>.venv/bin/prusa-slicer</code>; installed 18 Nov 2026)</td></tr>
+          <tr><td>OCR</td><td>ocrmypdf (installed 18 Nov 2026), used by <code>/ingest</code> for scanned papers</td></tr>
+          <tr><td>Drawings</td><td>ezdxf reads DXF; LibreDWG (<code>dwg2dxf</code>, Homebrew, installed 15 Nov 2026) converts manufacturer DWG files to DXF first</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="plain">
+        <li>Scripts run with <code>.venv/bin</code> first on the path, from the lab folder: <code>PATH="$PWD/.venv/bin:$PATH" python script.py</code></li>
+        <li><b>Not installed:</b> AKABAK 3 / ABEC, Hornresp, ATH. These are Windows programs and need Wine, CrossOver or a Windows VM on this Mac. They are also driven through their own windows, so Claude could prepare inputs and read exports but not run them unattended. Possible third solver for cross-checks later.</li>
+        <li>The automatic check reports any package in <code>requirements.txt</code> missing from <code>.venv</code>, and a missing slicer link.</li>
+      </ul>
+    </section>
+
+    <section id="sessions">
+      <h2><span class="sec">09</span>Running more than one session</h2>
+      <p>Open several terminals in the folder and run <code>claude</code> in each, for example one ingesting papers while another takes ideas. They share the same files and usage allowance. Avoid two sessions doing the same job on the same project.</p>
+      <p>When Claude runs agents in parallel that write to the same record, it removes duplicates before committing. After an import it compares the export's answers with the project spec and shows you any conflicts with both dates, rather than asking again.</p>
+      <p>Agents re-read any file immediately before writing it and append to existing files rather than overwrite, so one session's agent can't wipe another session's work.</p>
+    </section>
+
+    <section id="rules">
+      <h2><span class="sec">10</span>The rules everyone follows</h2>
+      <ul class="rules">
+        <li><b>Library before web</b>, and never research the same thing twice.</li>
+        <li><b>Every claim is cited</b>, with the source's weight (1 to 5). Decisions need solid sources or our own verified result.</li>
+        <li><b>Maths is done in code</b>, not estimated.</li>
+        <li><b>Checks are written by someone other than the designer</b>, before the thing they check, and each is proven by planting a fault it must catch.</li>
+        <li><b>The exported file is checked against the design</b>, not against the program that made it.</li>
+        <li><b>Predictions are estimates.</b> Nothing is final until measured; crossovers are set only from measurements of the finished speaker.</li>
+        <li><b>Reports list what is verified and what is not.</b></li>
+        <li><b>Decisions are logged</b> with the reason and the evidence.</li>
+        <li><b>Briefs name only checked sources.</b> An author or paper named in an agent brief must be in <code>corpus/index.md</code> or <code>knowledge/source-weighting.md</code>; any other name is marked "(unverified)" so the agent checks it before raising a request.</li>
+        <li><b>Missing sources are requested, not ignored.</b> Any agent that wants a paper or book we lack logs it; urgent ones are listed at the start of every session.</li>
+        <li><b>No unnecessary language</b> from any agent or in any file, without cutting information.</li>
+      </ul>
+    </section>
+
+    <section id="prefs">
+      <h2><span class="sec">11</span>Working preferences</h2>
+      <p>How Tek wants it to behave. Every tweak is recorded here and in <code>CHANGELOG.md</code>.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Preference</th><th>Since</th></tr></thead>
+        <tbody>
+          <tr><td style="white-space:normal">Very concise answers</td><td class="date">2026-11-13</td></tr>
+          <tr><td style="white-space:normal">The first project is a starting point, not a gold standard; the checking standard is raised after each build</td><td class="date">2026-11-13</td></tr>
+          <tr><td style="white-space:normal">Checks are written by an agent that didn't make the design</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Predictions are labelled as estimates; measurements decide</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Sources are weighted; well-regarded authors are sought out unprompted</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Any source the agents lack and think useful is requested; urgent ones are raised at the start of each session</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Light note-taking as we go, in Tek's words</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">No unnecessary language, including manners; information and explanation intact</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Guided mode: maximum questions and prompts from Claude; Claude runs the commands and subagents</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Every tweak to the way of working is added to this handbook</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Startup routine runs at the start of every session: critical issues first, projects by date, one random idea or note, then "what are we working on?"</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Autonomy: Claude runs freely and asks only before spending money, long runs, or anything irreversible</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Automatic git commit after every task</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">One mic and REW, little time: only critical designs are measured; everything else is labelled unmeasured</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Every mistake or oversight is explained briefly, fixed, logged in <code>knowledge/mistakes.md</code>, and followed by a change that stops it recurring</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Commands and instructions are given as short as possible: the command or steps, one line of context at most</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Claude suggests useful things unprompted, each with do now / defer / drop; deferred ones are kept in <code>NOTES.md</code></td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">A rough time and usage estimate at the start of any task over about two minutes; actuals logged in <code>knowledge/estimates.md</code> to improve them</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Fabrication limits: simple woodwork Tek can do, 3D printing (preferred for complex parts), or paid CNC at any complexity; nothing in between</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Printers: Bambu first; the K1 Max is used where its larger bed or a second machine helps</td><td class="date">2026-11-14</td></tr>
+          <tr><td style="white-space:normal">Anything Claude needs from Tek (label, measurement, photo, file) is logged with a priority in <code>corpus/requests.md</code> or as a to-do in <code>NOTES.md</code>, so the startup brief raises it</td><td class="date">2026-11-14</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="where">
+      <h2><span class="sec">12</span>Where to look</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>I want to know...</th><th>Look in</th></tr></thead>
+        <tbody>
+          <tr><td style="white-space:normal">What we're working on or might do</td><td><code>projects/IDEAS.md</code></td></tr>
+          <tr><td style="white-space:normal">Why a decision was made</td><td><code>projects/&lt;name&gt;/decisions.md</code></td></tr>
+          <tr><td style="white-space:normal">What's been checked on a build</td><td><code>projects/&lt;name&gt;/verification.md</code></td></tr>
+          <tr><td style="white-space:normal">What we've learned</td><td><code>knowledge/lessons.md</code></td></tr>
+          <tr><td style="white-space:normal">What went wrong with the setup and what was changed</td><td><code>knowledge/mistakes.md</code></td></tr>
+          <tr><td style="white-space:normal">How we check things</td><td><code>knowledge/verification-standard.md</code></td></tr>
+          <tr><td style="white-space:normal">Proof that each check in the standard works (planted-defect demos, pytest)</td><td><code>knowledge/standard-demos/</code></td></tr>
+          <tr><td style="white-space:normal">How much to trust a source</td><td><code>knowledge/source-weighting.md</code></td></tr>
+          <tr><td style="white-space:normal">What kit we have</td><td><code>knowledge/inventory.md</code></td></tr>
+          <tr><td style="white-space:normal">What Tek needs to supply</td><td><code>corpus/requests.md</code></td></tr>
+          <tr><td style="white-space:normal">What a term means</td><td><code>knowledge/glossary.md</code></td></tr>
+          <tr><td style="white-space:normal">Why the setup is the way it is</td><td><code>CHANGELOG.md</code></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="change">
+      <h2><span class="sec">13</span>Changing the setup</h2>
+      <p>Each agent is a short text file in <code>.claude/agents/</code>, and each command one in <code>.claude/commands/</code>. Edit the text to change the behaviour. Ask Claude to make the change and it will update this handbook and the changelog.</p>
+    </section>
+
+    <footer>Rendered from HANDBOOK.md, 19 Nov 2026. The Markdown file in the lab folder is the master copy.</footer>
+  </main>
+</div>
+
+<script>
+document.getElementById('copy-zshrc').addEventListener('click', function () {
+  var btn = this, text = document.getElementById('zshrc').textContent;
+  function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); }
+  function selectIt() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('zshrc'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected');
+  }
+  try {
+    navigator.clipboard.writeText(text).then(function () { done('Copied'); }, selectIt);
+  } catch (e) { selectIt(); }
+});
+</script>
