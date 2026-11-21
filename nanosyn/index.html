@@ -2,94 +2,109 @@
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nano Synergy Horn</title><style>:root{--bg:#fff;--fg:#1a1a1a;--mute:#666;--line:#ddd;--tag:#f0f0f0}@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mute:#999;--line:#333;--tag:#262626}}body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit}.meta,p.mute{color:var(--mute)}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}th{width:32%}.tag{background:var(--tag);border-radius:4px;padding:1px 6px;font-size:13px;white-space:nowrap}h2{margin-top:2em}td{overflow-wrap:anywhere}ol li,ul li{margin:4px 0}figure{margin:1.5em 0}figure img{max-width:100%;height:auto;display:block;border-radius:6px;background:#fff}figcaption{color:var(--mute);font-size:14px;margin-top:6px}</style></head>
 <body><p><a href="../">← Speaker Lab</a></p>
 <h1>Nano Synergy horn</h1>
-<p>A compact 3D-printed Synergy horn: one compression driver and two 6" mid cones sharing a nearly square 90° × 90° horn.</p>
-<p class="meta">Stage: <b>design (baseline)</b> · Last updated 19 November 2026</p>
+<p>A compact 3D-printed Synergy horn: one compression driver and two 6" mid cones sharing a nearly square horn with deliberately wide walls.</p>
+<p class="meta">Stage: <b>design: baseline simulation</b> · Last updated 21 November 2026</p>
+<p class="meta">Every number below is calculated or checked in software unless labelled measured. Nothing about the finished horn has been measured. Predictions and crossover settings are estimates, never final.</p>
 
 <h2>Summary</h2>
-<p>This is a multiple-entry (Synergy) horn: the compression driver fires into the throat and two mid cones feed in through ports in the horn walls, so all three act as one source with even, wide coverage. The horn is printed and drops into a simple plywood box.</p>
-<p>The specification is complete. The co-designer's first model has been analysed from its file: it is a well-made, printable-in-principle part, but its walls flare wider than the 90° target and it has no rear chambers for the mids. It is now being rebuilt as a parametric model so it can be simulated as the baseline. Improved versions follow.</p>
+<p>This is a multiple-entry (Synergy) horn: the compression driver fires into the throat and two mid cones feed in through ports in the horn walls, so all three act as one source with even, wide coverage. It is 3D printed.</p>
+<p>The co-designer's first model has been rebuilt as a parametric "air model" (the shape of the air inside the horn, ports and mid chambers) so it can be simulated as the baseline. The rebuild matches the original closely. The mid cones have been modelled from a rough measurement of the real driver, which showed that the co-designer's plug inside each cone clears the cone at full excursion, so it needs no change (estimate).</p>
+<p>The simulation tools have been tested against exact solutions with deliberately planted faults before being trusted. A first mid-frequency sweep was run but did not pass its convergence check, so its results are indicative only. Sweeps of the current model (mids 100 Hz to 4 kHz; compression driver 1 to 20 kHz) are running; results will follow. Next: those sweeps, then improved horn versions, then a printed interface coupon and prototype, then measurement.</p>
 
 <h2>Requirements</h2>
 <table>
 <tr><th>Type</th><td>Synergy / multiple-entry horn: 1 compression driver at the throat, 2 mid cones tapped into the walls</td></tr>
-<tr><th>Drivers</th><td>2 × Faital PRO 6RS140 8 Ω; 1 × B&amp;C DH350 or DH350H (variant and impedance to confirm from the label)</td></tr>
+<tr><th>Drivers</th><td>2 × Faital PRO 6RS140 8 Ω; 1 × B&amp;C DH350H 16 Ω</td></tr>
 <tr><th>Bandwidth</th><td>100–120 Hz to 20 kHz, with a subwoofer below; full level only above about 200 Hz</td></tr>
-<tr><th>Coverage (H × V)</th><td>90° × 90°, even</td></tr>
+<tr><th>Coverage</th><td>Deliberately wider walls than 90° (106° as drawn), so directivity passes smoothly from omni at the bottom of the range to horn control from about 1.5–2 kHz. The simulation reports the coverage achieved.</td></tr>
 <tr><th>Maximum level</th><td>115 dB peak at the listener at 3–6 m (club use) above about 200 Hz; lower level at 100–200 Hz for fill, monitor and speech. Equivalent to 124.5–130.6 dB at 1 m, free field <span class="tag">derived</span></td></tr>
-<tr><th>Crossover points</th><td>To be set in design</td></tr>
+<tr><th>Crossover</th><td>Horn loading on the compression driver down to 1 kHz (design target); mid to HF crossover set after measurement (starting guess 1.5–1.8 kHz). Mid to sub: to be set.</td></tr>
+<tr><th>Mid enclosure</th><td>Stage 1: a simple reflex box tuned near 100 Hz. Stage 2: a passive cardioid with a lossy rear/side path.</td></tr>
 <tr><th>Size</th><td>Must fit the lab's printers (256 mm and 300 mm cube beds); split parts allowed</td></tr>
 <tr><th>Use</th><td>Fill (flown or wall bracket) and pole or stand top box</td></tr>
-<tr><th>Manufacture</th><td>3D print; prototypes in PLA; printed horn with sealed mid chambers drops into a plywood box</td></tr>
+<tr><th>Manufacture</th><td>3D print; prototypes in PLA</td></tr>
 <tr><th>Measurement</th><td>Critical: will be measured after further development, before the final print</td></tr>
 </table>
 
 <h2>Key decisions</h2>
 <table>
 <tr><th>19 Nov 2026</th><td>Project started; driver set and Synergy layout fixed by the brief.</td></tr>
-<tr><th>19 Nov 2026</th><td>Coverage 90° × 90° and horn down to about 120 Hz over a sub: wide, even fill coverage; the sub takes the low end.</td></tr>
-<tr><th>19 Nov 2026</th><td>Full club level needed only above about 200 Hz; the horn must still reach 100–120 Hz at lower level. This relieves the main headroom risk, which an earlier study with the same mid cones found at 150 Hz.</td></tr>
-<tr><th>19 Nov 2026</th><td>Size limited only by the printers; one-piece and split horns to be compared in simulation.</td></tr>
-<tr><th>19 Nov 2026</th><td>Approach: analyse and simulate the first model as a baseline, then design versions that beat it.</td></tr>
-<tr><th>19 Nov 2026</th><td>Baseline to be simulated from a parametric rebuild, not from the supplied mesh: remeshing supplied meshes gave large solver errors in an earlier project.</td></tr>
+<tr><th>19 Nov 2026</th><td>Horn down to about 120 Hz over a sub, full level only above about 200 Hz: this relieves the main headroom risk, which an earlier study with the same mid cones found at 150 Hz.</td></tr>
+<tr><th>19 Nov 2026</th><td>Analyse and simulate the first model as a baseline, then design versions that beat it. The baseline is simulated from a parametric rebuild, not the supplied mesh, because remeshing supplied meshes gave large solver errors in an earlier project.</td></tr>
+<tr><th>21 Nov 2026</th><td>Coverage follows the co-designer's wider walls, not 90° × 90°. Why: a smoother transition from omni to controlled directivity.</td></tr>
+<tr><th>21 Nov 2026</th><td>Mids go in a reflex box first, then a passive cardioid; the first box leaves room for the lossy path. Sealed in-horn chambers dropped. Why: the co-designer's plan, accepted as the better route to low-frequency output and rear control.</td></tr>
+<tr><th>21 Nov 2026</th><td>6RS140 cone modelled from Tek's rough measurement of the real driver: 25 mm deep at the centre, 19–20 mm at r 37 mm, concave spherical dust cap 84 mm across, 18 mm surround flush with the frame. Replaces the flat-piston and shallow-cap guesses.</td></tr>
+<tr><th>21 Nov 2026</th><td>The co-designer's plug inside each cone stays as drawn; modelled clearance at maximum excursion is about 2 mm. The 4.4 mm lowering tried in v0.3 is not needed.</td></tr>
+<tr><th>21 Nov 2026</th><td>The first sweep runs despite small point deviations from the co-designer's model around the port edges. Why: the ports will be redesigned, and 1.8 mm is under a tenth of a wavelength at 6.8 kHz <span class="tag">derived</span>.</td></tr>
+<tr><th>21 Nov 2026</th><td>Sweep bands by source: mids 100 Hz to 4 kHz (a 6.8 kHz limit is irrelevant for them); compression driver 1–20 kHz with bempp-cl as the second solver, on a uniform mesh (graded meshes were rejected after testing).</td></tr>
 </table>
 
 <h2>Results</h2>
-<p><b>First model, geometry</b> <span class="tag">measured from the CAD file</span>. No acoustic simulation, print or measurement yet.</p>
-<table>
-<tr><th>Mouth</th><td>Square, 240 × 240 mm inside; horn depth 113 mm (146 mm overall); flange 260 × 296 mm</td></tr>
-<tr><th>Throat</th><td>Ø25 mm round, 37° included cone for about 32 mm, then a step into the main flare; DH350 bolt pattern (2 holes on 53 mm)</td></tr>
-<tr><th>Flare</th><td>Oblate-spheroid-like, tending to 106° included; wider than 90° from about 47 mm from the throat</td></tr>
-<tr><th>Mid entry</th><td>Two 6RS140 on baffles at 53° to the axis; four teardrop ports (about 9.5 to 15.5 cm² each) opening 24–52 mm from the driver face; no rear chambers</td></tr>
-<tr><th>Printability</th><td>Fits the 300 mm bed with only 4 mm to spare; does not fit the 256 mm bed; heavy supports in every orientation</td></tr>
-<tr><th>Mid crossover limit</th><td>About 1.65–3.6 kHz from the port spacing alone, lower once the compression driver's internal path is added <span class="tag">derived</span></td></tr>
-<tr><th>Mouth size</th><td>One wavelength round at about 357 Hz: little horn loading for the mids at 100–200 Hz <span class="tag">derived</span></td></tr>
-</table>
-<p class="mute">Design rules used: Danley, Synergy and Unity horn patents (weight 4); Waslo, Synergy Calc v5 manual (weight 3); Danley Sound Labs white paper (weight 3).</p>
-
-<h2>Figures</h2>
-<p class="mute">The co-designer's first model (the baseline), analysed from its CAD file. Geometry only: no acoustic result is shown yet. Renders of our redesigns will be added as they are made.</p>
-<figure><img src="img/render.png" alt="Four views of the first model: square horn with flange, two mid-driver baffles on the side walls, ports into the horn" loading="lazy"><figcaption>Renders of the first model: square 240 mm mouth, flange, two angled mid-driver baffles feeding ports into the horn walls. <span class="tag">geometry from the model file</span></figcaption></figure>
-<figure><img src="img/profile.png" alt="Graphs of inner width and height, wall half-angle and area along the horn" loading="lazy"><figcaption>Left: inner width and height along the horn, with an oblate-spheroid-type fit (96.6° included). Right: wall half-angle (18.6° start, step to about 40°, rising to 53°, i.e. 106° included, wider than the 90° target) and cross-section area. <span class="tag">geometry from the model file</span></figcaption></figure>
+<h3>The co-designer's first model (baseline), from its CAD file <span class="tag">geometry from the model file</span></h3>
+<p>Square 240 mm mouth, 113 mm horn depth, Ø25 mm throat, walls flaring to about 106° included, four teardrop ports, two mid baffles at 53° to the axis. It fits the 300 mm bed with 4 mm to spare, not the 256 mm bed.</p>
+<figure><img src="img/render.png" alt="Four views of the first model: square horn with flange, two mid-driver baffles on the side walls, ports into the horn" loading="lazy"><figcaption>Renders of the first model: square mouth, flange, two angled mid-driver baffles feeding ports into the horn walls. <span class="tag">geometry from the model file</span></figcaption></figure>
+<figure><img src="img/profile.png" alt="Graphs of inner width and height, wall half-angle and area along the horn" loading="lazy"><figcaption>Inner width and height along the horn, wall half-angle (rising to 53°, 106° included) and cross-section area. <span class="tag">geometry from the model file</span></figcaption></figure>
 <figure><img src="img/sections_axial.png" alt="Cross-sections every 10 mm along the horn" loading="lazy"><figcaption>Cross-sections every 10 mm from the driver face: round throat turning square as the port slots open into the corners. <span class="tag">geometry from the model file</span></figcaption></figure>
 <figure><img src="img/sections_long.png" alt="Lengthwise sections through the horn" loading="lazy"><figcaption>Lengthwise sections: wall thickness and the solid blocks between horn surface and mid dishes. <span class="tag">geometry from the model file</span></figcaption></figure>
 <figure><img src="img/sections_mid_baffle.png" alt="Section through a mid-driver baffle and port" loading="lazy"><figcaption>Section through a mid-driver baffle and its port into the horn. <span class="tag">geometry from the model file</span></figcaption></figure>
+<h3>Baseline rebuild against the co-designer's model <span class="tag">verified: geometry comparison, v0.1</span></h3>
+<p>The parametric rebuild (v0.1) was compared with the co-designer's STL surface by surface, both ways. More than 95 % of every surface lies within 0.5–1 mm. Single points reach up to 1.8 mm on the horn surface and 3.4 mm in the mid chambers, around the port edges, pocket ends and chamber entries. These deviations are accepted for the baseline. Air volume agrees to −0.3 %; throat Ø25.000 mm and depth 113.000 mm.</p>
+<figure><img src="img/deviation_forward.png" alt="Colour maps of the signed distance from the rebuilt air model to the co-designer's surface, in three views" loading="lazy"><figcaption>Rebuild to the co-designer's surface: grey is within 0.1 mm, blue patches at the port edges reach about 1.5 mm. <span class="tag">verified: geometry, not acoustic</span></figcaption></figure>
+<figure><img src="img/deviation_reverse.png" alt="Colour maps of the signed distance from the co-designer's surface to the rebuilt air model" loading="lazy"><figcaption>Same comparison in the other direction. <span class="tag">verified: geometry, not acoustic</span></figcaption></figure>
+
+<h3>Plug clearance inside the mid cone <span class="tag">estimate (unmeasured)</span></h3>
+<p>The co-designer put a 13 mm plug inside each cone. Whether it clears the moving cone at maximum excursion (+5.6 mm) depends on the cone shape, so the cone was modelled three times as knowledge improved:</p>
+<table>
+<tr><th>v0.2</th><td>Shallow spherical cap, about 20 mm deep (datasheet drawing and a first reading). The plug touched the cone before maximum excursion (first contact at about 2.5 mm).</td></tr>
+<tr><th>v0.3</th><td>Plug lowered 4.4 mm and the recess floor 0.8 mm to restore at least 1.2 mm clearance at maximum excursion.</td></tr>
+<tr><th>v0.4</th><td>Tek's rough measurement of the real cone (deeper at the centre, concave dust cap, 18 mm surround flush with the frame). The original plug clears maximum excursion by about 2 mm. With the surround crest 0.5 mm proud: about 1.5 mm (interpolated). An independent check is running. If the crest stood 2 mm proud, clearance would fall to about 0.2 mm, so the crest height is the deciding unknown.</td></tr>
+</table>
+<figure><img src="img/section_v02.png" alt="Section through the horn and a mid chamber, v0.2, plug touching the moving cone" loading="lazy"><figcaption>v0.2: shallow cone model; the plug meets the cone at maximum excursion. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+<figure><img src="img/section_v03.png" alt="Section through the horn and a mid chamber, v0.3, with the plug lowered" loading="lazy"><figcaption>v0.3: plug lowered 4.4 mm to restore clearance. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+<figure><img src="img/section_v04.png" alt="Section through the horn axis and a mid chamber, v0.4, showing the cone at rest and at both excursion limits against the plug" loading="lazy"><figcaption>v0.4: cone from Tek's rough measurement at rest and at both excursion limits; the original plug clears by about 2 mm at +Xmax. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+
+<h3>Checks on the tools <span class="tag">verified</span></h3>
+<p>Latest full run (21 Nov): 137 tests passed, 0 failed; 92 registered checks with 135 planted defects, all caught; 0 errors in 88 registered claims. Each check is tried on a deliberately faulty case before it is trusted.</p>
+<ul>
+<li>Two in-house boundary-element solvers pass 14 exact-solution tests each and agree to 0.03 dB, but share a method. A third, the open-source bempp-cl, passes the same ladder (15 checks, 17 planted defects) and is accepted as an independent second solver for the method, but not for the infinite-baffle assumption.</li>
+<li>Thin-gap rule: an exact test (a rigid plug facing a piston in a pipe, 107 cases) set a mesh rule for narrow gaps: element edge at most 0.5 × the width in passages and at most 1.1 × the gap on thin-layer faces. Inside the rule the worst error is 0.32 dB.</li>
+<li>Mesh rule for sweeps: at least 8.7 elements per wavelength for the in-house solvers (0.4 dB on axis); 5 for bempp-cl.</li>
+<li>Open: the two baseline solvers differ by 0.3–1.6 dB on the horn above about 4.5 kHz; the difference falls on refinement but has not settled.</li>
+</ul>
+<figure><img src="img/thin_gap.png" alt="Plots of the thin-gap exact test: solver error against mesh size for channel and gap faces" loading="lazy"><figcaption>Thin-gap exact test: error against mesh size, used to set the gap meshing rule. <span class="tag">verified: exact solution</span></figcaption></figure>
+
+<h3>Mid sweep <span class="tag">indicative only: NOT converged</span></h3>
+<p>The first mid sweep did not pass its mesh-convergence check above about 450 Hz (the narrow air layer between cone and plug was meshed too coarsely), and a later attempt could not complete its convergence partner within the machine's memory. No beamwidth, directivity index or impedance is published. Unconverged features, for planning only:</p>
+<ul>
+<li>Close to omnidirectional up to about 450 Hz.</li>
+<li>Horn pattern control from about 1.1–1.3 kHz.</li>
+<li>An on-axis dip near 1.9–2.0 kHz, likely the quarter-wave distance from the mid taps to the throat.</li>
+<li>A broad power peak near 700 Hz.</li>
+</ul>
+<h3>Sweeps of v0.4 <span class="tag">running</span></h3>
+<p>Mids 100 Hz to 4 kHz and the compression driver 1–20 kHz are running on the v0.4 model with the mesh and second-solver checks above. Results to follow; until then there is no baseline directivity result.</p>
 
 <h2>Print settings</h2>
-<p>Planned part: the horn (PLA prototype). All settings not set.</p>
-<table>
-<tr><th>Printer</th><td>not set</td></tr><tr><th>Material and brand</th><td>PLA, brand not set</td></tr><tr><th>Nozzle</th><td>not set</td></tr><tr><th>Layer height</th><td>not set</td></tr><tr><th>Walls</th><td>not set</td></tr><tr><th>Top / bottom layers</th><td>not set</td></tr><tr><th>Infill % and pattern</th><td>not set</td></tr><tr><th>Supports</th><td>not set</td></tr><tr><th>Orientation</th><td>not set</td></tr><tr><th>Splits and joints</th><td>not set (split allowed)</td></tr><tr><th>Nozzle / bed temperature</th><td>not set</td></tr><tr><th>Speed / profile</th><td>not set</td></tr><tr><th>Brim</th><td>not set</td></tr><tr><th>Slicer and profile version</th><td>not set</td></tr><tr><th>Estimated time and mass</th><td>not set</td></tr>
-</table>
-
-<h2>Open questions for the co-designer</h2>
-<ol>
-<li>Can you send the native CAD (STEP or source file) and the flare parameters?</li>
-<li>Which way up: mids top and bottom, or at the sides? The horn is square but the flange is 260 × 296 mm.</li>
-<li>What coverage did you intend? The walls flare towards 106° and about 111° at the mouth: was 90° expected from the 240 mm mouth, or something else?</li>
-<li>Is the step from the 37° throat cone into the main flare (about 32 mm from the driver face) intended, or a lofting artefact?</li>
-<li>Compression driver fixing: which variant (DH350 or DH350H), what screw thread and length, and were the Ø6 holes meant for M5 with nuts? Should a second (57 mm) bolt pattern be added for a DH450?</li>
-<li>Mid fixing: M5 through-bolts with nuts? Only the mouth-end holes have a Ø10 counterbore: what goes at the throat-end holes?</li>
-<li>The 13 mm plug inside each cone: what cone profile was it shaped to (measured or assumed)? What clearance did you allow at maximum excursion?</li>
-<li>What was the port design based on: area, teardrop shape, 16° tilt, 7:1 compression ratio, and the corner exits?</li>
-<li>Rear chambers for the mids: what volume, sealed or vented, and where do they go?</li>
-<li>Target crossover points, and any simulation or measurement behind "best so far"?</li>
-<li>What are the 20 × 5 mm slots at the mouth edge of the mid baffles for, and the 6 flange holes (what does the flange bolt to)?</li>
-<li>Which printer, orientation and split lines did you have in mind?</li>
-</ol>
+<p>No print settings yet. The models so far are air models for simulation, not printable parts.</p>
 
 <h2>Open issues</h2>
 <ul>
-<li>Compression driver variant and impedance not yet confirmed (label reading pending).</li>
-<li>Mid-cone profile, amplifier power per channel, and subwoofer model and crossover still unknown.</li>
+<li>Cone profile is a rough measurement; the surround crest height and dust-cap edge radius and depth are the unknowns that decide plug clearance. The independent clearance check is still running.</li>
+<li>Mid-sweep convergence is not yet demonstrated; the thin-gap mesh margin is only about 3 %.</li>
+<li>Four mouth-end mid fixing holes in the co-designer's part break through the horn wall (4.6 cm³); left out of the air model on the assumption that fasteners fill them. To confirm with the co-designer.</li>
+<li>Compression driver label (variant and impedance) and its 16 Ω data sheet not yet confirmed; amplifier power per channel and subwoofer crossover unknown.</li>
 <li>Headroom above 200 Hz with two 6" mids per box is unproven; may need several boxes per side.</li>
-<li>Tools from an earlier multiple-entry horn study (solver and release checks) to be independently reviewed before reuse.</li>
+<li>Thermoviscous losses in the gaps and ports are not modelled; peak and notch depths above 1 kHz need them.</li>
 </ul>
 
 <h2>Next steps</h2>
 <ol>
-<li>Parametric rebuild of the first model, checked against its file (running).</li>
-<li>Exact-solution tests and mesh-convergence checks before any simulation (running).</li>
-<li>Baseline simulation: directivity, beamwidth, mid and HF paths, with a second solver.</li>
-<li>Design and simulate improved versions aimed at an even 90° × 90°; compare one-piece and split.</li>
-<li>Print an interface coupon, then a PLA prototype; plan a short measurement session.</li>
+<li>Finish the v0.4 sweeps (mids 100 Hz–4 kHz; compression driver 1–20 kHz) with the mesh and second-solver checks; report coverage achieved.</li>
+<li>Independent check of the plug clearance.</li>
+<li>Design and simulate improved versions, including the reflex mid box and the later passive cardioid; compare one-piece and split.</li>
+<li>Independent design reviews, then an interface coupon and a PLA prototype.</li>
+<li>Plan a short measurement session; crossover settings stay starting settings until the drivers are measured in the finished cabinet.</li>
 </ol>
+
+<p class="mute">Sources: Danley, Synergy and Unity horn patents (weight 4); Faital PRO, 6RS140 data sheet (weight 4); Waslo, Synergy Calc v5 manual (weight 3); Danley Sound Labs white paper (weight 3). Renders of the co-designer's model are shown with consent.</p>
 </body></html>
