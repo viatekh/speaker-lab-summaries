@@ -78,6 +78,17 @@
 </ul>
 <figure><img src="img/thin_gap.png" alt="Plots of the thin-gap exact test: solver error against mesh size for channel and gap faces" loading="lazy"><figcaption>Thin-gap exact test: error against mesh size, used to set the gap meshing rule. <span class="tag">verified: exact solution</span></figcaption></figure>
 
+<h3>First measurement: the co-designer's printed horn against the model <span class="tag">measured (home, rough calibration)</span></h3>
+<p>The co-designer measured his printed horn at home (mids' backs open, mic on axis at 0.55 m, SPL set roughly with a phone-type meter; floor reflection at about 3.2 ms). Compared with our v0.4 model, an estimate built from his drawing, levels aligned at one band:</p>
+<ul>
+<li>Mids: measured peak about 790 Hz, 12.9–14.1 dB above the 300–420 Hz level; the band sits 7–17 % lower than the model, falls much faster above 1 kHz (30–46 against about 20 dB/octave), and there is 12–28 dB more mid output at 2–3 kHz than predicted. Mid predictions above about 1 kHz are therefore treated as qualitative until the causes are separated.</li>
+<li>Compression driver: ripple about 2 dB rms about the trend with main dips 7–11 dB deep; the model gets the ripple size and most peak and dip frequencies from 3 to 7.3 kHz within 5 %, but not below 1.5 kHz, the 2.7 kHz dip, or above 10 kHz.</li>
+<li>1st-order sum (low-pass 502 Hz, high-pass 3480 Hz): acoustic crossover about 1.1 kHz, the two about 32° apart; magnitude within ±3.4 dB from 500 Hz to 10 kHz; phase within ±50° over at most about 62 % of that range, so the ±50° target is not met yet (the model also said so).</li>
+</ul>
+<figure><img src="img/meas_mids_vs_model.png" alt="Mid response measured, gated and ungated, against model variants, and the measured effect of the 502 Hz low-pass" loading="lazy"><figcaption>Mids: measured (black) against model variants (coloured; estimate); lower panel, the measured effect of the 502 Hz 1st-order low-pass against an ideal filter. <span class="tag">measured vs estimate</span></figcaption></figure>
+<figure><img src="img/meas_dh350h_vs_model.png" alt="Compression driver response measured against the model" loading="lazy"><figcaption>Compression driver: measured against the model. <span class="tag">measured vs estimate</span></figcaption></figure>
+<figure><img src="img/meas_sum_phase.png" alt="Summed response and phase difference of the two drivers with 1st-order filters" loading="lazy"><figcaption>1st-order sum and the phase difference between the two drivers. <span class="tag">measured</span></figcaption></figure>
+
 <h3>v0.4 baseline: mids and compression driver <span class="tag">estimate (unmeasured)</span></h3>
 <p>Conditions for every number in this and the following sections: boundary-element simulation with an infinite baffle at the mouth, no air losses (peaks and notches come out sharper and deeper than real), rigid walls and cones, a flat wavefront at the compression-driver exit, simple driver models built from the datasheets, the co-designer's plug and horn as drawn (with small accepted deviations at the port edges). Mid levels at 2.83 V on each mid, 2 m on axis, each mid in an assumed 6 l reflex box tuned to 100 Hz. Two independent solvers and mesh-convergence checks back the numbers quoted.</p>
 <ul>
