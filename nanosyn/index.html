@@ -3,13 +3,13 @@
 <body><p><a href="../">← Speaker Lab</a></p>
 <h1>Nano Synergy horn</h1>
 <p>A compact 3D-printed Synergy horn: one compression driver and two 6" mid cones sharing a nearly square horn with deliberately wide walls.</p>
-<p class="meta">Stage: <b>design: baseline simulation</b> · Last updated 21 November 2026</p>
+<p class="meta">Stage: <b>design: port study (mid ports), print test on hold</b> · Last updated 22 November 2026</p>
 <p class="meta">Every number below is calculated or checked in software unless labelled measured. Nothing about the finished horn has been measured. Predictions and crossover settings are estimates, never final.</p>
 
 <h2>Summary</h2>
 <p>This is a multiple-entry (Synergy) horn: the compression driver fires into the throat and two mid cones feed in through ports in the horn walls, so all three act as one source with even, wide coverage. It is 3D printed.</p>
-<p>The co-designer's first model has been rebuilt as a parametric "air model" (the shape of the air inside the horn, ports and mid chambers) so it can be simulated as the baseline. The rebuild matches the original closely. The mid cones have been modelled from a rough measurement of the real driver, which showed that the co-designer's plug inside each cone clears the cone at full excursion, so it needs no change (estimate).</p>
-<p>The simulation tools have been tested against exact solutions with deliberately planted faults before being trusted. A first mid-frequency sweep was run but did not pass its convergence check, so its results are indicative only. Sweeps of the current model (mids 100 Hz to 4 kHz; compression driver 1 to 20 kHz) are running; results will follow. Next: those sweeps, then improved horn versions, then a printed interface coupon and prototype, then measurement.</p>
+<p>The co-designer's model (v0.4, with the mid cones modelled from a rough measurement of the real driver) has been simulated as the baseline. Its mid response matches the co-designer's own experiments and is kept as the target shape: a peak near 850 Hz and a steep fall above 1 kHz, intended for a crossover concept with 1st-order filters. The problem is port air speed: at the test level the mid ports run well above the usual noise limit.</p>
+<p>A port study followed. Only more port area lowers the speed. The first larger-port option (P2) halves the speed but softens the mid roll-off and raises a second mid peak near 2.2 kHz, so the planned print test of P2 is on hold. Three more port options are being simulated now; the best one will be printed and measured. Every result here is a simulation estimate; nothing about the horn has been measured yet.</p>
 
 <h2>Requirements</h2>
 <table>
@@ -18,7 +18,7 @@
 <tr><th>Bandwidth</th><td>100–120 Hz to 20 kHz, with a subwoofer below; full level only above about 200 Hz</td></tr>
 <tr><th>Coverage</th><td>Deliberately wider walls than 90° (106° as drawn), so directivity passes smoothly from omni at the bottom of the range to horn control from about 1.5–2 kHz. The simulation reports the coverage achieved.</td></tr>
 <tr><th>Maximum level</th><td>115 dB peak at the listener at 3–6 m (club use) above about 200 Hz; lower level at 100–200 Hz for fill, monitor and speech. Equivalent to 124.5–130.6 dB at 1 m, free field <span class="tag">derived</span></td></tr>
-<tr><th>Crossover</th><td>Horn loading on the compression driver down to 1 kHz (design target); mid to HF crossover set after measurement (starting guess 1.5–1.8 kHz). Mid to sub: to be set.</td></tr>
+<tr><th>Crossover</th><td>Co-designer's concept (21 Nov), adopted: 1st-order filters on both drivers. The mids' band-pass peak is used as a sensitivity boost: the mid low-pass is set low so the response is flat to about 1 kHz, the horn and chambers then give a steep acoustic roll-off, and the compression driver (high-pass 1st order, empirically usable with corners of 3–10 kHz because of its sensitivity and the horn's rise towards the low end) meets the mids near the horn cutoff, about 1 kHz. Target phase match ±50° over 500 Hz–10 kHz. Test crossover: a DSP with 1st-order filters. Horn loading on the compression driver down to 1 kHz is a design target not yet reached. Mid to sub: to be set. Settings stay starting settings until measured.</td></tr>
 <tr><th>Mid enclosure</th><td>Stage 1: a simple reflex box tuned near 100 Hz. Stage 2: a passive cardioid with a lossy rear/side path.</td></tr>
 <tr><th>Size</th><td>Must fit the lab's printers (256 mm and 300 mm cube beds); split parts allowed</td></tr>
 <tr><th>Use</th><td>Fill (flown or wall bracket) and pole or stand top box</td></tr>
@@ -37,6 +37,11 @@
 <tr><th>21 Nov 2026</th><td>The co-designer's plug inside each cone stays as drawn; modelled clearance at maximum excursion is about 2 mm. The 4.4 mm lowering tried in v0.3 is not needed.</td></tr>
 <tr><th>21 Nov 2026</th><td>The first sweep runs despite small point deviations from the co-designer's model around the port edges. Why: the ports will be redesigned, and 1.8 mm is under a tenth of a wavelength at 6.8 kHz <span class="tag">derived</span>.</td></tr>
 <tr><th>21 Nov 2026</th><td>Sweep bands by source: mids 100 Hz to 4 kHz (a 6.8 kHz limit is irrelevant for them); compression driver 1–20 kHz with bempp-cl as the second solver, on a uniform mesh (graded meshes were rejected after testing).</td></tr>
+<tr><th>21 Nov 2026</th><td>The mid fixing holes that open into the horn are an intended feature (M5, heads seated in counterbores), not a defect.</td></tr>
+<tr><th>21 Nov 2026</th><td>Crossover: 1st order on both drivers, as the co-designer wants, despite the compression driver maker's 12 dB/octave recommendation; protection by DSP limiters and a series capacitor.</td></tr>
+<tr><th>22 Nov 2026</th><td>Keep the v0.4 mid response (it matches the co-designer's experiments) and fix port noise and air speed. A smoother mid band-pass stays as a side option. Ports are to be fixed by geometry first; foam or fabric acoustic resistors are studied but not preferred.</td></tr>
+<tr><th>22 Nov 2026</th><td>Port options P0–P3 (and two fully flared ports) taken to CAD and simulation; P2 chosen for a first print test, then put on hold after its simulation (below). Why: P2 fixes the air speed but halves the mid roll-off the 1st-order concept needs. P0, P1 and P3 are simulated first.</td></tr>
+<tr><th>22 Nov 2026</th><td>All mid driver screws enter from the side away from the driver, heads seated in Ø10 counterbores, nuts on the driver; bores Ø6.0.</td></tr>
 </table>
 
 <h2>Results</h2>
@@ -57,7 +62,7 @@
 <table>
 <tr><th>v0.2</th><td>Shallow spherical cap, about 20 mm deep (datasheet drawing and a first reading). The plug touched the cone before maximum excursion (first contact at about 2.5 mm).</td></tr>
 <tr><th>v0.3</th><td>Plug lowered 4.4 mm and the recess floor 0.8 mm to restore at least 1.2 mm clearance at maximum excursion.</td></tr>
-<tr><th>v0.4</th><td>Tek's rough measurement of the real cone (deeper at the centre, concave dust cap, 18 mm surround flush with the frame). The original plug clears maximum excursion by about 2 mm. With the surround crest 0.5 mm proud: about 1.5 mm (interpolated). An independent check is running. If the crest stood 2 mm proud, clearance would fall to about 0.2 mm, so the crest height is the deciding unknown.</td></tr>
+<tr><th>v0.4</th><td>Tek's rough measurement of the real cone (deeper at the centre, concave dust cap, 18 mm surround flush with the frame). The original plug clears maximum excursion by 1.6–2.0 mm (independent check: 1.63 mm with the crest 0.5 mm proud). In the worst-case bound (stiff surround roll 0.5 mm proud) it would touch by 0.2 mm; accepted.</td></tr>
 </table>
 <figure><img src="img/section_v02.png" alt="Section through the horn and a mid chamber, v0.2, plug touching the moving cone" loading="lazy"><figcaption>v0.2: shallow cone model; the plug meets the cone at maximum excursion. <span class="tag">estimate, unmeasured</span></figcaption></figure>
 <figure><img src="img/section_v03.png" alt="Section through the horn and a mid chamber, v0.3, with the plug lowered" loading="lazy"><figcaption>v0.3: plug lowered 4.4 mm to restore clearance. <span class="tag">estimate, unmeasured</span></figcaption></figure>
@@ -73,38 +78,77 @@
 </ul>
 <figure><img src="img/thin_gap.png" alt="Plots of the thin-gap exact test: solver error against mesh size for channel and gap faces" loading="lazy"><figcaption>Thin-gap exact test: error against mesh size, used to set the gap meshing rule. <span class="tag">verified: exact solution</span></figcaption></figure>
 
-<h3>Mid sweep <span class="tag">indicative only: NOT converged</span></h3>
-<p>The first mid sweep did not pass its mesh-convergence check above about 450 Hz (the narrow air layer between cone and plug was meshed too coarsely), and a later attempt could not complete its convergence partner within the machine's memory. No beamwidth, directivity index or impedance is published. Unconverged features, for planning only:</p>
+<h3>v0.4 baseline: mids and compression driver <span class="tag">estimate (unmeasured)</span></h3>
+<p>Conditions for every number in this and the following sections: boundary-element simulation with an infinite baffle at the mouth, no air losses (peaks and notches come out sharper and deeper than real), rigid walls and cones, a flat wavefront at the compression-driver exit, simple driver models built from the datasheets, the co-designer's plug and horn as drawn (with small accepted deviations at the port edges). Mid levels at 2.83 V on each mid, 2 m on axis, each mid in an assumed 6 l reflex box tuned to 100 Hz. Two independent solvers and mesh-convergence checks back the numbers quoted.</p>
 <ul>
-<li>Close to omnidirectional up to about 450 Hz.</li>
-<li>Horn pattern control from about 1.1–1.3 kHz.</li>
-<li>An on-axis dip near 1.9–2.0 kHz, likely the quarter-wave distance from the mid taps to the throat.</li>
-<li>A broad power peak near 700 Hz.</li>
+<li>Mid peak about 850 Hz, about 12.5 dB above the 300–420 Hz level; it falls about 21 dB/octave between 1.0 and 1.4 kHz. With the cones driven at a fixed velocity (no driver model) the horn and chamber peak sits near 620 Hz.</li>
+<li>The mids' and the compression driver's patterns match up to about 1.4–1.6 kHz. That is an upper limit for the mids in this model, not a crossover point.</li>
+<li>Compression-driver horn loading: the resistive part of the throat load is 0.06 of full loading at 1 kHz, 0.30 at 1.5 kHz and 0.81 at 2 kHz. Loading down to 1 kHz is not reached yet; a separate study follows the port work.</li>
+<li>A narrow feature at 1.5–1.6 kHz and a deep notch near 2 kHz in the mid path are not yet pinned down; levels there are uncertain by several dB.</li>
+<li>Plug clearance to the cone at full excursion (+5.6 mm): 1.6–2.0 mm, from the rough cone measurement, checked independently. In the worst-case bound (stiff surround roll 0.5 mm proud) it would touch by 0.2 mm; accepted.</li>
 </ul>
-<h3>Sweeps of v0.4 <span class="tag">running</span></h3>
-<p>Mids 100 Hz to 4 kHz and the compression driver 1–20 kHz are running on the v0.4 model with the mesh and second-solver checks above. Results to follow; until then there is no baseline directivity result.</p>
+
+<h3>Port air speed <span class="tag">estimate (unmeasured)</span></h3>
+<ul>
+<li>v0.4 at 40 V per mid: about 32 m/s at 141 Hz (that maximum depends on the assumed rear box) and 27 m/s at 200 Hz. It stays above the common rule-of-thumb limit (about 17 m/s, 5 % of the speed of sound, from bass-reflex port studies and not confirmed for ports this small at these frequencies) over roughly 110–400 Hz and again around 670–850 Hz.</li>
+<li>Only more port area lowers the speed. Smoothing and flaring the port ends should raise the speed a port tolerates before noise (our estimate, to be tested), but does not lower the speed itself.</li>
+<li>Port options taken to CAD (section area per port): P0 1564 mm² (plain uniform port, reference), P2 1794 mm² (mid baffles moved out 6.6 mm), P1 and P3 2592 mm² (baffles out 10.5 and 0.8 mm). P1–P3 have rounded entries and exits. Two fully flared options are designed and queued.</li>
+</ul>
+
+<h3>First larger-port option, P2, against v0.4 <span class="tag">estimate (unmeasured)</span></h3>
+<ul>
+<li>Port speed roughly halves: 15 m/s at 200 Hz at 40 V and lower above, under the limit everywhere from 200 Hz up. The maximum, 17 m/s at 141 Hz, sits right at the limit (within the 5 % uncertainty of the calculation) and depends on the assumed rear box.</li>
+<li>Mid shape changes: peak about 755 Hz and 10 dB high, broader, and the fall above 1 kHz is only about 10.5 dB/octave instead of 21.</li>
+<li>The second mid peak near 2.2 kHz grows from about 17 dB under the main peak (v0.4) to about 3 dB under it, and the compression-driver response drops about 10 dB relative to v0.4 near 4.8 kHz. Both show at single simulated frequencies with no losses, and the compression-driver results above 4 kHz are indicative only.</li>
+<li>Reading: in the simulation P2 brings the air speed down to the limit but trades away the steep roll-off the 1st-order concept needs. P2's print test is on hold; P0, P1 and P3 are being simulated with extra frequency points around 2.2 and 4.8 kHz.</li>
+</ul>
+<figure><img src="img/p2_voltage_port_hf.png" alt="Three graphs: mid response 100 Hz to 4 kHz, port air speed at 40 V, and compression-driver response 1 to 10 kHz, comparing v0.4 dashed with P2 solid" loading="lazy"><figcaption>Top: mids at 2.83 V per driver, 2 m. Middle: peak port air speed at 40 V per driver, with the 5 %-of-c line. Bottom: compression driver at 2.83 V, no filter. Dashed = v0.4, solid = P2. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+
+<h3>Mid fixing screws seen by the compression driver <span class="tag">estimate (unmeasured)</span></h3>
+<p>The four M5 heads seated in the mouth-end counterbores do not matter on axis (about 0.25 dB or less, 5–20 kHz) or for coverage. Off axis at 25–30° they add about 0.6 dB of ripple at 16–17 kHz. The small ring gap round each head may add up to about 1 dB near 15 kHz in a model with no losses (real losses should make that much smaller), and about 0.8 dB off axis near 10 kHz, which losses would not reduce much. The gap figures and everything above 14 kHz come from a coarse model and are indicative only. Printed flush caps would remove the effect if wanted.</p>
+<figure><img src="img/pocket_diffraction.png" alt="Grid of graphs showing level change against angle and frequency caused by the screw heads and the ring gaps" loading="lazy"><figcaption>Change caused by the screw pockets. P0 = pockets filled flush; P1c = heads seated with the ring gap closed; "gap open − closed" = the ring gap's own effect (coarse model, indicative). The grey band is ±0.5 dB. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+
+<h3>P2 printable part <span class="tag">checked in software; on hold</span></h3>
+<p>A printable P2 was built from the co-designer's body: ports enlarged, mid baffles moved out 6.6 mm, a 3.5 mm shell added where the bigger ports came within 0.9–1.6 mm of the outer surface. One piece is 260 × 150 × 296 mm (2.79 l of material). A geometry review approved it with changes; an interfaces review rejected it as exported; an independent release gate (28 checks, each tested on deliberately broken copies) fails it on 8 checks, mainly the mid screw fixings at the throat end, the compression driver's fixing type (not yet known), and a split plane through the driver seat. Fixes are decided (see key decisions) and will be applied to whichever port option is printed.</p>
+<figure><img src="img/p2_print_section.png" alt="Two sections of the printable P2 part: one along the horn axis, one through a mid axis and a port" loading="lazy"><figcaption>Sections of the exported P2 print: along the horn axis (left) and through a mid axis and port (right); grey is printed material. <span class="tag">geometry of the export</span></figcaption></figure>
+<figure><img src="img/p2_print_outside.png" alt="Outside views of the printable P2 part" loading="lazy"><figcaption>Outside of the P2 print. <span class="tag">geometry of the export</span></figcaption></figure>
 
 <h2>Print settings</h2>
-<p>No print settings yet. The models so far are air models for simulation, not printable parts.</p>
+<p>For the P2 print test, now on hold; generic slicer profile (PrusaSlicer 2.9.7), sliced from the export before the decided fixes. Times include the generic profile's cooling slowdowns and will be shorter on the real printers. To be re-sliced for the chosen port option.</p>
+<table>
+<tr><th></th><td><b>300 mm-bed printer, one piece</b></td><td><b>256 mm-bed printer, 6-piece split</b></td></tr>
+<tr><th>Material / brand</th><td>PLA / not set</td><td>PLA / not set</td></tr>
+<tr><th>Nozzle; layer</th><td>0.4 mm; 0.20 mm (0.12 mm suggested for the ports, not sliced)</td><td>0.4 mm; 0.20 mm</td></tr>
+<tr><th>Walls; top / bottom</th><td>4; 5 / 5</td><td>4; 5 / 5</td></tr>
+<tr><th>Infill</th><td>20 % gyroid</td><td>20 % gyroid</td></tr>
+<tr><th>Supports</th><td>auto, snug, 45°; about 260 cm³, inside horn and ports</td><td>auto, 45°; at least 80 cm³ per rear half, 6 cm³ per flange quarter</td></tr>
+<tr><th>Orientation</th><td>mouth face on the bed</td><td>rear halves cut face down; flange quarters mouth face down</td></tr>
+<tr><th>Splits and joints</th><td>none (2 mm margin a side on the bed)</td><td>2 rear halves + 4 flange quarters; 14 Ø4 × 16 mm dowels in Ø4.2 holes, epoxy; split to be re-cut clear of the driver seats</td></tr>
+<tr><th>Temperatures</th><td>215 °C nozzle, 60 °C bed</td><td>215 / 60 °C</td></tr>
+<tr><th>Speed</th><td>60 perimeter, 40 external, 120 infill mm/s; 15 mm³/s cap</td><td>same</td></tr>
+<tr><th>Brim / skirt</th><td>0 / 0 (no room)</td><td>not set</td></tr>
+<tr><th>Slicer profile</th><td>generic; printer profile not set</td><td>generic; printer profile not set</td></tr>
+<tr><th>Estimated time, mass</th><td>4 d 2 h, 1572 g</td><td>rear halves about 46 h and 716 g each; quarters 2 h 55 min and 47 g each</td></tr>
+</table>
 
 <h2>Open issues</h2>
 <ul>
-<li>Cone profile is a rough measurement; the surround crest height and dust-cap edge radius and depth are the unknowns that decide plug clearance. The independent clearance check is still running.</li>
-<li>Mid-sweep convergence is not yet demonstrated; the thin-gap mesh margin is only about 3 %.</li>
-<li>Four mouth-end mid fixing holes in the co-designer's part break through the horn wall (4.6 cm³); left out of the air model on the assumption that fasteners fill them. To confirm with the co-designer.</li>
-<li>Compression driver label (variant and impedance) and its 16 Ω data sheet not yet confirmed; amplifier power per channel and subwoofer crossover unknown.</li>
+<li>Port option not yet chosen: air speed and the steep mid roll-off pull in opposite directions in the options simulated so far.</li>
+<li>Compression-driver horn loading reaches only 0.06 of full loading at 1 kHz; the crossover concept needs loading near 1 kHz.</li>
+<li>Compression driver's fixing type (tapped holes, plain holes or studs) unknown; the print gate fails until it is known.</li>
+<li>Cone profile is a rough measurement; surround diameter and gasket compression would tighten the plug margin.</li>
+<li>Thermoviscous losses in the gaps and ports are not modelled; peak and notch heights above 1 kHz need them.</li>
 <li>Headroom above 200 Hz with two 6" mids per box is unproven; may need several boxes per side.</li>
-<li>Thermoviscous losses in the gaps and ports are not modelled; peak and notch depths above 1 kHz need them.</li>
 </ul>
 
 <h2>Next steps</h2>
 <ol>
-<li>Finish the v0.4 sweeps (mids 100 Hz–4 kHz; compression driver 1–20 kHz) with the mesh and second-solver checks; report coverage achieved.</li>
-<li>Independent check of the plug clearance.</li>
-<li>Design and simulate improved versions, including the reflex mid box and the later passive cardioid; compare one-piece and split.</li>
-<li>Independent design reviews, then an interface coupon and a PLA prototype.</li>
-<li>Plan a short measurement session; crossover settings stay starting settings until the drivers are measured in the finished cabinet.</li>
+<li>Finish simulating port options P0, P1 and P3 (running) and choose the option that best keeps the target mid shape within the air-speed limit.</li>
+<li>Apply the decided fixing and split changes to the chosen option; pass the release gate and fresh reviews; slice for both printers.</li>
+<li>Co-designer prints and measures it (about 2 hours: mids, impedance, compression driver, summed response with 1st-order DSP presets, a level test for port noise, polars); compare with the simulation.</li>
+<li>Study extending the compression driver's horn loading towards 1 kHz.</li>
+<li>Crossover settings stay starting settings until the drivers are measured in the finished cabinet.</li>
 </ol>
 
-<p class="mute">Sources: Danley, Synergy and Unity horn patents (weight 4); Faital PRO, 6RS140 data sheet (weight 4); Waslo, Synergy Calc v5 manual (weight 3); Danley Sound Labs white paper (weight 3). Renders of the co-designer's model are shown with consent.</p>
+<p class="mute">Sources: Danley, Synergy and Unity horn patents (weight 4); Faital PRO, 6RS140 data sheet (weight 4); Waslo, Synergy Calc v5 manual (weight 3); Danley Sound Labs white paper (weight 3); Salvatti, Devantier and Button, port air-flow study (weight 4); B&amp;C, DH350H data sheet (weight 4). Renders of the co-designer's model are shown with consent.</p>
 </body></html>
