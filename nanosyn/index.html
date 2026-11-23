@@ -3,13 +3,13 @@
 <body><p><a href="../">← Speaker Lab</a></p>
 <h1>Nano Synergy horn</h1>
 <p>A compact 3D-printed Synergy horn: one compression driver and two 6" mid cones sharing a nearly square horn with deliberately wide walls.</p>
-<p class="meta">Stage: <b>design: port study (mid ports), print test on hold</b> · Last updated 22 November 2026</p>
+<p class="meta">Stage: <b>restart: horn-only design for the compression driver</b> · Last updated 23 November 2026</p>
 <p class="meta">Every number below is calculated or checked in software unless labelled measured. Nothing about the finished horn has been measured. Predictions and crossover settings are estimates, never final.</p>
 
 <h2>Summary</h2>
-<p>This is a multiple-entry (Synergy) horn: the compression driver fires into the throat and two mid cones feed in through ports in the horn walls, so all three act as one source with even, wide coverage. It is 3D printed.</p>
-<p>The co-designer's model (v0.4, with the mid cones modelled from a rough measurement of the real driver) has been simulated as the baseline. Its mid response matches the co-designer's own experiments and is kept as the target shape: a peak near 850 Hz and a steep fall above 1 kHz, intended for a crossover concept with 1st-order filters. The problem is port air speed: at the test level the mid ports run well above the usual noise limit.</p>
-<p>A port study followed. Only more port area lowers the speed. The first larger-port option (P2) halves the speed but softens the mid roll-off and raises a second mid peak near 2.2 kHz, so the planned print test of P2 is on hold. Three more port options are being simulated now; the best one will be printed and measured. Every result here is a simulation estimate; nothing about the horn has been measured yet.</p>
+<p>This is a multiple-entry (Synergy) horn: the compression driver fires into the throat and two mid cones feed in through ports in the horn walls, so all three act as one source with even, wide coverage. It is 3D printed and meant to run with a pure 1st-order crossover.</p>
+<p><b>Restart (23 Nov 2026).</b> After a first round of simulations and the first measurement of a printed horn, the co-designer and Tek decided to restart the horn from scratch. The earlier design line (the co-designer's horn as drawn, four port variants, corner-slot ports, a planned print test and printed rear cups) is parked: its tools, checks and lessons carry over. The reason: the earlier designs could not give the compression driver a smooth enough response, and enlarging the mid ports to cut air speed traded away the steep mid roll-off the 1st-order crossover needs.</p>
+<p>The new order: (1) simulate the co-designer's measured early print and compare with his measurement, the first real check of the model (running); (2) design a horn with no ports that loads the compression driver down to 1 kHz with a smooth response suited to the 1st-order crossover, within the front size of a Funktion-One F81; (3) add the mid ports and iterate. Each target counts as met when it holds over at least 85 % of its frequency band. Every result on this page is a simulation estimate unless labelled measured.</p>
 
 <h2>Requirements</h2>
 <table>
@@ -20,9 +20,10 @@
 <tr><th>Maximum level</th><td>115 dB peak at the listener at 3–6 m (club use) above about 200 Hz; lower level at 100–200 Hz for fill, monitor and speech. Equivalent to 124.5–130.6 dB at 1 m, free field <span class="tag">derived</span></td></tr>
 <tr><th>Crossover</th><td>Co-designer's concept (21 Nov), adopted: 1st-order filters on both drivers. The mids' band-pass peak is used as a sensitivity boost: the mid low-pass is set low so the response is flat to about 1 kHz, the horn and chambers then give a steep acoustic roll-off, and the compression driver (high-pass 1st order, empirically usable with corners of 3–10 kHz because of its sensitivity and the horn's rise towards the low end) meets the mids near the horn cutoff, about 1 kHz. Target phase match ±50° over 500 Hz–10 kHz. Test crossover: a DSP with 1st-order filters. Horn loading on the compression driver down to 1 kHz is a design target not yet reached. Mid to sub: to be set. Settings stay starting settings until measured.</td></tr>
 <tr><th>Mid enclosure</th><td>Stage 1: a simple reflex box tuned near 100 Hz. Stage 2: a passive cardioid with a lossy rear/side path.</td></tr>
-<tr><th>Size</th><td>Must fit the lab's printers (256 mm and 300 mm cube beds); split parts allowed</td></tr>
+<tr><th>Size</th><td>Finished design: front no bigger than a Funktion-One F81, depth free (23 Nov). Parts must fit the lab's printers (256 mm and 300 mm cube beds); split parts allowed</td></tr>
 <tr><th>Use</th><td>Fill (flown or wall bracket) and pole or stand top box</td></tr>
 <tr><th>Manufacture</th><td>3D print; prototypes in PLA</td></tr>
+<tr><th>Pass rule</th><td>Each target met over at least 85 % of its frequency band (e.g. phase within ±50° over ≥ 85 % of 500 Hz–10 kHz)</td></tr>
 <tr><th>Measurement</th><td>Critical: will be measured after further development, before the final print</td></tr>
 </table>
 
@@ -42,9 +43,13 @@
 <tr><th>22 Nov 2026</th><td>Keep the v0.4 mid response (it matches the co-designer's experiments) and fix port noise and air speed. A smoother mid band-pass stays as a side option. Ports are to be fixed by geometry first; foam or fabric acoustic resistors are studied but not preferred.</td></tr>
 <tr><th>22 Nov 2026</th><td>Port options P0–P3 (and two fully flared ports) taken to CAD and simulation; P2 chosen for a first print test, then put on hold after its simulation (below). Why: P2 fixes the air speed but halves the mid roll-off the 1st-order concept needs. P0, P1 and P3 are simulated first.</td></tr>
 <tr><th>22 Nov 2026</th><td>All mid driver screws enter from the side away from the driver, heads seated in Ø10 counterbores, nuts on the driver; bores Ø6.0.</td></tr>
+<tr><th>22 Nov 2026</th><td>Larger ports (P2) halve the mid port air speed but halve the roll-off above 1 kHz; P0–P3 and corner-slot variants show the same trade-off: no option meets both the air-speed limit and an 18 dB/octave roll-off (estimate).</td></tr>
+<tr><th>22 Nov 2026</th><td>First measurement: the co-designer's early printed horn, measured at home. First compared with the model of a different, later design by mistake; corrected the same day. A simulation of the measured horn itself is the model check.</td></tr>
+<tr><th>23 Nov 2026</th><td><b>Restart from scratch</b> (co-designer's proposal, adopted by Tek): keep the 1st-order crossover; first a port-less horn that loads the compression driver to 1 kHz with a smooth response, then mid ports. Earlier line parked. Pass rule: each target over ≥ 85 % of its band.</td></tr>
 </table>
 
 <h2>Results</h2>
+<p class="mute">The results below are from the earlier, now parked design line (up to 22 Nov) and the first measurement. They inform the restart but are not the new design.</p>
 <h3>The co-designer's first model (baseline), from its CAD file <span class="tag">geometry from the model file</span></h3>
 <p>Square 240 mm mouth, 113 mm horn depth, Ø25 mm throat, walls flaring to about 106° included, four teardrop ports, two mid baffles at 53° to the axis. It fits the 300 mm bed with 4 mm to spare, not the 256 mm bed.</p>
 <figure><img src="img/render.png" alt="Four views of the first model: square horn with flange, two mid-driver baffles on the side walls, ports into the horn" loading="lazy"><figcaption>Renders of the first model: square mouth, flange, two angled mid-driver baffles feeding ports into the horn walls. <span class="tag">geometry from the model file</span></figcaption></figure>
@@ -126,7 +131,7 @@
 <figure><img src="img/p2_print_outside.png" alt="Outside views of the printable P2 part" loading="lazy"><figcaption>Outside of the P2 print. <span class="tag">geometry of the export</span></figcaption></figure>
 
 <h2>Print settings</h2>
-<p>For the P2 print test, now on hold; generic slicer profile (PrusaSlicer 2.9.7), sliced from the export before the decided fixes. Times include the generic profile's cooling slowdowns and will be shorter on the real printers. To be re-sliced for the chosen port option.</p>
+<p>No print settings for the restarted design yet. The table below is for the parked P2 print test (generic slicer profile, kept for reference).</p>
 <table>
 <tr><th></th><td><b>300 mm-bed printer, one piece</b></td><td><b>256 mm-bed printer, 6-piece split</b></td></tr>
 <tr><th>Material / brand</th><td>PLA / not set</td><td>PLA / not set</td></tr>
@@ -145,20 +150,19 @@
 
 <h2>Open issues</h2>
 <ul>
-<li>Port option not yet chosen: air speed and the steep mid roll-off pull in opposite directions in the options simulated so far.</li>
-<li>Compression-driver horn loading reaches only 0.06 of full loading at 1 kHz; the crossover concept needs loading near 1 kHz.</li>
-<li>Compression driver's fixing type (tapped holes, plain holes or studs) unknown; the print gate fails until it is known.</li>
-<li>Cone profile is a rough measurement; surround diameter and gasket compression would tighten the plug margin.</li>
-<li>Thermoviscous losses in the gaps and ports are not modelled; peak and notch heights above 1 kHz need them.</li>
-<li>Headroom above 200 Hz with two 6" mids per box is unproven; may need several boxes per side.</li>
+<li>How far to trust the model: the check against the measured early print is running; mid predictions above about 1 kHz stay qualitative until then.</li>
+<li>Compression-driver horn loading at 1 kHz: the earlier design reached only 0.06 of full loading there; the restart targets it first.</li>
+<li>Phase target (±50° over 500 Hz–10 kHz): not met by the measured early print (about 62 %); a delay or all-pass on the compression driver would help on paper.</li>
+<li>Mid port air speed against roll-off steepness: unresolved trade-off, to be revisited when ports are added to the new horn.</li>
+<li>Thermoviscous losses in gaps and ports are not modelled; peak and notch heights above 1 kHz need them.</li>
 </ul>
 
 <h2>Next steps</h2>
 <ol>
-<li>Finish simulating port options P0, P1 and P3 (running) and choose the option that best keeps the target mid shape within the air-speed limit.</li>
-<li>Apply the decided fixing and split changes to the chosen option; pass the release gate and fresh reviews; slice for both printers.</li>
-<li>Co-designer prints and measures it (about 2 hours: mids, impedance, compression driver, summed response with 1st-order DSP presets, a level test for port noise, polars); compare with the simulation.</li>
-<li>Study extending the compression driver's horn loading towards 1 kHz.</li>
+<li>Finish the model check on the co-designer's measured early print and judge how far the simulation can be trusted (pass marks set before the comparison).</li>
+<li>Groundwork for the new horn: front-size limit, horn shapes that load the compression driver to 1 kHz within it, causes of ripple, 2–4 candidate shapes and numeric pass criteria.</li>
+<li>Simulate the port-less candidates; pick the one closest to the targets.</li>
+<li>Add mid ports to it and iterate; then a printed test and measurement.</li>
 <li>Crossover settings stay starting settings until the drivers are measured in the finished cabinet.</li>
 </ol>
 
