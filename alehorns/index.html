@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home DJ Two-Way</title><style>:root{--bg:#fff;--fg:#1a1a1a;--mute:#666;--line:#ddd;--tag:#f0f0f0}@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mute:#999;--line:#333;--tag:#262626}}body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit}.meta,p.mute{color:var(--mute)}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}th{width:32%}.tag{background:var(--tag);border-radius:4px;padding:1px 6px;font-size:13px;white-space:nowrap}h2{margin-top:2em}td{overflow-wrap:anywhere}ol li,ul li{margin:4px 0}figure{margin:1.5em 0}figure img{max-width:100%;height:auto;display:block;border-radius:6px;background:#fff}figcaption{color:var(--mute);font-size:14px;margin-top:6px}.scroll{overflow-x:auto}</style></head>
+<body><p><a href="../">← Speaker Lab</a></p>
+<h1>Home DJ two-way (P008)</h1>
+<p>A stereo pair of home speakers with a club feel: an 8" woofer in a vented box and a 1" compression driver on a new 3D-printed slot horn, crossed at about 2 kHz, with a sub added later.</p>
+<p class="meta">Stage: <b>design: option A chosen, horn not yet designed</b> · Last updated 16 November 2026</p>
+<p class="meta">Nothing has been built, printed or measured. Every acoustic number below is an <b>estimate (unmeasured)</b> from data sheets and lumped models, unless labelled otherwise. Crossover figures are starting points, never final.</p>
+
+<h2>Summary</h2>
+<p><b>What it is.</b> Tek's brief: "the ultimate home DJ speaker, so if you a pro dj in a club and want something at home that gives club vibes." The target is about 105 dB peaks at the listening spot, 2–3 m away, from a stereo pair running down to about 80 Hz, where a sub will take over. The project builds on slot-horn designs by the co-designer; the new horn is Tek's lab design in that style.</p>
+<p><b>Where it stands.</b> Two routes were compared on equal terms. <b>Option A</b> (chosen, 16 Nov): Faital Pro 8PR200 woofer in about 35 L vented, plus a B&amp;C DH450 on a new printed slot horn about 160 mm wide, crossed at about 2 kHz. <b>Option B</b>, a multiple-entry horn (one DH450 and two 6.5" Faital 6RS140 mids per side), is <b>parked</b>. Option A has more level at 80 Hz, much slower port air and a better directivity match at the crossover (all estimates). The horn for option A has not been designed or simulated yet.</p>
+<p><b>What's next.</b> First design pass on the option A horn: checks first, then simulation, CAD and a print-check of the file. The project is classed <b>critical</b>: it will be measured.</p>
+
+<h2>Requirements</h2>
+<table>
+<tr><th>Use</th><td>Home DJ speaker with a club feel; stereo pair; active (DSP and amplifier)</td></tr>
+<tr><th>Level</th><td>About 105 dB peaks at the listening spot, 2–3 m (Tek, 15 Nov; confirmed 16 Nov over an earlier 115 dB club-level figure). Open: whether this is per pair or per speaker (6 dB difference)</td></tr>
+<tr><th>Bandwidth</th><td>Tops to about 80 Hz; sub crossover about 80 Hz (Tek, 16 Nov); the sub is a possible later project</td></tr>
+<tr><th>Coverage</th><td>80° horizontal, controlled down to about 2 kHz; vertical not set</td></tr>
+<tr><th>Woofer</th><td>Faital Pro 8PR200 (8 Ω), one per side; fallback B&amp;C 8NDL51</td></tr>
+<tr><th>HF driver</th><td>B&amp;C DH450, 1" compression driver, one per side</td></tr>
+<tr><th>Crossover</th><td>About 2 kHz, active, so woofer and horn directivity meet near 80°; DH450 maker recommends ≥ 1 kHz at ≥ 12 dB/octave [B&amp;C, DH450 data sheet, w4]</td></tr>
+<tr><th>Size</th><td>Bookshelf or stand box, about 30–40 L (35 L modelled)</td></tr>
+<tr><th>Manufacture</th><td>Box: simple flat-panel woodwork. Horn and port: 3D print</td></tr>
+<tr><th>Weight</th><td>not set</td></tr>
+<tr><th>How it will be measured</th><td>Critical class: measured with one mic and REW. Measurement plan not yet written</td></tr>
+</table>
+
+<h2>Key decisions</h2>
+<table>
+<tr><th>15 Nov 2026</th><td>New full speaker (horn, woofer, new cabinet), classed critical. Stereo pair, active, sub added later, about 105 dB peaks at 2–3 m.</td></tr>
+<tr><th>15 Nov 2026</th><td>New, larger 1" slot horn in the style of the co-designer's reference horn. Why: a horn that holds 80° down to the crossover is needed to meet an 8" woofer. A multi-entry waveguide is parked for a version 2.</td></tr>
+<tr><th>15 Nov 2026</th><td>Woofer: Faital Pro 8PR200 pair, after 7 drivers were modelled in 35 L; fallback B&amp;C 8NDL51.</td></tr>
+<tr><th>15 Nov 2026</th><td>Crossover about 2 kHz, horn mouth about 160 mm wide. Why: every 8" modelled is 141–163° wide at 1.5 kHz and narrows to 80° only at about 2.2–2.3 kHz, so 2 kHz matches the 80° horn better than 1.5 kHz, and the mouth can be smaller <span class="tag">derived</span>.</td></tr>
+<tr><th>16 Nov 2026</th><td>A multiple-entry horn design from an earlier chat brought in as option B, unverified here, to be compared with option A.</td></tr>
+<tr><th>16 Nov 2026</th><td>Sub crossover about 80 Hz. Amplifier power per channel unknown; working figure 200 W.</td></tr>
+<tr><th>16 Nov 2026</th><td>Level target 105 dB peaks at 2–3 m stands. <b>Option A chosen; option B parked.</b> Why: +9.1 dB margin at 80 Hz against B's +4.8 dB, port air at 6 m/s against 14–18 m/s, and a better directivity match at the crossover <span class="tag">estimate (unmeasured)</span>.</td></tr>
+</table>
+
+<h2>Results</h2>
+
+<h3>8" woofer shortlist <span class="tag">estimate (unmeasured)</span></h3>
+<p>Seven 8" drivers modelled from data sheets in 35 L, sealed and vented. Model tests: 3/3 exact-solution tests pass <span class="tag">verified: model tests</span>.</p>
+<ul>
+<li>8PR200 in 35 L vented: tuning 47.5 Hz, F3 about 45 Hz, Ø60 mm port about 60 mm long [Faital Pro, 8PR200 data sheet, w4].</li>
+<li>105 dB peaks at 2.5 m from a pair needs about 107 dB peak at 1 m per box at 100 Hz <span class="tag">derived</span>; five of the seven drivers reach it vented with 1.5–5 dB margin.</li>
+<li>Woofers are thermally limited at 100 Hz, about 200 W into 8 Ω. The DH450 needs about 14–15 dB of pad to match.</li>
+<li>Use a flared printed port: straight ports at 17 m/s are above the 10 m/s onset of audible port noise [Salvatti, Devantier and Button, port air-flow study, w4].</li>
+</ul>
+
+<h3>Option A against option B <span class="tag">estimate (unmeasured)</span></h3>
+<p>Assumptions: half space (no room, no boundary gain), 200 W per channel unless stated, peak levels at 1 m; lumped vented-box model for A (1–2 dB below the data-sheet sensitivity, so conservative); option B from its own stored BEM data (infinite baffle, single solver, not re-run here), extrapolated below 150 Hz. 11 model tests pass (9 exact hand cases, 2 consistency checks) <span class="tag">verified: model tests</span>. In a free field, subtract up to 6 dB at the low end from both.</p>
+<div class="scroll"><table>
+<tr><th></th><td><b>A: 8PR200 35 L vented + DH450 slot horn</b></td><td><b>B: multiple-entry horn (parked)</b></td></tr>
+<tr><th>Max peak SPL at 1 m, 80 / 100 / 150 Hz</th><td>116.1 / 117.4 / 118.4 dB</td><td>111.8 / 116.0 (extrapolated) / 121.7 dB</td></tr>
+<tr><th>Margin over the 105 dB at 2.5 m target, from 80 Hz (100 / 200 / 500 W)</th><td>+7.1 / +9.1 / +9.1 dB</td><td>+4.8 / +4.8 / +4.8 dB</td></tr>
+<tr><th>Same if 105 dB is per speaker (200 W)</th><td>+3.1 dB</td><td>−1.2 dB</td></tr>
+<tr><th>Port air speed at the target level, 80 / 100 Hz</th><td>5.7 / 2.9 m/s</td><td>18.3 / 14.1 m/s</td></tr>
+<tr><th>Limited by</th><td>excursion below about 95 Hz, amplifier above</td><td>mid excursion below about 120 Hz, whatever the amplifier or rear volume</td></tr>
+<tr><th>Directivity at the crossover</th><td>woofer 96° at 2 kHz against the 80° horn: a step of about 16°</td><td>110–122° horizontal at 1.2–3 kHz against its 90° target</td></tr>
+<tr><th>HF headroom above the crossover</th><td>+16 dB over the target</td><td>+13 dB after its EQ</td></tr>
+</table></div>
+<p>Neither option reaches the earlier club-level figure (115 dB peaks per speaker at 4.5 m from 150 Hz): A is about −10 dB, B −6 dB by drive and −13.5 dB by port air speed. Reaching it would need a new low-frequency section.</p>
+<figure><img src="img/max_spl_vs_f.png" alt="Two graphs of maximum peak SPL at 1 m against frequency for 100, 200 and 500 W per channel; option A on the left, option B on the right, with the two target lines" loading="lazy"><figcaption>Maximum peak SPL at 1 m for 100, 200 and 500 W per channel, with the home target (black) and the earlier club figure (red). Grey band on B: extrapolated, no BEM data. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/limit_breakdown_200W.png" alt="Two graphs splitting the 200 W output limit into excursion, thermal and amplifier limits for options A and B" loading="lazy"><figcaption>What limits output at 200 W per channel: excursion, thermal or amplifier; the black line is the lowest. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/port_speed.png" alt="Graph of port air speed at maximum drive against frequency for both options, with 10 and 20 m/s lines" loading="lazy"><figcaption>Port air speed at maximum drive: A's Ø60 mm port (solid) against B's mid ports (dashed), with the 10 m/s noise onset. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/directivity.png" alt="Left: 8PR200 beamwidth against frequency with the 80 degree horn line; right: option B beamwidths of the mid and HF paths" loading="lazy"><figcaption>Left: the 8PR200 (as a piston) narrows to 80° at about 2.3 kHz; a 160 mm horn mouth holds 80° from about 1.95 kHz by Keele's rule. Right: option B's simulated beamwidths miss its 90° × 50° target over much of the band. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+
+<h3>Option A horn <span class="tag">estimate (unmeasured)</span></h3>
+<p>Not yet designed. By Keele's rule, a mouth about 156–160 mm wide holds 80° horizontally from about 1.95–2 kHz <span class="tag">derived</span> [Keele, "What's so sacred about exponential horns?", w4]. Vertical coverage, profile, on-axis response and mounting are open. Design rules carried over from the lab's earlier 1" horn: model the driver fixings from the drawing; keep overhangs to 42°, not 45°, and check them on the exported file.</p>
+
+<h3>Option B (parked) <span class="tag">unverified</span></h3>
+<p>Its v0.2 export is <b>unreleased and unreviewed and must not be printed</b>: the release gate passes 37 of 40 checks (two unsupported-layer failures, two fixings with too little nut room); no second solver, slicer check or independent review. Its horn work may feed a later review for the co-designer.</p>
+
+<h2>Print settings</h2>
+<p>Nothing sliced yet; no print log entries.</p>
+<div class="scroll"><table>
+<tr><th></th><td><b>Slot horn (×2)</b></td><td><b>Flared port (×2)</b></td></tr>
+<tr><th>Printer</th><td>not set</td><td>not set</td></tr>
+<tr><th>Material / brand</th><td>not set</td><td>not set</td></tr>
+<tr><th>Nozzle; layer height</th><td>not set</td><td>not set</td></tr>
+<tr><th>Walls; top / bottom</th><td>not set</td><td>not set</td></tr>
+<tr><th>Infill % and pattern</th><td>not set</td><td>not set</td></tr>
+<tr><th>Supports</th><td>not set</td><td>not set</td></tr>
+<tr><th>Orientation</th><td>not set</td><td>not set</td></tr>
+<tr><th>Splits and joints</th><td>not set</td><td>not set</td></tr>
+<tr><th>Temperatures</th><td>not set</td><td>not set</td></tr>
+<tr><th>Speed / profile</th><td>not set</td><td>not set</td></tr>
+<tr><th>Brim</th><td>not set</td><td>not set</td></tr>
+<tr><th>Slicer and profile version</th><td>not set</td><td>not set</td></tr>
+<tr><th>Estimated time</th><td>not set</td><td>not set</td></tr>
+<tr><th>Estimated mass</th><td>0.8–1.2 kg each <span class="tag">assumption</span></td><td>not set</td></tr>
+</table></div>
+
+<h2>Open issues</h2>
+<ul>
+<li>Option A horn: no geometry yet, so its response, vertical coverage and any notches are unknown.</li>
+<li>Amplifier power per channel unknown (200 W working figure); at 100 W option A loses 2–3 dB.</li>
+<li>Whether 105 dB is for the pair or per speaker (6 dB on the requirement).</li>
+<li>Directivity step of about 16° between woofer and horn at 2 kHz <span class="tag">estimate</span>.</li>
+<li>The chosen woofer is not yet to hand; design proceeds on its data sheet.</li>
+<li>Models leave out room, baffle diffraction, thermal compression (1–3 dB is normal at rated power) and distortion.</li>
+<li>Sub model and room placement not decided.</li>
+</ul>
+
+<h2>Next steps</h2>
+<ol>
+<li>Write exact-solution tests and a release gate with planted defects for the option A horn.</li>
+<li>Design and simulate the horn: mesh convergence, a second solver, sensitivity to the driver's exit wavefront.</li>
+<li>Model the DH450 fixings from the maker's drawing; CAD with print splits; independent slicer check.</li>
+<li>Independent reviews of the file and the report before anything beyond a test coupon is printed.</li>
+<li>Plan the shortest measurement session that settles the crossover and horn response.</li>
+<li>Crossover settings stay starting settings until the drivers are measured in the finished cabinet.</li>
+</ol>
+
+<p class="mute">Sources: Faital Pro, 8PR200 data sheet (weight 4); B&amp;C, DH450 data sheet (weight 4); Keele, "What's so sacred about exponential horns?" (weight 4); Salvatti, Devantier and Button, port air-flow study (weight 4). The co-designer's own horn designs are not shown.</p>
+</body></html>
