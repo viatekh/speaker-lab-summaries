@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>F15 2×15 Mid-Top</title><style>:root{--bg:#fff;--fg:#1a1a1a;--mute:#666;--line:#ddd;--tag:#f0f0f0}@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mute:#999;--line:#333;--tag:#262626}}body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit}.meta,p.mute{color:var(--mute)}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}th{width:32%}.tag{background:var(--tag);border-radius:4px;padding:1px 6px;font-size:13px;white-space:nowrap}h2{margin-top:2em}td{overflow-wrap:anywhere}ol li,ul li{margin:4px 0}figure{margin:1.5em 0}figure img{max-width:100%;height:auto;display:block;border-radius:6px;background:#fff}figcaption{color:var(--mute);font-size:14px;margin-top:6px}</style></head>
+<body><p><a href="../">← Speaker Lab</a></p>
+<h1>F15 2×15 mid-top</h1>
+<p>Two Martin Audio Blackline F15 cabinets stacked, one inverted, turned into a 2×15" mid-top in the spirit of the B&amp;C 215-DCX, with a new 3D-printed horn for the compression driver between the two 15" woofers.</p>
+<p class="meta">Stage: <b>design; blocked on an inspection of one cabinet (driver data)</b> · Last updated 15 November 2026</p>
+<p class="meta">Nothing on this page has been measured. Every result is an estimate from idealised models (unmeasured) unless labelled verified. Crossover values are starting settings, to be set by measurement; none is final.</p>
+
+<h2>Summary</h2>
+<p>The idea is to reuse existing F15 cabinets rather than build new ones: stack two, invert the top one so the woofers sit at the outer ends, and fit a printed horn at the joint. The cabinets should stay restorable where possible; cutting is allowed only if shown to be worth it.</p>
+<p>Two calculations have settled the layout. Running both 15" woofers up to a 1.0–1.4 kHz crossover leaves deep holes in the vertical pattern, because the woofers are 920 mm apart (about three wavelengths at 1 kHz). The chosen layout is a <b>2.5-way</b>: the lower woofer runs full range, the upper woofer is rolled off at 250 Hz, and the original high-frequency driver (thought to be a B&amp;C DE82) takes over at 1.0 kHz on a new flush printed horn about 312 mm wide that fits between the existing ports. No purchase is needed for this route.</p>
+<p>What's next: an inspection session on one cabinet (identify the model variant and both drivers, measure the cut-outs and driver dimensions, take impedance sweeps). That session blocks further design. Then the horn is designed, and a second measurement session on the built stack sets the crossover.</p>
+
+<h2>Requirements</h2>
+<table>
+<tr><th>Use</th><td>Mid-top over subwoofers</td></tr>
+<tr><th>Type</th><td>2.5-way: 2 × 15" plus compression driver on a printed horn</td></tr>
+<tr><th>Coverage</th><td>80° horizontal (Tek, 15 Nov 2026). Vertical is set by the layout: about 29° at 1 kHz for the 2.5-way <span class="tag">estimate</span></td></tr>
+<tr><th>Bandwidth</th><td>Open. A single F15 is rated 55 Hz–18 kHz ±3 dB (Martin Audio F15 datasheet, w4)</td></tr>
+<tr><th>Maximum SPL at 1 m</th><td>Open</td></tr>
+<tr><th>Drivers</th><td>Two of the original Martin DLS623 15" woofers; the original Martin high-frequency driver (DCD082, probably a B&amp;C DE82). Identity not yet confirmed</td></tr>
+<tr><th>Crossover</th><td>Upper 15": LR4 low-pass at 250 Hz, with a matched LR4 all-pass on the lower 15". Woofer to HF: LR4 at 1.0 kHz, the DE82's lowest recommended crossover (B&amp;C DE82 datasheet, w4). Starting settings only</td></tr>
+<tr><th>Drive</th><td>Bi-amped with DSP (provisional, to confirm once driver data are in)</td></tr>
+<tr><th>Size</th><td>Two stacked F15: 471 × 1380 × 443 mm (W × H × D) <span class="tag">derived</span></td></tr>
+<tr><th>Weight</th><td>About 65 kg for the pair <span class="tag">derived</span></td></tr>
+<tr><th>Manufacture</th><td>Existing cabinets, simple woodwork only, kept restorable where possible; 3D-printed horn</td></tr>
+<tr><th>Mounting</th><td>Ground stack or pole only. Martin forbids suspending one Blackline enclosure from another (Blackline user guide, w4)</td></tr>
+<tr><th>Measurement class</th><td>Critical: the build will be measured</td></tr>
+</table>
+
+<h2>Key decisions</h2>
+<table>
+<tr><th>14 Nov 2026</th><td>Reuse the existing cabinets and the original HF driver first; bi-amp with DSP (provisional). Why: Tek's scoping answers.</td></tr>
+<tr><th>14 Nov 2026</th><td>No flying of the bolted pair; ground stack or pole only. Why: the manufacturer forbids it (Blackline user guide, w4).</td></tr>
+<tr><th>15 Nov 2026</th><td>Plain two-way (both 15" up to 1.0–1.4 kHz) dropped. Why: with 920 mm between woofers the vertical pattern has holes deeper than 20 dB inside ±15° over 500–1000 Hz, whatever the crossover frequency, filter type or spacer <span class="tag">estimate, unmeasured</span>.</td></tr>
+<tr><th>15 Nov 2026</th><td>Project classed critical (will be measured); horizontal coverage 80°. Why: Tek's answers.</td></tr>
+<tr><th>15 Nov 2026</th><td>A flush horn inside the cabinets cannot hold 80° horizontally down to 400 Hz. That needs a mouth about 785 mm wide protruding about 225 mm. Why: Keele's mouth-size rule (Keele 1975, AES preprint 1038, w4–5) and a coarse BEM agree within 3 % <span class="tag">estimate, unmeasured</span>.</td></tr>
+<tr><th>15 Nov 2026</th><td><b>Layout chosen: 2.5-way with the original HF driver at 1.0 kHz on a flush printed horn about 312 mm wide, fitted between the ports.</b> The 400 Hz crossover with a new coaxial driver is dropped. Why: an 80° mouth for 1 kHz is about 312 mm wide <span class="tag">derived, Keele's rule</span>, which fits between the ports (331.5 mm) and keeps the cabinets restorable. Tek's choice.</td></tr>
+</table>
+
+<h2>Results</h2>
+
+<h3>Checks on the lobing model <span class="tag">verified</span></h3>
+<ul>
+<li>Exact-solution tests were written before the model, by a separate agent: 30 tests (two-source arrays, piston directivity, finite distance, beamwidth search). With the planted-defect runner, 48 of 48 pass.</li>
+<li>16 deliberate bugs planted in copies of the model (sine/cosine swap, degrees read as radians, wrong Bessel function and others): all 16 caught, each by exactly the tests aimed at it.</li>
+<li>Closed-form spot checks agree with the model: two-way first −6 dB point at ±8.9° at 1.2 kHz; 2.5-way crossover null at ±18.0°; a 0.1 ms woofer lag tilts the lobe by 4.0° (closed form 4.3°).</li>
+</ul>
+
+<h3>Vertical lobing of the stack <span class="tag">estimate (unmeasured)</span></h3>
+<p class="mute">Model: woofers as rigid pistons in an infinite baffle, 920 mm centre to centre; HF as a point source at the joint; flat drivers, ideal filters, delay-aligned. No cone break-up, cabinet edges, floor or room. Formulas from Olson and Kinsler (textbooks, not yet in the lab's library).</p>
+<table>
+<tr><th>Layout</th><th>Vertical −6 dB beamwidth at the crossover</th><th>Worst dip inside ±30°, 400–800 Hz</th></tr>
+<tr><td>Plain two-way, 1.2 kHz LR4</td><td>17.8°</td><td>deeper than −30 dB (complete cancellation)</td></tr>
+<tr><td><b>2.5-way, 1.0 kHz, LR4 + all-pass (chosen)</b></td><td>29.3°</td><td>−2 to −8 dB</td></tr>
+<tr><td>2.5-way, 1.2 kHz, LR4 + all-pass</td><td>24.0°</td><td>−2 to −6 dB</td></tr>
+<tr><td>Both 15" to a 400 Hz crossover</td><td>55.5°</td><td>−1 to −7 dB</td></tr>
+<tr><td>B&amp;C 215-DCX reference, 400 Hz</td><td>66.6°</td><td>−1 to −5 dB</td></tr>
+</table>
+<ul>
+<li>The 2.5-way is clean inside ±30° below about 630 Hz (dips of 5 dB or less), but keeps a crossover null at ±18–22° (1.2–1.0 kHz). That is somewhat narrower than a single F15, where the null sits at about ±27° <span class="tag">derived</span>.</li>
+<li>Which woofer runs full range makes no difference to the pattern when both are delay-aligned. With a residual lag the lobe tilts towards the lagging woofer, so the <b>lower</b> woofer runs full range to tilt any error towards the audience.</li>
+<li>The all-pass matters. An LR4 roll-off at 250 Hz on its own leaves a −13 dB hole on axis at 230 Hz. A matched LR4 all-pass on the full-range woofer keeps the two in phase.</li>
+<li>Cost of the 2.5-way: half the cone area between 250 Hz and the crossover, so 6 dB less sensitivity and 3 dB less maximum level in that band than the pair.</li>
+</ul>
+<figure><img src="img/lobing_2way.png" alt="Nine colour maps of vertical level against frequency for the plain two-way stack at crossovers of 1.0, 1.2 and 1.4 kHz, in the far field, at 4 m and at 10 m" loading="lazy"><figcaption>Plain two-way (dropped): level against vertical angle and frequency, rows 1.0/1.2/1.4 kHz crossover, columns far field/4 m/10 m. Dark curved bands are cancellations from the 920 mm woofer spacing; the white dashed line is −6 dB. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+<figure><img src="img/lobing_2_5way.png" alt="Nine colour maps of vertical level against frequency for the 2.5-way stack without all-pass, crossovers 1.0, 1.2 and 1.4 kHz" loading="lazy"><figcaption>2.5-way, other woofer rolled off at 250 Hz (LR4, no all-pass in this plot). The deep mid-band holes have gone; the crossover nulls at about ±18–22° and a low-frequency dip near 100–200 Hz off axis remain. The all-pass in the chosen layout removes most of the low-frequency dip (next figure). <span class="tag">estimate, unmeasured</span></figcaption></figure>
+<figure><img src="img/lobing_beamwidth.png" alt="Two graphs against frequency: vertical −6 dB beamwidth and worst dip inside ±30° for the two-way, 2.5-way variants, 215-DCX and 500 Hz options" loading="lazy"><figcaption>Left: vertical −6 dB beamwidth (180 = no −6 dB point). Right: worst dip inside ±30°. Purple is the chosen type of 2.5-way (LR4 plus all-pass, shown at 1.2 kHz); blue and orange are the plain two-way. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+
+<h3>Horn fit between the woofers <span class="tag">estimate (unmeasured)</span></h3>
+<p class="mute">Keele's mouth-size rule, then a coarse boundary-element model of four idealised horns radiating into an infinite baffle at the mouth, 300 Hz to 4 kHz. Solver checks re-run: 7 of 7 exact tests pass, power balance within 1.7 %, mesh refinement changes beamwidths by under 0.1°, and the result is insensitive to the assumed driver wavefront below 4 kHz.</p>
+<table>
+<tr><th>Candidate</th><th>Mouth (W × H)</th><th>Horizontal ≤ 90° above</th></tr>
+<tr><td>Flush, inside the boxes (ports removed)</td><td>422 × 518 mm</td><td>825 Hz</td></tr>
+<tr><td>Protruding 120 mm</td><td>625 × 518 mm</td><td>561 Hz</td></tr>
+<tr><td>ME464-size reference (does not fit)</td><td>575 × 505 mm</td><td>608 Hz</td></tr>
+<tr><td>Protruding 225 mm</td><td>785 × 518 mm</td><td>435 Hz</td></tr>
+</table>
+<ul>
+<li>Keele's rule and the BEM agree within 2–3 % on where horizontal control starts in all four cases.</li>
+<li>No candidate gives 50–60° vertical between about 550 Hz and 0.8–1 kHz.</li>
+<li>B&amp;C's own directivity map of the ME464 (B&amp;C ME464 datasheet, w4, read by eye) shows about 120–135° horizontal at 0.55–2 kHz, so its 80° rating is nominal.</li>
+<li>The infinite baffle is optimistic below about 1 kHz, most of all for the protruding mouths. A finite-baffle model and a second solver are still to run.</li>
+</ul>
+<figure><img src="img/horn_fit_beamwidth.png" alt="Horizontal and vertical −6 dB beamwidth against frequency for the four horn candidates" loading="lazy"><figcaption>Horizontal (left) and vertical (right) −6 dB beamwidth of the four candidate mouths; the black line marks 80° horizontal and 60°/50° vertical. Solid and dotted lines (two driver wavefront shapes) overlap. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+
+<h2>Print settings</h2>
+<p>No print settings yet. The planned part is the flush HF horn, about 312 mm wide, to fit between the ports; it has not been designed. Printer, material and brand, nozzle, layer height, walls, top/bottom layers, infill % and pattern, supports, orientation, splits and joints, nozzle/bed temperatures, speed or profile, brim, slicer and profile version, estimated time and mass: all <b>not set</b>.</p>
+
+<h2>Open issues</h2>
+<ul>
+<li>Driver identity and data: which F15 variant, which woofer and HF driver, their parameters and dimensions. Needs the cabinet inspection; manufacturer data has also been requested.</li>
+<li>The woofer cone area is assumed equal to a typical 15" (855 cm²) until measured; the lobing nulls depend only on spacing, not on this.</li>
+<li>Baffle cut-out diameter and setback, which set the space available for the horn and its flange.</li>
+<li>The new horn is unsized in detail: its directivity, the driver's exit geometry and the panel resonances of a printed body are all unknown.</li>
+<li>No finite-baffle model or second solver yet; the infinite-baffle results are optimistic below about 1 kHz.</li>
+<li>The crossover null at ±18–22° is a known limit of the 2.5-way.</li>
+<li>Measurement kit for the sessions is not yet complete (impedance jig, interface, DSP and amplifier channels to confirm).</li>
+</ul>
+
+<h2>Next steps</h2>
+<ol>
+<li>Session 1, inspection of one cabinet (about 1 h 50 min at the bench plus 25 min preparation; no acoustic measurement): model variant, driver labels and dimensions, cut-outs, impedance sweeps.</li>
+<li>Design the flush HF horn for 80° horizontal from 1.0 kHz, with exact-solution tests and a release gate before the first export.</li>
+<li>Finite-baffle simulation of the stack with a second solver; model every mechanical interface; independent reviews.</li>
+<li>Print an interface coupon, then the horn.</li>
+<li>Session 2 on the built stack: vertical lobing and crossover set by measurement.</li>
+</ol>
+</body></html>

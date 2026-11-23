@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Res 2S8 HF Horn</title><style>:root{--bg:#fff;--fg:#1a1a1a;--mute:#666;--line:#ddd;--tag:#f0f0f0}@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mute:#999;--line:#333;--tag:#262626}}body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit}.meta,p.mute{color:var(--mute)}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}th{width:32%}.tag{background:var(--tag);border-radius:4px;padding:1px 6px;font-size:13px;white-space:nowrap}h2{margin-top:2em}td{overflow-wrap:anywhere}ol li,ul li{margin:4px 0}figure{margin:1.5em 0}figure img{max-width:100%;height:auto;display:block;border-radius:6px;background:#fff}figcaption{color:var(--mute);font-size:14px;margin-top:6px}</style></head>
+<body><p><a href="../">← Speaker Lab</a></p>
+<h1>Res 2S8 HF horn</h1>
+<p>A one-piece 3D-printed 1" high-frequency horn to sit on top of a Funktion-One Res 2S8 (the 8" mid section of a Res 2) and match its 50° × 25° coverage.</p>
+<p class="meta">Stage: <b>v7 released (imported, unverified here); blocked on the driver's fixing-hole depth</b> · Last updated 23 November 2026 (project records last changed 16 November 2026)</p>
+<p class="meta">Nothing has been printed or measured. Every acoustic figure below is a boundary-element simulation in an infinite baffle: an estimate, unmeasured. The crossover figures are starting settings, never final. The v7 design and all its check results were produced in another workspace and imported on 16 November 2026; they have not yet been re-run in this lab, so the export's figures are reported as the export's claims.</p>
+
+<h2>Summary</h2>
+<p>The Res 2S8 is an 8" mid horn with no high-frequency section. This project designs a printed horn for a B&amp;C DH450 compression driver to go above it, worked out and simulated before any part was made, printable in one piece on a 256 mm bed, and matched to the 8"'s coverage so the two sum cleanly through the crossover.</p>
+<p>The current design, v7, is a faceted horn: a round throat adapter, three bands of flat facets between octagonal rings, and a flat front flange flush with the mouth (nothing stands forward of the mouth plane). It is 200 mm deep with a 224 × 140 mm mouth. It replaced a smooth oblate-spheroidal horn (v4) after a redesign for a look closer to Funktion-One's and to remove a rim lip that was not part of the simulated shape.</p>
+<p>Where it stands: v7 is the current release file. The export reports 170 of 170 tests passed, 32 of 32 planted defects caught and 23 release checks passed <span class="tag">export's claim, not re-run here</span>. Its SHA-256 has been checked against the export's release manifest, nothing more.</p>
+<p>What's next: measure the depth of the driver's two M5 threaded holes (not published by the maker), re-run the full verification suite in this lab, then print a 60 mm test section of the driver end to check the fixing before printing the whole horn.</p>
+
+<h2>Requirements</h2>
+<table>
+<tr><th>Coverage</th><td>Match the Res 2: 50° horizontal × 25° vertical nominal [R2S8 spec sheet, Funktion-One, w3]</td></tr>
+<tr><th>Use</th><td>Club or venue, listeners at 4–15 m</td></tr>
+<tr><th>Crossover</th><td>Any type; whatever sums best with the 8" (the R2S8 is specified to 5 kHz [R2S8 spec sheet, w3])</td></tr>
+<tr><th>Phase coherence</th><td>Coherent with the 8" through the crossover</td></tr>
+<tr><th>Manufacture</th><td>FDM print, one piece on a 256 × 256 × 256 mm build volume, no supports</td></tr>
+<tr><th>Mounting</th><td>No modification to the Res 2S8 (flat top). Mount not yet designed</td></tr>
+<tr><th>Driver</th><td>B&amp;C DH450 1" compression driver, fixed by 2 × M5 on 57 mm [DH450 datasheet, B&amp;C, w4]</td></tr>
+<tr><th>Look</th><td>Closer to Funktion-One's style; faceted; flat front flange; no lip</td></tr>
+<tr><th>How it will be measured</th><td>Printed dimensions against the file; horn alone at 4 m on an arc about the driver face: level at ±25° horizontal and ±12.5° vertical within 2 dB of the prediction at 8.0 and 10.1 kHz; then the two-way sum with the 8" (delay set by the inverted-polarity null at the crossover)</td></tr>
+</table>
+
+<h2>Key decisions</h2>
+<table>
+<tr><th>11 Nov 2026</th><td>Horn only; mounting parts dropped. Why: the first file's mounting keels cut through the wall into the flare.</td></tr>
+<tr><th>11–12 Nov 2026</th><td>200 mm deep, single apex, no diffraction slot. Why: holding 25° vertical at 5 kHz needs about 190 mm of mouth height (aperture limit sin θ = 0.603 λ / h, derived and checked in code), which a single-apex horn reaches only beyond 350 mm length <span class="tag">derived</span>. The trade: wider vertical at the crossover in return for a clean wavefront and a one-piece print.</td></tr>
+<tr><th>12 Nov 2026</th><td>Every file carries a version number, never reused. Overhang design rule 42°, not the 45° limit. Why: a 45° design printed as 45.07° and drew supports.</td></tr>
+<tr><th>13 Nov 2026</th><td>Complete redesign as a faceted horn with a flat front flange and no lip, driven by Tek's feedback. Anything in the file that is not in the simulated shape is removed or simulated.</td></tr>
+<tr><th>13–14 Nov 2026</th><td>Facet rings fitted by least squares to the 50° × 25° target (11 dimensions fitted; corner cuts chosen by hand from a six-variant study; a second fitting stage found nothing better). Tangent throat entry kept over a straight one (no useful difference).</td></tr>
+<tr><th>14 Nov 2026</th><td>v5 withdrawn (ridges under the flange corners leaned 50° and the slicer added supports); v6 superseded (no room for a washer under the screws); v7 enlarges the screw counterbores to 11 × 5 mm for M5 washers. Slicer verdict and a ridge check made conditions of release.</td></tr>
+<tr><th>14 Nov 2026</th><td>Materials: PLA for prototypes, PETG final, PETG-CF production (Tek).</td></tr>
+<tr><th>14 Nov 2026</th><td>Starting crossover: 5.0 kHz, 48 dB/octave Linkwitz-Riley <span class="tag">estimate, starting settings</span>.</td></tr>
+<tr><th>16 Nov 2026</th><td>v5–v7 merged into this lab's project over the v4 files; v7 is the current release. Why: Tek's choice. Everything imported is unverified here until the full suite is re-run.</td></tr>
+</table>
+
+<h2>Results</h2>
+<h3>The v7 part <span class="tag">geometry of the release file</span></h3>
+<figure><img src="img/render_front.png" alt="Front three-quarter render of the faceted v7 horn with its flat front flange" loading="lazy"><figcaption>v7 from the front: faceted flare, mouth flush with a flat flange whose outline follows the mouth octagon. <span class="tag">render of the release file</span></figcaption></figure>
+<figure><img src="img/render_rear.png" alt="Rear three-quarter render showing the faceted outer skin, angular webs and octagonal driver flange" loading="lazy"><figcaption>v7 from behind: outer skin follows the facets; angular webs brace the octagonal driver flange, clear of the vertical axis where the driver screws go. <span class="tag">render of the release file</span></figcaption></figure>
+<figure><img src="img/render_side.png" alt="Side render of the v7 horn" loading="lazy"><figcaption>v7 from the side. <span class="tag">render of the release file</span></figcaption></figure>
+<figure><img src="img/render_mouth.png" alt="View straight into the horn mouth down to the throat" loading="lazy"><figcaption>Looking into the mouth. <span class="tag">render of the release file</span></figcaption></figure>
+<table>
+<tr><th>Overall size</th><td>244 × 160 × 200 mm; volume 533 cm³ (slicer reading of the file)</td></tr>
+<tr><th>Mouth opening</th><td>224 × 140 mm, corner cuts 16 × 16 mm</td></tr>
+<tr><th>Wall</th><td>4.5 mm offset of the acoustic surface</td></tr>
+<tr><th>Steepest face / ridge</th><td>39° / 41.3° (design rule 42°; thin margin)</td></tr>
+<tr><th>Driver fixing</th><td>2 × M5 × 12 from the horn side with washers, counterbores 11 × 5 mm; M5 × 16 only if the holes are at least 11 mm deep. Only an L-shaped hex key reaches the screws</td></tr>
+<tr><th>Release checks</th><td>23 checks (closed solid, inner surface equals the simulated one, nothing in the air volume, front face flat, ridges, fixings from the standards, slicer adds no supports), 32 planted defects all rejected <span class="tag">export's claim, not re-run here</span></td></tr>
+</table>
+
+<h3>Coverage and directivity <span class="tag">estimate (unmeasured)</span></h3>
+<figure><img src="img/directivity_map.png" alt="Two colour maps of level relative to on-axis against frequency 2 to 20 kHz and angle, horizontal and vertical, with the minus 6 dB contour" loading="lazy"><figcaption>v7 level relative to on-axis, horizontal and vertical, 2–20 kHz, from the export's 41-frequency boundary-element sweep in an infinite baffle; white line is −6 dB, dotted lines the nominal ±25° and ±12.5° edges. Plotted in this lab from the stored sweep. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+<figure><img src="img/directivity_index.png" alt="Directivity index of v7 against frequency, rising from about 10 dB at 2 kHz to about 18 dB near 15 kHz" loading="lazy"><figcaption>v7 directivity index from the same sweep. <span class="tag">estimate, unmeasured</span></figcaption></figure>
+<table>
+<tr><th>Coverage, 8 to 12.7 kHz</th><td>50–54° × 24–28° (−6 dB full width) <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Horizontal width, 5 to 12.7 kHz</th><td>44–54°; level at ±25° between −4.8 and −7.9 dB <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Horizontal width above 16 kHz</th><td>44–45° <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Vertical width at 5 kHz</th><td>38° (wider than the 25° target: the 200 mm single-apex trade) <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Directivity-index step to the 8" at crossover</th><td>1.8 dB, against 4.1 dB for Funktion-One's own Res 2SH horn computed from their published directivity data <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Ripple</th><td>Level at ±25° steps about 0.76 dB rms between neighbouring frequencies, about twice the smooth v4 (0.34 dB) <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Acoustic source position</th><td>On axis the horn behaves like a source about 205 mm behind its mouth <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Lobing with the 8"</th><td>First cancellations about ±8° either side of the axis at 5 kHz with centres 240.5 mm apart (spacing assumed; no mount yet) <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Starting crossover</th><td>5.0 kHz, 48 dB/octave Linkwitz-Riley; delay to be set by measurement <span class="tag">estimate, starting settings</span></td></tr>
+</table>
+
+<h3>Checks on the solver and model <span class="tag">verified in the export; not re-run here</span></h3>
+<ul>
+<li>Manufactured-solution test on the faceted mesh: error 2.1 % falling to 0.8 % with refinement.</li>
+<li>Independent axisymmetric finite-element solver on the design's two principal contours, kinks included: all eight cases within 0.2 dB of the boundary-element result.</li>
+<li>Halving the throat mesh moves the beamwidths by 0.2°.</li>
+<li>Funktion-One's directivity data decoded from their EASE files and proven by re-deriving the files' own stored beamwidths and directivity factors in all 20 bands.</li>
+<li>Free-standing study with the real front flange on round stand-ins, extended to 12.5 kHz, to bound the error of the infinite-baffle assumption (for the earlier v4 it moved main-beam levels by up to 1.8 dB from 5 kHz up).</li>
+</ul>
+<p class="mute">In this lab only the earlier fast test set has been run (14 November 2026, 88 of 88 passed), and that was on the v4-era files before v7 was imported.</p>
+
+<h3>Possible next horn: concept sketches <span class="tag">preliminary, estimate (unmeasured)</span></h3>
+<figure><img src="img/concepts.jpg" alt="Six rendered sketches: v7 faceted, A smooth, B long, C slot and wave shaper, D ribbon, and a compound-eye wildcard" loading="lazy"><figcaption>Directions sketched for a next horn. Only v7 is a design; the rest are sketches, untuned and not checked for printing. <span class="tag">sketch</span></figcaption></figure>
+<figure><img src="img/concepts_coverage.png" alt="Horizontal and vertical minus 6 dB coverage against frequency for v7 and four concept sketches" loading="lazy"><figcaption>Coarse simulations of the sketches: no mesh-convergence study, no second solver, shapes not tuned; C assumes a perfect wave shaper, D a flat uniform ribbon. B with a diffraction slot reaches 25° vertical by 6.3 kHz; C reaches 22–23° at the crossover only if the wave shaper works. <span class="tag">preliminary estimate, unmeasured</span></figcaption></figure>
+
+<h2>Print settings</h2>
+<p>Nothing has been printed. These are the recommended settings carried over from the export, not tried on a print, and the export's own slicer check. Filament brand is not set; temperatures and speeds are generic, not from the filament maker.</p>
+<table>
+<tr><th></th><td><b>v7 horn, one piece (also used for the 60 mm test section)</b></td></tr>
+<tr><th>Printer</th><td>256 mm-bed printer (front flange leaves 6.0 mm each side), or 300 mm-bed printer</td></tr>
+<tr><th>Material / brand</th><td>PLA (prototype), PETG (final), PETG-CF (production) / brand not set</td></tr>
+<tr><th>Nozzle</th><td>0.4 mm; hardened steel for PETG-CF (300 mm-bed printer's nozzle material unconfirmed: check before PETG-CF). With 0.6 mm: keep 0.2 mm layers and at least 4 walls (release checks run only for 0.4 mm)</td></tr>
+<tr><th>Layer height</th><td>0.20 mm (1,000 layers)</td></tr>
+<tr><th>Walls</th><td>5 loops (keeps the washer seats off sparse infill)</td></tr>
+<tr><th>Top / bottom layers</th><td>not set (slicer profile default)</td></tr>
+<tr><th>Infill</th><td>25 %, gyroid</td></tr>
+<tr><th>Supports</th><td>off; the slicer check adds none at 45° or 40° thresholds</td></tr>
+<tr><th>Orientation</th><td>driver flange on the bed, centred</td></tr>
+<tr><th>Splits and joints</th><td>none, one piece; test section = first 60 mm only</td></tr>
+<tr><th>Temperatures (nozzle / bed, textured PEI)</th><td>PLA 220 / 60 °C; PETG 250 / 75 °C; PETG-CF 260 / 75 °C</td></tr>
+<tr><th>Speed / profile</th><td>standard 0.20 mm profile with generic filament preset; outer wall up to 150 (PLA), 100 (PETG), 80 (PETG-CF) mm/s; max volumetric 12 mm³/s PETG, 10 mm³/s PETG-CF; part fan 30–50 % PETG, 20–40 % PETG-CF; seam at back; elephant-foot compensation 0.15 mm</td></tr>
+<tr><th>Other</th><td>Dry PETG 65 °C 6 h, PETG-CF 65 °C 8 h; enclosure closed for PETG and PETG-CF, open for PLA</td></tr>
+<tr><th>Brim</th><td>outer brim only, 8 mm</td></tr>
+<tr><th>Slicer and profile version</th><td>printing slicer and profile version not set; release check sliced with PrusaSlicer 2.7.2 command line (0.4 mm nozzle, 0.2 mm layers, 5 perimeters, 25 % default pattern, 240 / 80 °C, 8 mm brim, no elephant-foot compensation)</td></tr>
+<tr><th>Estimated time and mass</th><td>33 h 7 min, 512 g (release check slice above, filament density 1.27 g/cm³); 60 mm test section not sliced: not set</td></tr>
+</table>
+
+<h2>Open issues</h2>
+<ul>
+<li>Depth of the driver's two threaded holes and its exit angle are not published (request R001). Blocks the test print. The 10.5° throat entry angle is carried over from another driver.</li>
+<li>v7 and all its check results are unverified in this lab until the full suite (about 20 minutes) is re-run.</li>
+<li>No mount to the Res 2S8; the 240.5 mm centre spacing is an assumption.</li>
+<li>Above about 12.7 kHz the prediction depends on the driver's unknown wavefront.</li>
+<li>Strength of the printed driver flange and neck under the driver's weight not analysed; internal corners there are sharp.</li>
+<li>Ridges under the front flange lean 41.3°, 0.7° inside the 42° rule.</li>
+<li>Only an L-shaped hex key reaches the driver screws.</li>
+<li>Last corrections to the export's report were not independently re-audited; its lint does not cover chart and table numbers.</li>
+<li>Direction for a next horn not chosen (B with a slot, a wave-shaper study for C, or a wildcard).</li>
+</ul>
+
+<h2>Next steps</h2>
+<ol>
+<li>Measure the depth of the driver's two M5 holes.</li>
+<li>Re-run the full verification suite on v7 in this lab.</li>
+<li>Print the first 60 mm in PLA; fit driver, washers and screws with the key that will be used; check the 25.4 mm bore at the bed face.</li>
+<li>Print the whole horn; check 200.0 mm depth, 244.0 × 160.0 mm flange, 224.0 × 140.0 mm opening and a flat front face.</li>
+<li>Measure the horn alone at 4 m; then with the Res 2S8: equalise each way, set the delay by the inverted-polarity null at the crossover, check the sum; feed the sweeps back into the model.</li>
+</ol>
+
+<h2>Sources</h2>
+<ul>
+<li>Res 2S8 specification sheet D0061-00, Funktion-One, weight 3.</li>
+<li>Res 2SH specification sheet D0028-01, Funktion-One, weight 3.</li>
+<li>Res 2SH EASE directivity data, Funktion-One (decoded and self-checked in code).</li>
+<li>DH450 datasheet and drawing, B&amp;C Speakers, weight 4.</li>
+<li>Audio Transducers, ch. 6, Waveguides, Earl Geddes, weight 4 (oblate-spheroidal profile).</li>
+</ul>
+</body></html>

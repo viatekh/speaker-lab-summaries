@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HS5 Mod</title><style>:root{--bg:#fff;--fg:#1a1a1a;--mute:#666;--line:#ddd;--tag:#f0f0f0}@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mute:#999;--line:#333;--tag:#262626}}body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit}.meta,p.mute{color:var(--mute)}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}th{width:32%}.tag{background:var(--tag);border-radius:4px;padding:1px 6px;font-size:13px;white-space:nowrap}h2{margin-top:2em}td{overflow-wrap:anywhere}ol li,ul li{margin:4px 0}figure{margin:1.5em 0}figure img{max-width:100%;height:auto;display:block;border-radius:6px;background:#fff}figcaption{color:var(--mute);font-size:14px;margin-top:6px}</style></head>
+<body><p><a href="../">← Speaker Lab</a></p>
+<h1>HS5 mod</h1>
+<p>A pair of Yamaha HS5 studio monitors improved in three reversible stages: a 3D-printed tweeter waveguide, then the port and bass, then the cabinet damping.</p>
+<p class="meta">Stage: <b>stage 1 (waveguide): concept chosen, checks written, design simulation next</b> · Last updated 23 November 2026</p>
+<p class="meta">Every number below is calculated or checked in software unless labelled measured. Nothing on Tek's own speakers has been measured yet. Predictions are estimates, never final.</p>
+
+<h2>Summary</h2>
+<p>The HS5 is a two-way active monitor: a 5" woofer and a 1" dome tweeter crossing over at about 2 kHz. Its weak point is the tweeter's horizontal coverage, which swings from about 124° at 2 kHz to 155° at 3.15 kHz and then settles near 145° up to 10 kHz (third-party measurement). Stage 1 adds a small printed waveguide that bolts onto the tweeter's four faceplate screws and aims for an even 120° horizontal coverage from 2 to 10 kHz, matching the woofer at the crossover. Nothing is cut; the speakers can be returned to stock.</p>
+<p>Where it stands: the look and layout are chosen (concept A, a round matte-black guide), the verification suite and the print release gate are written and pass, and a measurement plan for the stock baseline is drafted. No waveguide has been simulated, exported or printed yet. One speaker of the pair stays stock as the before/after reference.</p>
+<p>Next: simulate concept A on the real cabinet shape, take calliper readings of the tweeter faceplate and woofer flange (the release gate blocks the part until these are known), run the baseline measurement session, and read the newly available Yamaha service manual for the crossover design.</p>
+
+<h2>Requirements</h2>
+<table>
+<tr><th>Stages</th><td>1 tweeter waveguide; 2 printed flared port and bass; 3 cabinet damping. Each stage measured before and after, so every change is attributable.</td></tr>
+<tr><th>Stage 1 part</th><td>Concept A: round oblate-spheroidal waveguide, Ø104 mm mouth, Ø110 mm flange, 20–25 mm proud of the baffle, fixed by the four tweeter screws, notched where it overlaps the woofer flange. Matte black.</td></tr>
+<tr><th>Coverage</th><td>120° horizontal × 90° vertical (−6 dB), held flat from 2 to 10 kHz. The gain is an even beamwidth, not a wider one.</td></tr>
+<tr><th>Bandwidth</th><td>Unchanged from stock: −3 dB 74 Hz–24 kHz, −10 dB 54 Hz–30 kHz (manufacturer)</td></tr>
+<tr><th>Maximum level</th><td>Unchanged from stock</td></tr>
+<tr><th>Drivers and electronics</th><td>Stock drivers, stock amplifiers (45 W woofer, 25 W tweeter) and stock crossover for now; crossover board modified or replaced in a later stage</td></tr>
+<tr><th>Size</th><td>Guide no taller than about 118 mm if centred on the tweeter, under 170 mm wide. Cabinet 170 × 285 × 222 mm (W × H × D).</td></tr>
+<tr><th>Manufacture</th><td>3D print, bolt-on, restorable; any cut needs Tek's approval first</td></tr>
+<tr><th>Use</th><td>On stands, listening at 1.5–2 m</td></tr>
+<tr><th>Measurement</th><td>Critical: measured. Horizontal polars 0–90° in 15° steps at 1.000 m, gated, same position for every session; the untouched speaker is measured each time as a control.</td></tr>
+</table>
+
+<h2>Key decisions</h2>
+<table>
+<tr><th>15 Nov 2026</th><td>Project started: the HS5 pair (not HS8), modified in three stages, waveguide first. Why: a waveguide is the largest audible change a print can make, and staging keeps each change attributable in measurement. Restorable by default.</td></tr>
+<tr><th>15 Nov 2026</th><td>Coverage target 120° H × 90° V. Why: the stock woofer measures 118–134° horizontally between 1 and 2 kHz, so 120° matches it at the crossover; the guide's job is to remove the tweeter's swing to 155°. An earlier rigid-piston estimate of the woofer (wider than 180° at 2 kHz) overstated its width and was dropped in favour of the third-party data.</td></tr>
+<tr><th>15 Nov 2026</th><td>The vertical dip around the crossover (63° at 2 kHz, 47° at 2.5 kHz) is left to the crossover stage. Why: it comes from the ≈123 mm spacing between the drivers and the crossover phase, which a waveguide cannot change.</td></tr>
+<tr><th>15 Nov 2026</th><td>Short baseline session (about 60 min): setup, control speaker, horizontal polars and distortion of the speaker to be modified. Vertical data come from the third-party set; near-field bass waits for stage 2. An extra block measuring each driver alone (+38 min) runs only if the driver leads unplug without soldering.</td></tr>
+<tr><th>15 Nov 2026</th><td>Nine appearance concepts sketched to scale (A bolt-on round guide; B full-width top plate; C whole-front skin; D Tek's idea of a horn on the lid with the old tweeter hole as a port; E–I wildcards). Finish: matte black.</td></tr>
+<tr><th>15 Nov 2026</th><td>Concept A chosen for stage 1. Why: Tek's choice; fully reversible and fits on one print bed. Concept F (bayonet swap-in mouths) is the fallback if coverage has to be settled by measurement.</td></tr>
+</table>
+
+<h2>Results</h2>
+
+<h3>Stock HS5 directivity <span class="tag">measured by a third party</span></h3>
+<p>From the Audio Science Review Klippel near-field scanner data set (weight 3, one unit, single source). Beamwidths recomputed in the lab from the published data; the decoding is checked against redundant traces (left and right horizontal traces agree to 0.48 dB RMS from 500 Hz to 10 kHz). Graphs are not reproduced here.</p>
+<table>
+<tr><th>Horizontal −6 dB beamwidth</th><td>118° at 1 kHz, 124° at 2 kHz, 155° at 3.15 kHz, 144–148° from 5 to 10 kHz</td></tr>
+<tr><th>Vertical −6 dB beamwidth</th><td>63° at 2 kHz, 47° at 2.5 kHz (crossover lobe)</td></tr>
+</table>
+<p class="mute">These set the target but do not yet count as a design basis: a second source or Tek's own baseline measurement is needed.</p>
+
+<h3>Waveguide sizing <span class="tag">estimate (unmeasured)</span></h3>
+<ul>
+<li>120° at 2 kHz needs a mouth of about 104 mm (Keele's mouth-size rule, which predicted simulated coverage within 3 % on four earlier horns in the lab).</li>
+<li>The woofer flange sits only about 45 mm below the tweeter centre, so a symmetric mouth is at most about 90 mm tall. 90° vertical at 2 kHz would need about 139 mm, so concept A controls the vertical only above about 3 kHz.</li>
+<li>A Ø104 mm plate overlaps the woofer flange by about 7 mm (the stock faceplate already overlaps it by about 5 mm); whether this is allowed depends on how far the flange stands proud, still unknown.</li>
+</ul>
+
+<h3>Concept D (horn on the lid) <span class="tag">estimate (unmeasured)</span></h3>
+<ul>
+<li>A 1.2 kHz tractrix mouth is about Ø91 × 55 mm and fits the lid.</li>
+<li>Moving the tweeter up roughly doubles the driver spacing (123 to about 240 mm, 1.4 wavelengths at 2 kHz), which worsens the vertical crossover lobe.</li>
+<li>Horn gain (assumed 5–10 dB) exceeds the ±2 dB treble trim, so D would need the crossover stage or an in-line pad.</li>
+<li>The old Ø43 mm tweeter hole as a bare port would tune the box (assumed 6.5 L) to about 114 Hz; a 55 Hz front port needs a 116 mm tube at Ø35 mm.</li>
+</ul>
+
+<h3>Checks on the tools <span class="tag">verified</span></h3>
+<ul>
+<li>Verification suite: 111 tests pass; 56 deliberately planted defects, all caught (first full run, 15 Nov 2026).</li>
+<li>Second boundary-element solver checked against exact solutions: pulsating sphere within 0.6–0.8 %, a dome stand-in on a sphere within 0.02 dB at 13 angles, mesh convergence order 2.0, power balance within 0.5 %.</li>
+<li>Baffled piston pressure at 1.000 m and 0.500 m within 0.3 % of the closed form; checking at two distances catches a dropped 1/r term that is invisible at exactly 1 m.</li>
+<li>Real cabinet shape against an infinite baffle (25 mm piston at the tweeter): at 100 Hz −5.3 dB on axis; at 2 kHz +2.7 dB on axis from edge diffraction. The design must be simulated on the finite cabinet. <span class="tag">estimate, drawing geometry ±2 mm</span></li>
+</ul>
+
+<h3>Print release gate <span class="tag">verified on a stand-in part</span></h3>
+<p>Every exported file must pass an automatic gate before printing: closed solid, version in name and header, fit on the baffle and print bed, flat back face, clean air path matching the profile within 0.05 mm, throat clear of the dome, screw holes at the drawing positions with a hex key able to reach them, wall at least 2.4 mm, no overhang beyond 42°, nothing thinner than the nozzle, and an independent slicer pass. Each check catches a planted defect. Findings so far:</p>
+<ul>
+<li>With ±1.5 mm uncertainty on the 62 mm screw square, an M4 clearance hole must be Ø7.5 mm, larger than an M4 cap-screw head, so the guide needs washers (counterbore at least Ø10 mm) or slots until the screw positions are measured.</li>
+<li>The gate fails the real part by design until the faceplate and woofer-flange dimensions are measured.</li>
+<li>Screw counterbores must stay clear of the flare, or they leave knife edges thinner than the nozzle.</li>
+</ul>
+
+<h3>Acceptance criteria for stage 1 <span class="tag">draft, not agreed</span></h3>
+<table>
+<tr><th>Horizontal beamwidth</th><td>120° ± 15° in every 1/3-octave band, 2–10 kHz</td></tr>
+<tr><th>Flatness</th><td>Spread of beamwidths 2–10 kHz ≤ 30° (stock swings 124–155°)</td></tr>
+<tr><th>Vertical beamwidth</th><td>90° ± 15°, 3–10 kHz</td></tr>
+<tr><th>Against prediction</th><td>Beamwidth within ±15 %; level at 30° and 60° within ±3 dB</td></tr>
+<tr><th>On-axis</th><td>No excursion beyond ±2 dB about the median, 1–10 kHz</td></tr>
+<tr><th>Distortion</th><td>2nd and 3rd harmonics rise ≤ 3 dB against stock</td></tr>
+</table>
+<p class="mute">Tolerances will be replaced by the repeat spread found in the baseline session.</p>
+
+<h3>Figures</h3>
+<p>No figures yet.</p>
+
+<h2>Print settings</h2>
+<p>Nothing has been sliced or printed. Planned parts, all settings not set unless stated:</p>
+<table>
+<tr><th></th><td><b>Waveguide (concept A)</b></td><td><b>Interface coupon (~30 mm)</b></td><td><b>Angle base and two clips</b></td></tr>
+<tr><th>Printer</th><td>256 mm-bed FDM, one piece</td><td>256 mm-bed FDM</td><td>256 mm-bed FDM</td></tr>
+<tr><th>Material / brand</th><td>not set (matte black finish) / not set</td><td>not set</td><td>not set</td></tr>
+<tr><th>Nozzle; layer</th><td>not set; 0.20 mm assumed by the gate</td><td>not set</td><td>not set</td></tr>
+<tr><th>Walls; top / bottom</th><td>not set (wall ≥ 2.4 mm required)</td><td>not set</td><td>not set</td></tr>
+<tr><th>Infill</th><td>not set</td><td>not set</td><td>not set</td></tr>
+<tr><th>Supports</th><td>none intended (overhang ≤ 42°)</td><td>not set</td><td>not set</td></tr>
+<tr><th>Orientation</th><td>back face on the bed (gate checks it is flat and lowest)</td><td>not set</td><td>not set</td></tr>
+<tr><th>Splits and joints</th><td>none</td><td>none</td><td>base about 240 × 130 × 3 mm, one piece</td></tr>
+<tr><th>Temperatures</th><td>not set</td><td>not set</td><td>not set</td></tr>
+<tr><th>Speed / profile</th><td>not set</td><td>not set</td><td>not set</td></tr>
+<tr><th>Brim</th><td>not set</td><td>not set</td><td>not set</td></tr>
+<tr><th>Slicer and profile version</th><td>not set (independent check: PrusaSlicer 2.9.7)</td><td>not set</td><td>not set</td></tr>
+<tr><th>Estimated time, mass</th><td>not set</td><td>not set</td><td>not set</td></tr>
+</table>
+
+<h2>Open issues</h2>
+<ul>
+<li>Faceplate interface unknown: screw thread, faceplate step, screw-head height and how far the woofer flange stands proud. The release gate blocks the part until these are measured.</li>
+<li>Crossover slope and topology are unpublished; the dome's real motion (cap, piston or break-up) is unknown and will be bracketed in every simulation.</li>
+<li>The stock directivity rests on one third-party unit; Tek's baseline measurement is needed before it counts as a design basis.</li>
+<li>Vertical coverage around the crossover (47–63°) is not fixable by the waveguide; it waits for the crossover stage.</li>
+<li>The waveguide moves the tweeter's acoustic centre against the woofer while the stock crossover stays fixed; the per-driver measurement block would quantify it.</li>
+</ul>
+
+<h2>Next steps</h2>
+<ol>
+<li>Simulate concept A on the finite HS5 cabinet against the stock response, with the production solver registered under the existing exact-solution tests first.</li>
+<li>Tek: calliper readings of the baffle, tweeter faceplate, screw square and woofer flange; print the angle base and clips.</li>
+<li>Run the baseline session (about 60 min) on both stock speakers.</li>
+<li>The Yamaha HS5 service manual was supplied on 23 Nov 2026 and is now available; ingest it for the crossover topology, driver part numbers and mounting details.</li>
+<li>Print the interface coupon, then the waveguide after independent reviews; measure stage 1 against the acceptance criteria.</li>
+</ol>
+
+<p class="mute">Sources: Yamaha, HS5 owner's manual and specifications (weight 3); Audio Science Review, Klippel near-field scanner measurements of the HS5 via spinorama (weight 3); Keele, horn mouth-size rule (weight 4, with the lab's own verified comparison); Kolbrek, horn theory part 1 (weight 3); Salvatti, Devantier and Button, port air-flow study (weight 4).</p>
+</body></html>

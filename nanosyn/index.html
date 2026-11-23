@@ -2,14 +2,15 @@
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nano Synergy Horn</title><style>:root{--bg:#fff;--fg:#1a1a1a;--mute:#666;--line:#ddd;--tag:#f0f0f0}@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mute:#999;--line:#333;--tag:#262626}}body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit}.meta,p.mute{color:var(--mute)}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}th{width:32%}.tag{background:var(--tag);border-radius:4px;padding:1px 6px;font-size:13px;white-space:nowrap}h2{margin-top:2em}td{overflow-wrap:anywhere}ol li,ul li{margin:4px 0}figure{margin:1.5em 0}figure img{max-width:100%;height:auto;display:block;border-radius:6px;background:#fff}figcaption{color:var(--mute);font-size:14px;margin-top:6px}</style></head>
 <body><p><a href="../">← Speaker Lab</a></p>
 <h1>Nano Synergy horn</h1>
-<p>A compact 3D-printed Synergy horn: one compression driver and two 6" mid cones sharing a nearly square horn with deliberately wide walls.</p>
-<p class="meta">Stage: <b>restart: horn-only design for the compression driver</b> · Last updated 23 November 2026</p>
+<p>A compact 3D-printed Synergy horn: one compression driver and two 6" mid cones sharing one horn with wide, even coverage; restarted on 23 Nov with a round horn under study.</p>
+<p class="meta">Stage: <b>restart: horn-only design for the compression driver; model checked against a measurement; first round candidates simulated</b> · Last updated 23 November 2026</p>
 <p class="meta">Every number below is calculated or checked in software unless labelled measured. Nothing about the finished horn has been measured. Predictions and crossover settings are estimates, never final.</p>
 
 <h2>Summary</h2>
 <p>This is a multiple-entry (Synergy) horn: the compression driver fires into the throat and two mid cones feed in through ports in the horn walls, so all three act as one source with even, wide coverage. It is 3D printed and meant to run with a pure 1st-order crossover.</p>
 <p><b>Restart (23 Nov 2026).</b> After a first round of simulations and the first measurement of a printed horn, the co-designer and Tek decided to restart the horn from scratch. The earlier design line (the co-designer's horn as drawn, four port variants, corner-slot ports, a planned print test and printed rear cups) is parked: its tools, checks and lessons carry over. The reason: the earlier designs could not give the compression driver a smooth enough response, and enlarging the mid ports to cut air speed traded away the steep mid roll-off the 1st-order crossover needs.</p>
-<p>The new order: (1) simulate the co-designer's measured early print and compare with his measurement, the first real check of the model (running); (2) design a horn with no ports that loads the compression driver down to 1 kHz with a smooth response suited to the 1st-order crossover, within the front size of a Funktion-One F81; (3) add the mid ports and iterate. Each target counts as met when it holds over at least 85 % of its frequency band. Every result on this page is a simulation estimate unless labelled measured.</p>
+<p>The new order: (1) simulate the co-designer's measured early print and compare with his measurement, the first real check of the model; (2) design a horn with no ports that loads the compression driver down to 1 kHz with a smooth response suited to the 1st-order crossover, within the front size of a Funktion-One F81 (depth free); (3) add the mid ports and iterate. Each target counts as met when it holds over at least 85 % of its frequency band. Every result on this page is a simulation estimate unless labelled measured.</p>
+<p><b>Where it stands (23 Nov).</b> Step 1 is done: the model was compared with the measurement of the same printed horn against five pass marks set beforehand; 2 of 5 pass. The mid model agrees in shape to about 1.1 kHz; above that, and for the compression driver below 1.5 kHz and above 5 kHz, it is not confirmed. Step 2 has begun: a 1-D study showed that loading the compression driver at 1 kHz needs a horn about 180–200 mm long, which the free depth allows. Two round, port-less horns (A and C) were then simulated: both load the driver well down to 1 kHz and give a smooth on-axis response, but both are too narrow (−6 dB coverage 36–84° against the 80–110° target). A ranks first; a 20 mm rounded mouth lip smooths its on-axis response further. <b>Next:</b> change the throat and wall shape for wider coverage, keeping the lip; the co-designer and Tek to decide.</p>
 
 <h2>Requirements</h2>
 <table>
@@ -18,9 +19,10 @@
 <tr><th>Bandwidth</th><td>100–120 Hz to 20 kHz, with a subwoofer below; full level only above about 200 Hz</td></tr>
 <tr><th>Coverage</th><td>Deliberately wider walls than 90° (106° as drawn), so directivity passes smoothly from omni at the bottom of the range to horn control from about 1.5–2 kHz. The simulation reports the coverage achieved.</td></tr>
 <tr><th>Maximum level</th><td>115 dB peak at the listener at 3–6 m (club use) above about 200 Hz; lower level at 100–200 Hz for fill, monitor and speech. Equivalent to 124.5–130.6 dB at 1 m, free field <span class="tag">derived</span></td></tr>
-<tr><th>Crossover</th><td>Co-designer's concept (21 Nov), adopted: 1st-order filters on both drivers. The mids' band-pass peak is used as a sensitivity boost: the mid low-pass is set low so the response is flat to about 1 kHz, the horn and chambers then give a steep acoustic roll-off, and the compression driver (high-pass 1st order, empirically usable with corners of 3–10 kHz because of its sensitivity and the horn's rise towards the low end) meets the mids near the horn cutoff, about 1 kHz. Target phase match ±50° over 500 Hz–10 kHz. Test crossover: a DSP with 1st-order filters. Horn loading on the compression driver down to 1 kHz is a design target not yet reached. Mid to sub: to be set. Settings stay starting settings until measured.</td></tr>
+<tr><th>Crossover</th><td>Co-designer's concept (21 Nov), adopted: 1st-order filters on both drivers. The mids' band-pass peak is used as a sensitivity boost: the mid low-pass is set low so the response is flat to about 1 kHz, the horn and chambers then give a steep acoustic roll-off, and the compression driver (high-pass 1st order, empirically usable with corners of 3–10 kHz because of its sensitivity and the horn's rise towards the low end) meets the mids near the horn cutoff, about 1 kHz. Target phase match ±50° over 500 Hz–10 kHz. Test crossover: a DSP with 1st-order filters; the finished design is to use a passive 1st-order crossover (traps allowed to tame the mid peak). Mid target for the restart (co-designer, 23 Nov): a smooth broad peak about +6 dB near 0.8 kHz, falling from about 1.3 kHz (replaces the earlier ~+12 dB peak). Mid to sub: to be set. Settings stay starting settings until measured.</td></tr>
+<tr><th>Restart targets (draft, 23 Nov; co-designer to confirm)</th><td>Horn loading (resistive part of the throat load, 1 = full): at least 0.25 at exactly 1 kHz, and at least 0.5 over ≥ 85 % of 1–3 kHz. Throat reflection |Γ| ≤ 0.35 over ≥ 85 % of 1.5–5 kHz. Compression driver on axis within ±2 dB of its 1/3-octave-smoothed curve over ≥ 85 % of 1.5–10 kHz. −6 dB beamwidth 80–110° over ≥ 85 % of 2–10 kHz, horizontal and vertical within 15° of each other, not narrowing from 800 Hz up (±10°). Round (axisymmetric) horn, mouth up to Ø250 mm.</td></tr>
 <tr><th>Mid enclosure</th><td>Stage 1: a simple reflex box tuned near 100 Hz. Stage 2: a passive cardioid with a lossy rear/side path.</td></tr>
-<tr><th>Size</th><td>Finished design: front no bigger than a Funktion-One F81, depth free (23 Nov). Parts must fit the lab's printers (256 mm and 300 mm cube beds); split parts allowed</td></tr>
+<tr><th>Size</th><td>Finished design: front no bigger than a Funktion-One F81 (250 × 353 mm), depth free (23 Nov). Parts must fit the lab's printers (256 mm and 300 mm cube beds); split parts allowed</td></tr>
 <tr><th>Use</th><td>Fill (flown or wall bracket) and pole or stand top box</td></tr>
 <tr><th>Manufacture</th><td>3D print; prototypes in PLA</td></tr>
 <tr><th>Pass rule</th><td>Each target met over at least 85 % of its frequency band (e.g. phase within ±50° over ≥ 85 % of 500 Hz–10 kHz)</td></tr>
@@ -46,9 +48,75 @@
 <tr><th>22 Nov 2026</th><td>Larger ports (P2) halve the mid port air speed but halve the roll-off above 1 kHz; P0–P3 and corner-slot variants show the same trade-off: no option meets both the air-speed limit and an 18 dB/octave roll-off (estimate).</td></tr>
 <tr><th>22 Nov 2026</th><td>First measurement: the co-designer's early printed horn, measured at home. First compared with the model of a different, later design by mistake; corrected the same day. A simulation of the measured horn itself is the model check.</td></tr>
 <tr><th>23 Nov 2026</th><td><b>Restart from scratch</b> (co-designer's proposal, adopted by Tek): keep the 1st-order crossover; first a port-less horn that loads the compression driver to 1 kHz with a smooth response, then mid ports. Earlier line parked. Pass rule: each target over ≥ 85 % of its band.</td></tr>
+<tr><th>23 Nov 2026</th><td>Depth is free; wide, even coverage still required. A hard point is added to the loading target (at least 0.25 at exactly 1 kHz). Why: the 85 % rule on a log band would otherwise let the bottom of the band, around 1.0–1.2 kHz, fail unnoticed.</td></tr>
+<tr><th>23 Nov 2026</th><td>Of four candidate shapes from the 1-D study, only A (exponential flare, cutoff 700 Hz, walls opening to 45°, 197 mm long) and C (same flare, walls to 36°, 221 mm) go to full simulation, both round, with a mouth-lip test on A. Why: both load well at 1 kHz in 1-D (0.90 and 1.00); C tests the narrower-wall idea. The shorter shapes were dropped: B (180 mm) reaches only 0.32 at 1 kHz, close to the limit, and D (130 mm) 0.04.</td></tr>
+<tr><th>23 Nov 2026</th><td>The finished design is to use a passive 1st-order crossover (co-designer). Starting values studied (below); nothing final until both drivers' impedances are measured in the horn.</td></tr>
+<tr><th>23 Nov 2026</th><td>Model-check reading corrected after an independent review of the claims: narrower agreement than first stated (see Results).</td></tr>
 </table>
 
 <h2>Results</h2>
+<h3>Model check against the measured early print (restart step 1) <span class="tag">measured vs estimate (unmeasured)</span></h3>
+<p>The first comparison of the model with a measurement of the same object: the co-designer's early printed horn, measured at home (open-backed mids, mic 0.55 m, SPL calibrated roughly, so levels are aligned at one band and compared by shape). The air model was built from the print's own model file, simulated with the boundary-element solver at 1/24 octave from 300 Hz to 9.9 kHz, with the floor reflection and the open rear included. Five pass marks were written down before any result was seen.</p>
+<table>
+<tr><th>Mid peak frequency</th><td>790 Hz measured, 730 Hz model (−7.6 %): <b>pass</b></td></tr>
+<tr><th>Mid peak height</th><td>12.9 dB measured, 13.8 dB model: <b>pass</b>, but only with the assumed open-back correction (2.9 dB off without it)</td></tr>
+<tr><th>Mid fall, 1.0–1.4 kHz</th><td>−33.4 dB/octave measured, −20.2 model: <b>fail</b> (1.0–1.6 kHz agrees only on the ungated curve)</td></tr>
+<tr><th>Compression-driver peaks and dips</th><td>5 of 11 within 5 %: <b>fail</b>; frequencies match only at 3.4–4.6 kHz, with depths about 6 dB off</td></tr>
+<tr><th>Mid level against compression driver</th><td>+7.0 dB measured, +2.6 dB model: <b>fail</b></td></tr>
+</table>
+<ul>
+<li>What the check supports: the mid chamber, port and horn model agrees in shape with the measurement to about 1.1 kHz (within ±3 dB after alignment; +5 dB at 1.2 kHz, +8–9 dB at 1.3 kHz). The notch near 1.7–1.8 kHz is placed within 1.5–6.7 %.</li>
+<li>Not confirmed: mid output at 2–3 kHz (model 1 dB low at 2 kHz, 10–11 dB low at 3 kHz, cause unknown; the open backs are one candidate and would not carry over to a closed box), so the earlier port options' second-peak figures may be optimistic by up to about 5 dB and are not used for ranking. The compression driver below 1.5 kHz (model 7.9 dB weak at 1.0–1.5 kHz: driver model or below-cutoff loading, undetermined) and above 5 kHz. Differences between the earlier port options for the compression driver are untested.</li>
+<li>Crossover: acoustic crossover 1201 Hz in the model against 1109 Hz measured, both near in phase; the summed phase stays within ±50° over 62 % of 500 Hz–10 kHz in both (target 85 %).</li>
+<li>First reading corrected the same day after an independent claims review; the figures above are the corrected ones.</li>
+</ul>
+<figure><img src="img/mc_mids.png" alt="Mid response of the early print, measured ungated and gated, against two model variants" loading="lazy"><figcaption>Mids, no filter: measured (black, grey repeat) against the model with two open-back assumptions (blue, red), aligned at 300–420 Hz; top ungated with the floor, bottom gated. <span class="tag">measured vs estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/mc_dh350h.png" alt="Compression driver response of the early print, measured against the model, with measured peaks and dips marked" loading="lazy"><figcaption>Compression driver, gated: measured (black) against the model (red), aligned at 2–6 kHz; green lines mark measured peaks and dips the model reproduces within 5 %. <span class="tag">measured vs estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/mc_sum.png" alt="Summed response with 1st-order filters, measured and modelled, with each branch" loading="lazy"><figcaption>1st-order sum (low-pass 501 Hz, high-pass 3515 Hz, equal voltage): measured sum and branches (black, grey) against the model (red, orange, violet). <span class="tag">measured vs estimate (unmeasured)</span></figcaption></figure>
+
+<h3>Horn-only pre-study: what 1 kHz loading needs <span class="tag">estimate (unmeasured), 1-D model</span></h3>
+<ul>
+<li>F81 front: 250 mm wide × 353 mm high, 221 mm deep (maker's user guide, weight 3).</li>
+<li>The mouth size is not the limit: the usual mouth-size rule is met at any size within that front. Loading at 1 kHz is set by horn length. A 1-D horn model (Webster equation, piston-in-baffle mouth) gives a loading of 0.06 at 1 kHz for the early print and 0.04 for the earlier v0.4 design, against 0.90 for candidate A (197 mm long) and 1.00 for C (221 mm).</li>
+<li>A horn of 180–200 mm plus the 62 mm driver exceeds the F81's 221 mm depth; depth was then declared free.</li>
+<li>The 1-D model is unreliable above about 3 kHz and says nothing about coverage; it flagged that exponential throats can narrow the pattern in the mid band, for the full simulation to check.</li>
+</ul>
+
+<h3>Round port-less candidates A and C (restart step 2) <span class="tag">estimate (unmeasured)</span></h3>
+<p>Conditions: axisymmetric finite-element simulation, horn set flush in a closed rigid round body Ø250 mm (the F81 width) with nothing around it, 2 m from the mouth centre, uniform flat source at a Ø25 mm throat (the real exit shape of the driver is not yet known), rigid walls, no air losses. A: exponential flare (700 Hz) opening to 45° walls, 197 mm long. C: same flare to 36° walls, 221 mm. Both mouths Ø244 mm. "A + lip": A with a 20 mm rounded mouth edge ending at Ø250, 5.3 mm shorter.</p>
+<table>
+<tr><th>Target</th><td><b>A</b></td><td><b>C</b></td><td><b>A + lip</b></td></tr>
+<tr><th>Loading at 1 kHz ≥ 0.25</th><td>0.84 pass</td><td>1.07 pass</td><td>0.79 pass</td></tr>
+<tr><th>Loading ≥ 0.5, 1–3 kHz</th><td>100 % pass</td><td>100 % pass</td><td>100 % pass</td></tr>
+<tr><th>|Γ| ≤ 0.35, 1.5–5 kHz</th><td>100 % pass</td><td>100 % pass</td><td>100 % pass</td></tr>
+<tr><th>On axis ±2 dB of smoothed, 1.5–10 kHz</th><td>99 % pass</td><td>99 % pass</td><td>100 % pass</td></tr>
+<tr><th>−6 dB beamwidth 80–110°, 2–10 kHz</th><td>2 % (42–81°) fail</td><td>3 % (36–84°) fail</td><td>0 % (45–74°) fail</td></tr>
+<tr><th>Not narrowing from 800 Hz (±10°)</th><td>70 % fail</td><td>69 % fail</td><td>73 % fail</td></tr>
+</table>
+<ul>
+<li>A ranks first: wider and less directive (mean beamwidth 2–10 kHz 59° against 54°, directivity index 13.1 against 13.6 dB), 24 mm shorter; C's extra loading wins no extra target.</li>
+<li>The coverage failure is built into this family: the exponential throat keeps the walls under 45° until about 143 mm from the driver, so the pattern narrows from about 1.6 kHz (the mid-band narrowing of exponential horns described by Keele). Mouth lip, throat size ±10 %, wavefront shape and body size do not lift the beamwidth pass share above 4 %.</li>
+<li>The 20 mm lip: worst on-axis deviation from the smoothed curve falls from 2.19 to 0.56 dB, the 6.3 kHz on-axis notch disappears and the on-axis range over 1.5–10 kHz falls from 8.5 to 6.3 dB; loading at 1 kHz 0.84 → 0.79; coverage unchanged. Worth keeping.</li>
+<li>The on-axis criterion as drafted does not separate the candidates (C passes with a 9.5 dB range). Proposed addition for the co-designer: range over 1.5–10 kHz at most 6 dB (A + lip would just miss at 6.3 dB).</li>
+<li>Loading near 1 kHz depends on the driver's real exit diameter: throat Ø ±10 % gives 0.61 / 0.84 / 1.13 at 1 kHz for A.</li>
+<li>Horizontal against vertical: an axisymmetric model is the same in both planes; comparing Ø250 and Ø353 bodies indicates the real 250 × 353 front would hold the 15° limit over 76 % (A) and 96 % (C) of 2–10 kHz.</li>
+<li>Checks <span class="tag">verified</span>: exact-solution tests (sphere and piston, 300 Hz–16 kHz) within 0.55 %, with three planted defects caught; energy balance within 0.24 %; finer mesh changes on-axis by at most 0.03 dB and beamwidth by 0.3°; two independent second solvers agree within 0.12 dB (free-standing, 0.5–4 kHz) and 0.16 dB (in a baffle, 0.35–2.8 kHz). No second solver above 4 kHz. Results above about 14 kHz are indicative only.</li>
+</ul>
+<figure><img src="img/ac_impedance.png" alt="Throat impedance of candidates A, C and A with lip: resistance, reactance and reflection coefficient against frequency" loading="lazy"><figcaption>Throat load (1 = full loading) for A, C and A + lip, with the 1-D model dotted; the triangle marks the 1 kHz hard point, grey bands the target ranges. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/ac_onaxis.png" alt="On-axis response at 2 m of candidates A, C and A with lip" loading="lazy"><figcaption>On axis at 2 m: top at constant throat velocity, bottom with a simple compression-driver model at 2.83 V (dotted below 1.5 kHz: indicative, since that driver model was 7.9 dB weak there in the model check). <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/ac_beamwidth_di.png" alt="Minus 6 dB beamwidth and directivity index against frequency for A, C and A with lip, with the 80 to 110 degree target band" loading="lazy"><figcaption>−6 dB beamwidth (top; green box = the 80–110° target over 2–10 kHz) and directivity index (bottom). <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/ac_polar_map.png" alt="Polar maps of level against angle and frequency for A, C and A with lip" loading="lazy"><figcaption>Level relative to on axis against angle and frequency; the dashed line is the −6 dB contour. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+
+<h3>Passive 1st-order crossover: starting values <span class="tag">estimate (unmeasured)</span></h3>
+<p>Worked from the measured branch responses of the early print and modelled driver impedances, in answer to the co-designer's questions. Nothing here is final until both drivers' impedances are measured in the horn.</p>
+<ul>
+<li>The real impedances move the corners: the "4 Ω" mid pair is 2.7–4.0 Ω near 800 Hz and the "16 Ω" compression driver about 10–11 Ω above 3 kHz with a 21 Ω peak at 1.6 kHz. Nominal parts for 502 Hz therefore give about 320 Hz; the low-pass needs about 0.84 mH instead.</li>
+<li>Amplifier load: minimum 3.0 Ω at 230–330 Hz, equivalent peak dissipation resistance 1.5 Ω at 400–470 Hz.</li>
+<li>No level pad is needed; mid level trades against the inductor value. A trap (4.5 Ω ∥ 0.86 mH ∥ 55 µF, in series) brings the measured +11.9 dB mid peak to about +6 dB at 835 Hz.</li>
+<li>No passive network tried exceeds 70 % of 500 Hz–10 kHz within ±50° phase (target 85 %).</li>
+<li>An 8 Ω version of the compression driver brings no benefit.</li>
+</ul>
+
 <p class="mute">The results below are from the earlier, now parked design line (up to 22 Nov) and the first measurement. They inform the restart but are not the new design.</p>
 <h3>The co-designer's first model (baseline), from its CAD file <span class="tag">geometry from the model file</span></h3>
 <p>Square 240 mm mouth, 113 mm horn depth, Ø25 mm throat, walls flaring to about 106° included, four teardrop ports, two mid baffles at 53° to the axis. It fits the 300 mm bed with 4 mm to spare, not the 256 mm bed.</p>
@@ -84,10 +152,10 @@
 <figure><img src="img/thin_gap.png" alt="Plots of the thin-gap exact test: solver error against mesh size for channel and gap faces" loading="lazy"><figcaption>Thin-gap exact test: error against mesh size, used to set the gap meshing rule. <span class="tag">verified: exact solution</span></figcaption></figure>
 
 <h3>First measurement: the co-designer's early printed horn <span class="tag">measured (home, rough calibration)</span></h3>
-<p><b>Correction (22 Nov):</b> the horn measured is the co-designer's earlier, smaller "early iteration" print (204 × 157 × 240 mm), not the design our v0.4 model is built from. The model curves below are therefore a different horn and <b>not a check of the model</b>; that check waits for a simulation of the measured horn. The measured data stand.</p>
+<p><b>Correction (22 Nov):</b> the horn measured is the co-designer's earlier, smaller "early iteration" print (204 × 157 × 240 mm), not the design our v0.4 model is built from. The model curves below are therefore a different horn and <b>not a check of the model</b>; the check against a simulation of the measured horn itself is reported above (23 Nov). The measured data stand.</p>
 <p>Measured at home (mids' backs open, mic on axis at 0.55 m, SPL set roughly; floor reflection at about 3.2 ms). Against the v0.4 model of the later design, levels aligned at one band:</p>
 <ul>
-<li>Mids: measured peak about 790 Hz, 12.9–14.1 dB above the 300–420 Hz level; the band sits 7–17 % lower than the model, falls much faster above 1 kHz (30–46 against about 20 dB/octave), and there is 12–28 dB more mid output at 2–3 kHz than predicted. Whether this reflects the model or the different geometry is not yet known; mid predictions above about 1 kHz stay qualitative until the measured horn is simulated.</li>
+<li>Mids: measured peak about 790 Hz, 12.9–14.1 dB above the 300–420 Hz level; the band sits 7–17 % lower than the model, falls much faster above 1 kHz (30–46 against about 20 dB/octave), and there is 12–28 dB more mid output at 2–3 kHz than predicted. The model check of the measured horn (above) later confirmed the mid model's shape only to about 1.1 kHz.</li>
 <li>Compression driver: ripple about 2 dB rms about the trend with main dips 7–11 dB deep; the v0.4 model of the later design shows a similar ripple size and several peak and dip frequencies within 5 % from 3 to 7.3 kHz (different horn, so indicative only).</li>
 <li>1st-order sum (low-pass 502 Hz, high-pass 3480 Hz): acoustic crossover about 1.1 kHz, the two about 32° apart; magnitude within ±3.4 dB from 500 Hz to 10 kHz; phase within ±50° over at most about 62 % of that range, so the ±50° target is not met yet (the v0.4 model of the later design also misses it).</li>
 </ul>
@@ -131,7 +199,7 @@
 <figure><img src="img/p2_print_outside.png" alt="Outside views of the printable P2 part" loading="lazy"><figcaption>Outside of the P2 print. <span class="tag">geometry of the export</span></figcaption></figure>
 
 <h2>Print settings</h2>
-<p>No print settings for the restarted design yet. The table below is for the parked P2 print test (generic slicer profile, kept for reference).</p>
+<p>No print settings for the restarted design yet: candidates A and C are simulation models only, with no CAD export, slicer run or print-log entry; every setting for them is not set. The table below is for the parked P2 print test (from its slicer output; generic slicer profile, kept for reference).</p>
 <table>
 <tr><th></th><td><b>300 mm-bed printer, one piece</b></td><td><b>256 mm-bed printer, 6-piece split</b></td></tr>
 <tr><th>Material / brand</th><td>PLA / not set</td><td>PLA / not set</td></tr>
@@ -150,21 +218,24 @@
 
 <h2>Open issues</h2>
 <ul>
-<li>How far to trust the model: the check against the measured early print is running; mid predictions above about 1 kHz stay qualitative until then.</li>
-<li>Compression-driver horn loading at 1 kHz: the earlier design reached only 0.06 of full loading there; the restart targets it first.</li>
-<li>Phase target (±50° over 500 Hz–10 kHz): not met by the measured early print (about 62 %); a delay or all-pass on the compression driver would help on paper.</li>
+<li>Coverage: both round candidates are too narrow (36–84° against 80–110° over 2–10 kHz), and the cause lies in the exponential throat; a different throat and wall shape is needed.</li>
+<li>Model trust: mids confirmed in shape only to about 1.1 kHz; mid output at 2–3 kHz and the compression driver below 1.5 kHz and above 5 kHz unconfirmed. Wanted: the compression driver's impedance on the horn, a mid measurement with the rear closed, and the horn's orientation during the measurement.</li>
+<li>Compression-driver exit geometry (diameter and angle) not known; loading at 1 kHz moves from 0.61 to 1.13 over ±10 % of throat diameter.</li>
+<li>Draft targets (85 % reading, on-axis tolerance, log band) await the co-designer's confirmation; an on-axis range limit is proposed.</li>
+<li>Phase target (±50° over 500 Hz–10 kHz): not met by the measured early print (about 62 %), and no passive network tried exceeds 70 %; a delay or all-pass on the compression driver would help on paper (about 78–86 %).</li>
+<li>Passive crossover values depend on the in-horn impedances, not yet measured; the compression driver's sensitivity reference voltage at 16 Ω is being asked of the maker (±1.5 dB).</li>
 <li>Mid port air speed against roll-off steepness: unresolved trade-off, to be revisited when ports are added to the new horn.</li>
 <li>Thermoviscous losses in gaps and ports are not modelled; peak and notch heights above 1 kHz need them.</li>
 </ul>
 
 <h2>Next steps</h2>
 <ol>
-<li>Finish the model check on the co-designer's measured early print and judge how far the simulation can be trusted (pass marks set before the comparison).</li>
-<li>Groundwork for the new horn: front-size limit, horn shapes that load the compression driver to 1 kHz within it, causes of ripple, 2–4 candidate shapes and numeric pass criteria.</li>
-<li>Simulate the port-less candidates; pick the one closest to the targets.</li>
+<li>Decide with the co-designer how to widen coverage: a new throat and wall shape for the port-less horn, keeping the 20 mm lip and the loading at 1 kHz; confirm the draft targets.</li>
+<li>Simulate the new port-less shapes; pick the one closest to the targets.</li>
 <li>Add mid ports to it and iterate; then a printed test and measurement.</li>
+<li>Measurements that would firm up the model: compression-driver impedance on the horn, mids with closed rears.</li>
 <li>Crossover settings stay starting settings until the drivers are measured in the finished cabinet.</li>
 </ol>
 
-<p class="mute">Sources: Danley, Synergy and Unity horn patents (weight 4); Faital PRO, 6RS140 data sheet (weight 4); Waslo, Synergy Calc v5 manual (weight 3); Danley Sound Labs white paper (weight 3); Salvatti, Devantier and Button, port air-flow study (weight 4); B&amp;C, DH350H data sheet (weight 4). Renders of the co-designer's model are shown with consent.</p>
+<p class="mute">Sources: Danley, Synergy and Unity horn patents (weight 4); Faital PRO, 6RS140 data sheet (weight 4); Waslo, Synergy Calc v5 manual (weight 3); Danley Sound Labs white paper (weight 3); Salvatti, Devantier and Button, port air-flow study (weight 4); B&amp;C, DH350H data sheet (weight 4); Keele, "What's so sacred about exponential horns?" (weight 4); Funktion-One, F81 user guide (weight 3). Renders of the co-designer's model are shown with consent.</p>
 </body></html>
