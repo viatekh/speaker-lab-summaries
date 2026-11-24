@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FR30 Cardioid Monitor</title><style>:root{--bg:#fff;--fg:#1a1a1a;--mute:#666;--line:#ddd;--tag:#f0f0f0}@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mute:#999;--line:#333;--tag:#262626}}body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit}.meta,p.mute{color:var(--mute)}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}th{width:32%}.tag{background:var(--tag);border-radius:4px;padding:1px 6px;font-size:13px;white-space:nowrap}h2{margin-top:2em}td{overflow-wrap:anywhere}ol li,ul li{margin:4px 0}figure{margin:1.5em 0}figure img{max-width:100%;height:auto;display:block;border-radius:6px;background:#fff}figcaption{color:var(--mute);font-size:14px;margin-top:6px}</style></head>
+<body><p><a href="../">← Speaker Lab</a></p>
+<h1>FR30 passive-cardioid mini monitor</h1>
+<p>A near-wall mini monitor: a 3" Beyma 3FR30V2 mid-high in a small 3D-printed pod whose rear vents cancel the sound behind it (passive cardioid), on top of a slim reflex box with a Beyma 8BR40/N 8" bass driver.</p>
+<p class="meta">Stage: <b>concept and lumped models; layout (single 3" or 2.5-way with two 3") under study; no CAD, nothing printed or measured</b> · Last updated 24 November 2026</p>
+<p class="meta">Every number below is a model estimate (unmeasured) unless labelled otherwise. Nothing has been measured. Crossover frequencies are starting points, never final.</p>
+
+<h2>Summary</h2>
+<p><b>What it is.</b> A very linear mini monitor for casual home listening and small studios, meant to stand with its rear within 0.3 m of the front wall. Close to a wall, sound radiated backwards reflects and cancels the direct sound at some frequencies, which shows as dips and peaks in the midrange. A passive cardioid enclosure reduces the rear radiation: the back of the 3" driver vents through acoustic resistance (a screen or foam) so that, behind the box, it arrives in antiphase with the front and cancels. The concept reference is the principle used in the Dutch &amp; Dutch 8c (cardioid mid, bass near the wall); the design, layout and appearance are Tek's own. High output is not a goal.</p>
+<p><b>Where it stands (24 Nov).</b> Stage 1 is a modular 3D-printed test rig for one 3" driver with swappable rear plates, to find a cardioid tuning by measurement. Lumped models (point sources, no box diffraction) give a first tuning: a short 65 mm chamber behind the driver and one perforated rear plate (PX80) with a resistive screen of about 420–440 rayl, which in the model holds at least 10 dB front-to-back over 300 Hz–1 kHz. The models also show the catch: once the path round the box grows to the 170–180 mm a full-width box implies, a rear plate may not work at all, so vent position on the real pod needs a boundary-element (BEM) simulation or a measurement. The 8" stays a bass-reflex section aimed at the deepest bass the slim box allows; a cardioid 8" would cut near-wall ripple further but gives up too much bass extension. A 2.5-way variant (two 3" drivers sharing the range below about 1 kHz, crossed to the 8" at 250 Hz) and the simplest normal 2-way layout are being compared; that run is done but not yet reviewed.</p>
+<p><b>Next:</b> review the 2.5-way and 2-way comparison and choose the layout; a BEM run of the real pod to place the vents; then CAD of the test rig. The prototype is tested active (DSP crossover) first; the final speaker is fully passive.</p>
+
+<h2>Requirements</h2>
+<table>
+<tr><th>Use</th><td>Very linear mini monitor that minimises boundary interference in the midrange near walls; casual home listening and small studios</td></tr>
+<tr><th>Placement</th><td>Cabinet rear within 0.3 m of the front wall. First front-wall cancellation notch for the drivers: 170–430 Hz <span class="tag">derived</span></td></tr>
+<tr><th>Drivers</th><td>Mid-high: Beyma 3FR30V2 (3" full-range), one, or two in the 2.5-way variant. Bass: Beyma 8BR40/N (8", 8 Ω)</td></tr>
+<tr><th>Mid enclosure</th><td>Passive cardioid (resistive rear vents). Trapezoidal pod: bottom as wide as the bass box, narrowing to the top</td></tr>
+<tr><th>Cardioid target</th><td>At least 10 dB at 180° against 0°, from the crossover to about three times the crossover (300 Hz–1 kHz, or 500 Hz–1.5 kHz); 15 dB stretch</td></tr>
+<tr><th>Crossover</th><td>Open: 250 Hz (2.5-way, under study), 300–500 Hz range tested so far; chosen by measurement. Fully passive in the final speaker; active on a DSP for the prototype</td></tr>
+<tr><th>Bass section</th><td>Bass reflex, aiming for the deepest extension the slim box allows (full-range monitor without a sub)</td></tr>
+<tr><th>Width</th><td>The slimmest reflex box for the 8BR40/N: 221 mm with 18 mm wooden sides, 212 mm with 4 mm printed walls <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Maximum level</th><td>No requirement. Excursion and thermal limits are reported for information only</td></tr>
+<tr><th>Manufacture</th><td>3D print, PLA for the test rig. Mid pod printed as two parts, each one piece: the baffle and the rear chamber; vent plates and screens as small separate parts</td></tr>
+<tr><th>Coverage, weight</th><td>Not set</td></tr>
+<tr><th>Measurement</th><td>Critical (will be measured): 0° and 180° sweeps for each rear-plate variant, one microphone</td></tr>
+</table>
+
+<h2>Key decisions</h2>
+<table>
+<tr><th>23 Nov 2026</th><td>Project started. Stage 1 is a modular printed test rig for one 3" driver with swappable rear-vent plates; the tuning is found by measurement.</td></tr>
+<tr><th>23 Nov 2026</th><td>Pass mark at least 10 dB rear rejection, 15 dB stretch. Why: a modest first goal for a passive rig <span class="tag">assumption</span>.</td></tr>
+<tr><th>23 Nov 2026</th><td>Driver is the 3FR30V2, not the older 3FR30 (different Fs, cutout and depth). Datasheet T/S values used provisionally: Fs 133 Hz, Qts 0.51, Vas 1 L, Sd 30 cm², Xmax 2 mm. Rig CAD waits for the fixing holes and terminals of the real driver.</td></tr>
+<tr><th>23 Nov 2026</th><td>Plate set cut from six to two: <b>P0</b> blank (sealed reference) and one fully perforated plate; smaller vents are made by taping over openings. Ducts and 10–20 cm² ports dropped. Why: their air mass puts the vent resonance inside the band.</td></tr>
+<tr><th>23 Nov 2026</th><td>The rig is built at the width of the bass box it will sit on. Why: box and baffle size change the cardioid tuning, which the lumped model cannot show.</td></tr>
+<tr><th>23 Nov 2026</th><td>Purpose: linear near-wall monitor, not loud. No SPL requirement; the crossover rests on linearity and near-wall behaviour.</td></tr>
+<tr><th>23 Nov 2026</th><td>Perforated plate revised to <b>PX80</b>: 80 mm round perforated field, about 60 % open (30 cm², holes about 8 mm), 3 mm thick, screen clamped behind; short chamber 80 mm bore × 65 mm deep. One plate serves both 300 Hz and 500 Hz crossovers. Why: the 500 Hz–1.5 kHz band needs a short, narrow chamber.</td></tr>
+<tr><th>23 Nov 2026</th><td>Mid pod: trapezoid; baffle and rear chamber each printed as one solid part.</td></tr>
+<tr><th>23 Nov 2026</th><td>8" stays bass reflex, aiming for full-range extension; the cardioid 8" is set aside. Why: reflex 20 L reaches F3 about 53 Hz against 95–140 Hz for a cardioid 8" <span class="tag">estimate (unmeasured)</span>.</td></tr>
+<tr><th>23 Nov 2026</th><td>A 2.5-way variant added to the study (two 3" drivers, 250 Hz to the 8"), and the simplest normal 2-way layout (one 3" over a front-firing 8"). A rear-firing 8" with side vents on the mid pod is also under study.</td></tr>
+<tr><th>23 Nov 2026</th><td>Fully passive final speaker; the prototype is tested active on a DSP first, and the passive crossover copies the DSP settings that work.</td></tr>
+</table>
+
+<h2>Results</h2>
+<h3>Rear-plate tuning for the 3" (lumped models) <span class="tag">estimate (unmeasured)</span></h3>
+<p>Two point sources (cone and vent) in free field, no box diffraction, screen as a pure resistance, provisional datasheet driver data. Three models of the chamber: lumped, duct, and ladder (with the annulus round the 69 mm magnet). The figure quoted is the worst of the three. Front/back at 2 m.</p>
+<table>
+<tr><th>PX80, short chamber, 300 Hz–1 kHz</th><td>13.5 dB minimum at 420 rayl; 10.1 dB worst case over the assumption envelope; best screen 300–570 rayl</td></tr>
+<tr><th>PX80, short chamber, 500 Hz–1.5 kHz</th><td>8.4 dB minimum at 440 rayl (target 10 dB: not met); 5.8 dB worst case; at least 10 dB up to 1355–1579 Hz</td></tr>
+<tr><th>With a 50 mm spacer ring (115 mm deep)</th><td>9.6 dB over 300 Hz–1 kHz; below 0 dB over 500 Hz–1.5 kHz. Lowest priority</td></tr>
+<tr><th>Longer path round the box</th><td>300 Hz band falls to 10.0 dB at 100 mm and 5.4 dB at 125 mm; both bands below 0 dB from 175 mm. The shortest path round a 212–221 mm box is about 171–176 mm <span class="tag">derived geometry</span>, so a rear plate on the full-width pod may not work; vents near the baffle or on the sides may be needed. Only BEM or a measurement can settle this</td></tr>
+<tr><th>Excursion (information only)</th><td>Largest peak level within Xmax at 1 m, equalised LR4: about 102.5–102.9 dB crossed at 300 Hz, 115.4–116.2 dB at 500 Hz</td></tr>
+</table>
+<figure><img src="img/px80_front_back.png" alt="Front-to-back ratio against frequency for the PX80 plate in three models, for two bands and with a spacer ring" loading="lazy"><figcaption>Front/back ratio at 2 m for PX80 on the short chamber (left, middle) and with the 50 mm ring (right), in the lumped, duct and ladder models; grey = target band, dotted line = 10 dB. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/path_sensitivity.png" alt="Minimum front-to-back ratio in band against the external path length between cone and vent" loading="lazy"><figcaption>Worst in-band front/back against the path length between cone and vent: rejection collapses as the path grows towards the width of the real box. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+
+<h3>Near-wall response <span class="tag">estimate (unmeasured)</span></h3>
+<p>Rigid wall behind, listener at 1 m on axis, 8" modelled as an omnidirectional LR4 low-pass source, cabinet rear 0.05–0.30 m from the wall. Ripple is the peak-to-dip range of the on-axis response with the wall, relative to free field.</p>
+<table>
+<tr><th>3" mid, 150 Hz–1 kHz</th><td>Sealed mid 9.5–15.6 dB; cardioid mid crossed at 300 Hz 4.8–6.9 dB; at 500 Hz 8.9–9.7 dB. 300 Hz is better in all 18 cases, by 2.0–4.4 dB</td></tr>
+<tr><th>Whole system, 100 Hz–1 kHz (box depth 0.35 m)</th><td>All omnidirectional 8.1–10.9 dB; reflex 8" + cardioid 3" at 300 Hz 6.7–6.9 dB; pure cardioid 8" (200 mm path) + cardioid 3" crossed at 500 Hz 1.9–2.1 dB. The ranking is robust; the 1–3 dB values rest on unmeasured rejection</td></tr>
+</table>
+<figure><img src="img/near_wall_3in.png" alt="On-axis response with a wall behind for six box depth and wall gap cases, sealed against cardioid mid" loading="lazy"><figcaption>On-axis level with the wall relative to free field: sealed mid (black) against the cardioid mid crossed at 300 Hz (blue) and 500 Hz (orange), six placements. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/near_wall_system.png" alt="On-axis near-wall response of several two-way system layouts at three wall gaps" loading="lazy"><figcaption>Whole system near a wall, three gaps: all omnidirectional (dotted) against reflex, hybrid and cardioid 8" options with a cardioid 3". <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+
+<h3>8": cardioid or reflex <span class="tag">estimate (unmeasured)</span></h3>
+<ul>
+<li>A pure cardioid 8" holds 10 dB rejection up to 0.37·c/d at best: 362 Hz for a 350 mm path, 632 Hz for 200 mm.</li>
+<li>Bass loss: unequalised F3 95 Hz (path 350 mm) and 131 Hz (200 mm), against 62 Hz sealed 15 L and 53 Hz reflex 20 L tuned to 45 Hz.</li>
+<li>Hybrid (the rear vent also acting as a tuned port) rejected: 3.2–7.4 dB more at 63 Hz but only −0.1 to −0.3 dB rejection over 100–300 Hz (effectively a reflex box with a lossy port).</li>
+<li>Two datasheet revisions of the 8BR40/N disagree (Fs 30 against 33.2 Hz, Qts 0.39 against 0.57, Vas 89 against 61 L); which one matches the drivers to be used is unknown. Results are given for both.</li>
+<li>Outcome: reflex kept for bass extension (decision above).</li>
+</ul>
+<figure><img src="img/bass_8in_extension.png" alt="On-axis level and maximum level of the 8-inch driver for sealed, reflex and cardioid boxes, both datasheet revisions" loading="lazy"><figcaption>8BR40/N: on-axis level relative to the sealed plateau (top) and largest level within Xmax and 20 V (bottom) for sealed, reflex and pure cardioid boxes; left and right are the two datasheet revisions. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+
+<h3>2.5-way and simple 2-way comparison <span class="tag">run done, not yet reviewed</span></h3>
+<p>The run comparing the single 3" 2-way, the 2.5-way with two 3" drivers (shared or separate chambers), front- or rear-firing 8", reflex alignments of the slim box and side-vent paths is done. Its results are not published here until reviewed. Estimate (unmeasured).</p>
+
+<h3>How far the models are checked</h3>
+<ul>
+<li><span class="tag">verified</span> The first lumped model solves its stated network exactly: 65 exact-solution tests pass and 41 planted defects are all caught, written independently of the model. Scope: that one model only.</li>
+<li>The duct and ladder chamber models, the 8" model and the 2.5-way run are new code not yet independently checked: checks for them have been written but not yet reviewed; the authors' own limit and identity checks pass.</li>
+<li>Not verified at all: how a real driver in a printed chamber matches two point sources; box diffraction; vent end corrections (an assumption, varied ×0.5–1.5); screen flow resistance of real materials; driver data (from datasheets, not measured).</li>
+<li>Measured: nothing.</li>
+</ul>
+
+<h2>Print settings</h2>
+<p>No print settings yet: no CAD, slicer run or print-log entry exists. Planned parts: mid-pod baffle, mid rear chamber, P0 blank plate, PX80 perforated plate, screen clamp frames.</p>
+<table>
+<tr><th>Printer</th><td>256 mm-bed printer (planned); every part to fit one bed</td></tr>
+<tr><th>Material / brand</th><td>PLA (test rig) / not set</td></tr>
+<tr><th>Nozzle; layer height</th><td>not set; not set</td></tr>
+<tr><th>Walls; top / bottom layers</th><td>not set; not set</td></tr>
+<tr><th>Infill % and pattern</th><td>not set</td></tr>
+<tr><th>Supports; orientation</th><td>not set; not set</td></tr>
+<tr><th>Splits and joints</th><td>None planned: baffle and chamber one piece each; plates bolt to the chamber (fixings not set)</td></tr>
+<tr><th>Temperatures; speed / profile</th><td>not set; not set</td></tr>
+<tr><th>Brim</th><td>not set</td></tr>
+<tr><th>Slicer and profile version</th><td>not set</td></tr>
+<tr><th>Estimated time, mass</th><td>not set</td></tr>
+</table>
+
+<h2>Open issues</h2>
+<ul>
+<li>Vent position on the full-width pod: the lumped models suggest a rear plate may fail once the path round the box reaches about 170 mm; needs BEM or a measurement.</li>
+<li>3FR30V2 fixing holes, cutout and terminals not known; rig CAD waits for them. Datasheet values are provisional (PDF not yet in the library).</li>
+<li>Which 8BR40/N datasheet revision matches the drivers to be used.</li>
+<li>Layout: single 3" 2-way, 2.5-way, or rear-firing 8" with side vents; the comparison run awaits review.</li>
+<li>Fully passive: a 250–300 Hz passive crossover needs large inductors; no DSP EQ or delay in the final speaker, so any cardioid bass tilt or placement gain must be handled passively.</li>
+<li>Flow resistance of each screen material to be measured; for the 500 Hz–1.5 kHz band the best screen in the model spans 200–840 rayl over the assumption envelope.</li>
+<li>Independent checks of the newer models to be reviewed and recorded.</li>
+</ul>
+
+<h2>Next steps</h2>
+<ol>
+<li>Review the 2.5-way and 2-way comparison; choose the layout.</li>
+<li>BEM simulation of the real trapezoidal pod on the 212–221 mm box, to place the vents.</li>
+<li>Test-rig CAD (baffle, chamber, P0, PX80), checks before export, slicer run.</li>
+<li>Print, then measure: impedance of PX80 without a screen (gives the vent resonance and so the end correction), then 0° and 180° sweeps per screen.</li>
+<li>Active tests on a DSP; crossover settings stay starting settings until the drivers are measured in the finished cabinet.</li>
+</ol>
+
+<p class="mute">Sources: Balogh, US patent 4,054,748, cardioid radiator (weight 3); Gunness, US patent 10,123,111, passive cardioid loudspeaker (weight 3); Meyer Sound, US patent 8,428,284, passive low-frequency directional loudspeaker (weight 3); Beyma, 8BR40/N data sheets, two revisions (weight 4); Beyma, 3FR30V2 data sheet (weight 4, provisional, read from excerpts). Concept reference: Dutch &amp; Dutch 8c.</p>
+</body></html><!-- in sync with lab commit 018d0e2 (2026-11-24) -->

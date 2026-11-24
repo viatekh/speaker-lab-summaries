@@ -3,72 +3,88 @@
 <body><p><a href="../">← Speaker Lab</a></p>
 <h1>F81-style compact two-way</h1>
 <p>A compact two-way speaker in the class of the F81: an 8" cone and a 1" compression driver on a 3D-printed horn, cheap and easy to make, with excellent accuracy.</p>
-<p class="meta">Stage: <b>scoping</b> · Last updated 21 November 2026</p>
-<p class="meta">The project is at scoping stage. Nothing has been designed, simulated, printed or measured yet. The requirements below are targets, not results.</p>
+<p class="meta">Stage: <b>sizing</b> · Last updated 23 November 2026</p>
+<p class="meta">Nothing has been built, printed or measured. Every result on this page is an <b>estimate (unmeasured)</b>; the calculations behind them are independently checked (<b>verified</b> arithmetic, not verified performance). The crossover is a starting point only.</p>
 
 <h2>Summary</h2>
 <p><b>What it is.</b> An own design in the same class as the F81 compact two-way (8" + 1" on a horn), not a copy of its geometry or branding. Several matched units (possibly 4–6) are planned for a multi-point listening system in a small bar or room, possibly ambisonic or quadraphonic, with subwoofer(s) below about 80–100 Hz.</p>
-<p><b>Where it stands.</b> Four rounds of scoping questions are answered: use, level, coverage, size, weight, mounting, crossover approach and measurement class. Still open: budget and finish details. A first piece of desk research compared stock 8" coaxial drivers with an 8" + 1" driver on a printed horn (see Results).</p>
-<p><b>What's next.</b> A comparison study of the two layouts (8" + printed horn against coaxial 8" + printed waveguide), then the choice of layout and drivers.</p>
+<p><b>Where it stands.</b> Layout chosen (23 Nov 2026): an 8" woofer (8NDL51) and a 1" compression driver (DH450) on a printed 90° × 60° horn, rather than a coaxial 8". The first sizing pass gives a vented plywood box of 300 × 450 × 260 mm (21.1 L net, tuned to 66 Hz) with two printed slot ports, a 139 × 198 mm horn mouth, a 2.0 kHz crossover as a starting point and a mass of 11.05 kg, all inside the size and weight limits. The compression driver has ample margin at the target level; the woofer sets the box's limit. 25 independent checks agree with the stored results, and 139 planted errors were all caught.</p>
+<p><b>What's next.</b> Design the horn profile and simulate it (BEM), then model the box and horn in CAD with the driver fixings from the drawings.</p>
 
 <h2>Requirements</h2>
 <table>
-<tr><th>Type</th><td>Compact two-way: 8" cone + 1" compression driver on a printed horn, or coaxial 8" + printed waveguide; both to be compared first</td></tr>
+<tr><th>Type</th><td>Compact two-way: 8" cone + 1" compression driver on a printed 90° × 60° horn (layout chosen 23 Nov 2026)</td></tr>
 <tr><th>Use</th><td>Multi-point listening system (possibly ambisonic or quadraphonic), listening bar, "deep listening"</td></tr>
 <tr><th>Bandwidth</th><td>About 80–100 Hz to 18–20 kHz, subwoofer(s) below</td></tr>
-<tr><th>Coverage (H × V)</th><td>About 90° × 60°, wide and even, overlapping neighbouring boxes. For reference, the F81 is specified at 90° × 70°, 95 Hz–19 kHz, 98 dB 1 W/1 m, 5.2 kg <span class="tag">F81 user guide v1.2, 2011, w3</span>; its successor F81.2 at 90° × 60°, 110 Hz–20 kHz, 7.4 kg, 353 × 250 × 228 mm <span class="tag">F81.2 spec sheet, w3</span></td></tr>
-<tr><th>Maximum level</th><td>About 100 dB peaks at the listening positions (2–4 m), plus about 6 dB headroom <span class="tag">headroom: assumption</span></td></tr>
-<tr><th>Drivers</th><td>New drivers, chosen for the result</td></tr>
-<tr><th>Crossover</th><td>Passive network in each box; a separate DSP processor does system EQ, delay and the sub crossover, one output per box. Crossover point not set; an earlier lab study found about 2 kHz matches an 8" to an 80° horn <span class="tag">estimate (unmeasured)</span></td></tr>
+<tr><th>Coverage (H × V)</th><td>About 90° × 60°, wide and even, overlapping neighbouring boxes; 60° vertical is a hard target for the horn. For reference, the F81 is specified at 90° × 70°, 95 Hz–19 kHz, 98 dB 1 W/1 m, 5.2 kg <span class="tag">F81 user guide v1.2, w3</span>; its successor F81.2 at 90° × 60°, 110 Hz–20 kHz, 7.4 kg, 353 × 250 × 228 mm <span class="tag">F81.2 spec sheet, w3</span></td></tr>
+<tr><th>Maximum level</th><td>100 dB instantaneous peaks at the listener (2–4 m), plus about 6 dB headroom: 106 dB peak at 4 m from one box <span class="tag">headroom: assumption</span></td></tr>
+<tr><th>Drivers</th><td>Woofer 8NDL51; HF DH450 (16 Ω) for the prototype</td></tr>
+<tr><th>Crossover</th><td>Passive network in each box; a separate DSP processor does system EQ, delay and the sub crossover, one output per box. Starting point 2.0 kHz LR4 <span class="tag">estimate (unmeasured)</span>; final only from in-box measurements</td></tr>
 <tr><th>Maximum size (W × H × D)</th><td>≤ about 300 × 450 × 300 mm</td></tr>
 <tr><th>Maximum weight</th><td>≤ about 12 kg</td></tr>
 <tr><th>Mounting</th><td>Wall or ceiling brackets, angled down; the box needs fixing points</td></tr>
 <tr><th>Room</th><td>Small bar or room, about 5–8 m across; listeners 2–4 m from each speaker</td></tr>
 <tr><th>Finish</th><td>Custom colour or grille design; details to come</td></tr>
-<tr><th>Manufacture</th><td>Plywood box (simple straight-cut woodwork) + 3D-printed horn and port</td></tr>
+<tr><th>Manufacture</th><td>Plywood box (simple straight-cut woodwork) + 3D-printed horn and ports</td></tr>
 <tr><th>Quantity</th><td>Possibly 4–6; all units must match closely</td></tr>
 <tr><th>Measurement</th><td>Critical: the prototype is measured fully (about 1.5–2 h), each further unit spot-checked for matching (about 10 min)</td></tr>
 </table>
 
 <h2>Key decisions</h2>
 <table>
-<tr><th>21 Nov 2026</th><td>Project started as an own design in the F81 class, not a copy. Why: Tek's brief. An earlier lab two-way study (8" in about 35 L vented + 1" compression driver on a printed horn) is nearly the same speaker, so its driver shortlist, horn sizing and checks are reused.</td></tr>
-<tr><th>21 Nov 2026</th><td>Use: multi-point listening system; new drivers bought for the best result; ply box + printed horn; possibly 4–6 units. Consequence <span class="tag">derived</span>: multi-point and ambisonic playback need closely matched units and smooth, wide off-axis response, so unit-to-unit consistency and directivity matter more than maximum level.</td></tr>
-<tr><th>21 Nov 2026</th><td>Sub(s) below about 80–100 Hz; about 100 dB peaks at 2–4 m; class critical; compare 8" + printed horn with coaxial 8" + printed waveguide before choosing the layout.</td></tr>
-<tr><th>21 Nov 2026</th><td>Passive crossover in each box, DSP for system EQ, delay and sub crossover; wall or ceiling brackets, angled down. Why: passive in the box keeps one DSP output per speaker; the passive network will be designed from in-box measurements.</td></tr>
-<tr><th>21 Nov 2026</th><td>Small bar or room about 5–8 m across; about 90° × 60° even coverage; box ≤ about 12 kg and ≤ about 300 × 450 × 300 mm; custom colour or grille design.</td></tr>
+<tr><th>21 Nov 2026</th><td>Project started as an own design in the F81 class, not a copy. An earlier lab two-way study of nearly the same speaker supplies the driver shortlist, horn sizing method and checks.</td></tr>
+<tr><th>21 Nov 2026</th><td>Scoping: multi-point listening use; new drivers bought for the best result; ply box + printed horn; possibly 4–6 units; sub(s) below about 80–100 Hz; class critical; passive crossover in each box with DSP for system EQ, delay and sub crossover; wall or ceiling brackets; box ≤ about 12 kg and ≤ about 300 × 450 × 300 mm. Consequence <span class="tag">derived</span>: multi-point playback needs closely matched units and smooth off-axis response, so consistency and directivity matter more than maximum level.</td></tr>
+<tr><th>23 Nov 2026</th><td><b>Layout: 8" + 1" compression driver on a printed 90° × 60° horn</b>, not a coaxial 8". Why: stock 8" coaxials have round 90–100° patterns, so none gives 60° vertical; none offers a replaceable or printable waveguide; using the cone as the horn wall is a known mismatch <span class="tag">Keele, w5</span> with cone-motion modulation <span class="tag">Hinson, w3</span>; the F81.2 is itself this layout. No coaxial hedge sample.</td></tr>
+<tr><th>23 Nov 2026</th><td>"100 dB peaks" means instantaneous peaks at the listener. Narrowing of the vertical coverage to about ±15° around the crossover accepted, with brackets aimed so listeners sit inside it. Why: inherent to a separate woofer and horn at this spacing (see Results).</td></tr>
+<tr><th>23 Nov 2026</th><td>Box shell 15 mm birch ply (not 18 mm). Why: 18 mm is at the 12 kg limit (12.06 kg at nominal density); 15 mm leaves 0.95 kg margin. Margins, not limits.</td></tr>
+<tr><th>23 Nov 2026</th><td>Port tuning lowered from 70 to 66 Hz with the same two 30 cm² slots, now 150 mm long. Why: port air speed at 70 Hz was only 0.6 dB under the 10 m/s noise onset; at 66 Hz it is 2.3 dB under, at the cost of a few tenths of a dB at 90 Hz.</td></tr>
 </table>
 
 <h2>Results</h2>
-<p>No design results yet: nothing has been simulated, printed or measured. Desk research from manufacturer data so far:</p>
-<ul>
-<li>No stock pro 8" coaxial reviewed gives 90° × 60°: all are round (conical) patterns, quoted at 50°, 70°, 90° or 100° depending on model <span class="tag">manufacturer datasheets, w4</span>. One maker's own polar plot narrows from about 100° at 2 kHz to well under 80° at 12–16 kHz (read by eye). A 90° × 60° target is a rectangular pattern a round coaxial does not give <span class="tag">derived</span>.</li>
-<li>Replacing a coaxial's stock waveguide with a printed one is not a bolt-on job on any model reviewed: the HF exit geometry is not published beyond one diameter, and no front-attachment interface is published. A printed part could only sit in front of the cone, with untested effect <span class="tag">derived, assumption</span>.</li>
-<li>Every 8" woofer on the earlier study's shortlist is 141–163° wide (−6 dB) at 1.5 kHz and narrows to 80° only at about 2.2 kHz, so a crossover of 1.8–2.2 kHz matches an 80° horn better than 1.5 kHz <span class="tag">estimate (unmeasured)</span>.</li>
-<li>Candidate drivers carried over for the comparison study: 8PR200 or 8NDL51 woofers; DH450, DE250 or HF108 compression drivers; coaxial candidates 8CXN51, 8HX200, 8HX230, 8CX21. None chosen.</li>
-</ul>
+<p>Sizing pass 1, 23 Nov 2026. All figures <span class="tag">estimate (unmeasured)</span>; arithmetic <span class="tag">verified</span> by 25 independent checks (1191 comparisons, 139 of 139 planted errors caught). Formula sources: Small/Thiele lumped model (textbook, w5); port rules <span class="tag">Salvatti, Devantier &amp; Button 2002, w4</span>; horn mouth rule <span class="tag">Keele 1975, w4</span>; driver datasheets (w4).</p>
+<table>
+<tr><th>Box</th><td>Vented, 300 × 450 × 260 mm external (W × H × D), 15 mm birch ply, net 21.1 L, tuned to 66 Hz, F3 about 60 Hz (F6 55 Hz). Sealed was rejected: overdamped (Qtc 0.47, F3 125 Hz) and needs nearly twice the cone travel when equalised.</td></tr>
+<tr><th>Ports</th><td>Two printed slots of 30 cm² each (about 30 × 100 mm), 150 mm long, beside the horn; peak air speed 7.6 m/s at the 4 m target in a half space (2.3 dB under 10 m/s). Pipe resonance about 880 Hz, in the woofer band: to be checked by measurement. Length to be trimmed by impedance sweep.</td></tr>
+<tr><th>Woofer excursion</th><td>3.2 mm peak at 115 Hz for 106 dB peak at 4 m (half space, 90 Hz LR4 high-pass), against Xmax 7 mm: 6.8 dB margin. Hung clear of any wall (free-field bound): 6.4 mm, 0.8 dB margin.</td></tr>
+<tr><th>Woofer amplifier</th><td>127–179 W into 8 Ω for 4 m (so a 200 W channel); 32–45 W for 2 m.</td></tr>
+<tr><th>HF driver (DH450)</th><td><b>OK</b>: 10.1 V peak (8.0–14.3 V) at the target; thermal margin 19 dB against the 20 W rating (7.9 dB worst case); peak-voltage margin 9.8 dB (6.8 dB worst case). The same at 1.8, 2.0 and 2.2 kHz. Passive pad about 13 dB (10–16.5 dB). Its sensitivity is quoted on a different (90° × 40°) horn, taken ±3 dB on ours <span class="tag">assumption</span>.</td></tr>
+<tr><th>Horn mouth</th><td>Keele's rule gives 139 × 208 mm for 90° × 60° at 2.0 kHz; the baffle allows 204 mm of height above the woofer, so the mouth is 139 × 198 mm: 90° horizontal from 2.0 kHz, 60° vertical from 2.10 kHz. About 150 mm deep; a two-stage (slot-type) flare. Prints in one piece, no split.</td></tr>
+<tr><th>Crossover</th><td>2.0 kHz LR4 acoustic as the starting point: the 8" cone, as a piston, is 90° wide at 2042 Hz (1898–2278 Hz over the effective-radius range). Final only from in-box measurements.</td></tr>
+<tr><th>Vertical lobing</th><td>Driver centres 215 mm apart (1.25 wavelengths at 2 kHz): first nulls at ±23.6°, −6 dB window about ±15° at the crossover. <b>60° vertical cannot be held through the crossover</b> with a separate 8" and horn in this box; it would need under 172 mm spacing. The HF acoustic centre sits about 150 mm (105–200 mm) behind the woofer's <span class="tag">assumption</span>, so the passive network must be phase-matched from measurements.</td></tr>
+<tr><th>Mass</th><td>11.05 kg at nominal ply density (10.73–11.46 kg over 670–760 kg/m³) <span class="tag">Riga plywood handbook, w4</span>, margin 0.95 kg to 12 kg; about 2.8 kg of the total is assumed items (crossover, grille, fixings, wiring).</td></tr>
+</table>
 
 <h2>Figures</h2>
-<p>No figures yet.</p>
+<figure><img src="img/sizing_v1_box.png" alt="Three stacked plots for the 21.1 litre vented box against a sealed box: response with and without the 90 Hz high-pass, peak cone excursion well under the 7 mm Xmax line, and peak port air speed peaking at about 7.6 m/s under the 10 m/s line." loading="lazy"><figcaption>Box response, cone excursion and port air speed at 106 dB peak at 4 m, vented 66 Hz against sealed. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/sizing_v1_beamwidth.png" alt="Beamwidth against frequency: the 8 inch piston narrows through 90 degrees at about 2 kHz, crossing the horn's 90 degree horizontal line; the horn's vertical reaches 60 degrees at about 2.1 kHz." loading="lazy"><figcaption>Woofer piston beamwidth against the horn's horizontal and vertical coverage (Keele's rule); dotted lines at 1.8, 2.0 and 2.2 kHz. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
+<figure><img src="img/sizing_v1_lobing.png" alt="Vertical response at the crossover frequency for the printed horn at 215 mm spacing and a smaller stock horn at 188 mm: main lobe about plus or minus 15 degrees wide at minus 6 dB, nulls near plus 20 and minus 25 to 35 degrees." loading="lazy"><figcaption>Vertical lobing at 1.8, 2.0 and 2.2 kHz crossovers: printed 139 × 198 mm horn (left) and a smaller stock 90° × 60° horn for comparison (right); shaded band is the ±30° target. <span class="tag">estimate (unmeasured)</span></figcaption></figure>
 
 <h2>Print settings</h2>
-<p>No print settings yet.</p>
+<p>Nothing printed or sliced yet. Planned parts:</p>
+<table>
+<tr><th>HF horn (planned)</th><td>Printer: not set (fits either lab printer: envelope about 158 × 163 × 222 mm). Material: PETG assumed for the mass estimate, brand not set. Nozzle, layer height, walls, top/bottom layers, infill % and pattern, supports, orientation, temperatures, speed/profile, brim, slicer and profile version: not set. Splits and joints: one piece, no split. Estimated time: not set. Estimated mass 0.63 kg <span class="tag">estimate</span>.</td></tr>
+<tr><th>Port slots ×2 (planned)</th><td>Printer: not set. Material: PETG assumed, brand not set; 3 mm wall assumed. Nozzle, layer height, top/bottom layers, infill % and pattern, supports, orientation, temperatures, speed/profile, brim, slicer and profile version: not set. Splits and joints: not set. Estimated time: not set. Estimated mass 0.44 kg for the pair, including a 1.5× allowance for flares, flange and ribs <span class="tag">estimate</span>.</td></tr>
+</table>
 
 <h2>Open issues</h2>
 <ul>
-<li>Layout not chosen: 8" + printed horn or coaxial 8" (the research above leans against a coaxial for a 90° × 60° pattern, but the comparison study is still to run).</li>
-<li>Crossover point not set.</li>
-<li>Finish details (colour, grille design) to come.</li>
-<li>Geometry-driving constraints still to pin down before the first geometry pass: sub crossover frequency, amplifier power, woofer cone profile.</li>
-<li>Compression driver fixing depth is unpublished for one candidate; fixings must be modelled from the driver drawing before any horn is printed.</li>
+<li>Horn profile not yet designed: the two-stage flare and mouth diffraction need BEM; Keele's rule gives only the mouth size.</li>
+<li>Vertical coverage narrows to about ±15° around the crossover (accepted); bracket angle must aim listeners into it.</li>
+<li>Acoustic-centre offset between the drivers is assumed; the passive network needs in-box measurements.</li>
+<li>Port pipe resonance near 880 Hz falls in the woofer band.</li>
+<li>No published off-axis data for the woofer; the piston model ignores cone break-up (the datasheet shows a rise at 2.7–3.5 kHz).</li>
+<li>The HF driver's sensitivity is only known on a different horn; its fixing-hole depth is unpublished.</li>
+<li>Mass carries about 2.8 kg of assumed items; the actual ply sheet should be weighed.</li>
+<li>More HF drivers will be needed for 4–6 units.</li>
+<li>Finish (colour, grille design) and amplifier power still open.</li>
 </ul>
 
 <h2>Next steps</h2>
 <ol>
-<li>Settle the remaining scoping answers.</li>
-<li>Run the layout comparison study (8" + printed horn against coaxial 8").</li>
-<li>Choose drivers; write exact-solution tests and the release gate; then design and simulate the horn and box.</li>
-<li>Print an interface coupon, then the prototype; measure it fully; design the passive crossover from in-box measurements.</li>
+<li>Design the horn profile (90° × 60°, 139 × 198 mm mouth) and simulate it with BEM, with a second solver and mesh-convergence checks.</li>
+<li>Model the box, horn and ports in CAD, with driver fixings and tool access taken from the driver drawings; write the release gate before the first export.</li>
+<li>Independent reviews; print an interface coupon, then the horn and ports; build the prototype.</li>
+<li>Measure the prototype in the box (critical class) and design the passive crossover from those measurements.</li>
 </ol>
 </body></html>
-<!-- in sync with lab commit 59e9255 (2026-11-23) -->
+<!-- in sync with lab commit 018d0e2 (2026-11-24) -->
